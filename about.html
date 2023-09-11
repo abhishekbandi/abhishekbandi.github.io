@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Abhishek Bandi</title>
+    <link rel="stylesheet" href="/styles/work.css" />
+    <link rel="stylesheet" href="/styles/about.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="navigation_component">
+        <a href="index.html"><img class="logo" src="assets/logo.svg" /></a>
+        <ul>
+          <li><a href="/index.html">Work</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="#">Resume</a></li>
+        </ul>
+        <img class="hamber" src="assets/hamber.svg" onclick="openNav()" />
+      </div>
+    </nav>
+    <div id="mySidenav" class="sidenav">
+      <img src="assets/close.svg" class="closebtn" onclick="closeNav()" />
+      <a href="#">Work</a>
+      <a href="#">About</a>
+      <a href="#">Resume</a>
+    </div>
+    <section class="content">
+      <section class="section_one">
+        <section class="content_alignment">
+          <div class="section_one_content">
+            <div class="section_one_image_view">
+              <img src="assets/user_image.png" />
+            </div>
+            <div class="section_one_content_view">
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s.Lorem Ipsum is simply dummy text of
+                the printing and typesetting industry. <br />
+                <br />sLorem Ipsum has been the industry's standard dummy text
+                ever since the 1500s. Lorem Ipsum is simply dummy text of the
+                printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s.Lorem Ipsum
+                is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever
+                since the 1500s.<br />
+                <br />sLorem Ipsum has been the industry's standard dummy text
+                ever since the 1500s.
+              </p>
+            </div>
+          </div>
+        </section>
+      </section>
+      <section class="section_two">
+        <section class="content_alignment">
+          <h2>Travel</h2>
+          <div class="travel_section_cardview">
+            <div class="section_two_image">
+              <img src="assets/image_travel.svg" />
+            </div>
+            <div class="section_two_text_view">
+              <h3>Heading</h3>
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s.Lorem Ipsum is simply dummy text of
+                the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s.Lorem Ipsum
+                is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever
+                since the 1500s.<br /><br />Lorem Ipsum is simply dummy text of
+                the printing and typesetting industry.<br /><br />
+              </p>
+            </div>
+          </div>
+        </section>
+      </section>
+      <!-- texting the view -->
+      <section class="section_three">
+        <section class="content_alignment">
+          <h2>Photography</h2>
+          <div class="photography_card_view">
+            <div class="photography_card_item">
+              <div class="photography_card_inner">
+                <img src="assets/user_image.png" class="photography_image_1" />
+              </div>
+            </div>
+            <div class="photography_card_item">
+              <div class="photography_card_inner">
+                <img src="assets/user_image.png" class="photography_image_2" />
+              </div>
+            </div>
+            <div class="photography_card_item">
+              <div class="photography_card_inner">
+                <img src="assets/user_image.png" class="photography_image_3" />
+              </div>
+            </div>
+            <div class="photography_card_item">
+              <div class="photography_card_inner">
+                <img src="assets/user_image.png" class="photography_image_1" />
+              </div>
+            </div>
+            <div class="photography_card_item">
+              <div class="photography_card_inner">
+                <img src="assets/user_image.png" class="photography_image_2" />
+              </div>
+            </div>
+            <div class="photography_card_item">
+              <div class="photography_card_inner">
+                <img src="assets/user_image.png" class="photography_image_3" />
+              </div>
+            </div>
+            <div class="photography_card_item">
+              <div class="photography_card_inner">
+                <img src="assets/user_image.png" class="photography_image_1" />
+              </div>
+            </div>
+            <div class="photography_card_item">
+              <div class="photography_card_inner">
+                <img src="assets/user_image.png" class="photography_image_2" />
+              </div>
+            </div>
+            <div class="photography_card_item">
+              <div class="photography_card_inner">
+                <img src="assets/user_image.png" class="photography_image_1" />
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+      <!-- texting the view -->
+    </section>
+    <footer>
+      <!-- <h3>Connect me</h3> -->
+      <div class="social_icons">
+        <a href="https://www.linkedin.com/in/abhishekbandi/" target="_blank"
+          ><img src="assets/linkedin.svg"
+        /></a>
+        <a href="https://github.com/abhishekbandi" target="_blank"
+          ><img src="assets/github.svg"
+        /></a>
+      </div>
+      <p>Abhishek Bandi</p>
+    </footer>
+    <script>
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "100%";
+      }
+
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+      }
+    </script>
+  </body>
+</html>
