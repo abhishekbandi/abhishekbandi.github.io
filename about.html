@@ -14,6 +14,7 @@
     />
   </head>
   <body>
+    <!-- Fixed Navigation Bar -->
     <nav>
       <div class="navigation_component">
         <a href="index.html"><img class="logo" src="assets/logo.svg" /></a>
@@ -22,16 +23,20 @@
           <li><a href="/about.html">About</a></li>
           <li><a href="#">Resume</a></li>
         </ul>
+        <!-- hamburger icon visible at 560px -->
         <img class="hamber" src="assets/hamber.svg" onclick="openNav()" />
       </div>
     </nav>
+    <!-- Side Navigation Bar -->
     <div id="mySidenav" class="sidenav">
       <img src="assets/close.svg" class="closebtn" onclick="closeNav()" />
-      <a href="#">Work</a>
-      <a href="#">About</a>
+      <a href="/index.html">Work</a>
+      <a href="/about.html">About</a>
       <a href="#">Resume</a>
     </div>
+    <!-- Body content view with information -->
     <section class="content">
+      <!-- Contains about me information -->
       <section class="section_one">
         <section class="content_alignment">
           <div class="section_one_content">
@@ -58,6 +63,7 @@
           </div>
         </section>
       </section>
+      <!-- Contains traveling information -->
       <section class="section_two">
         <section class="content_alignment">
           <h2>Travel</h2>
@@ -82,7 +88,7 @@
           </div>
         </section>
       </section>
-      <!-- texting the view -->
+      <!-- Contains photography information -->
       <section class="section_three">
         <section class="content_alignment">
           <h2>Photography</h2>
@@ -135,10 +141,9 @@
           </div>
         </section>
       </section>
-      <!-- texting the view -->
     </section>
+    <!-- Footer information -->
     <footer>
-      <!-- <h3>Connect me</h3> -->
       <div class="social_icons">
         <a href="https://www.linkedin.com/in/abhishekbandi/" target="_blank"
           ><img src="assets/linkedin.svg"
@@ -149,6 +154,7 @@
       </div>
       <p>Abhishek Bandi</p>
     </footer>
+    <!-- Script for side navigation -->
     <script>
       function openNav() {
         document.getElementById("mySidenav").style.width = "100%";
