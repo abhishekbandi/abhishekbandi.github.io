@@ -43,14 +43,14 @@
 }
 
 .section_one_content_view p {
-  font-size: 14px;
+  font-size: 18px;
   font-family: "poppins";
   font-weight: 400;
-  line-height: 24px;
+  line-height: 36px;
   color: #575757;
   padding-left: 2rem;
   padding-right: 2rem;
-  padding-top: 100px;
+  padding-top: 140px;
 }
 
 .section_two {
@@ -104,14 +104,15 @@
   padding-left: 4rem;
   padding-right: 2rem;
   font-weight: 700;
+  font-size: 24px;
   font-family: "poppins";
 }
 
 .section_two_text_view p {
   padding-left: 4rem;
   padding-right: 2rem;
-  font-size: 14px;
-  line-height: 24px;
+  font-size: 18px;
+  line-height: 36px;
   font-weight: 400;
   font-family: "poppins";
 }
@@ -128,7 +129,7 @@
   font-weight: 700;
   margin-bottom: 32px;
   font-family: "poppins";
-  margin-top: 42px;
+  margin-top: 120px;
 }
 .photography_card_view {
   /* padding: 20px; */
@@ -156,6 +157,7 @@
 
 .photography_card_inner img {
   width: 100%;
+
   transition: transform 0.9s;
   border-radius: 10px;
   height: fit-content;
@@ -163,14 +165,14 @@
 
 .photography_image_1 {
   height: 660px;
-  width: 360px;
+  width: 200px;
   margin-top: 60px;
   transition: transform 1.6s;
 }
 
 .photography_image_2 {
   height: 660px;
-  width: 360px;
+  width: 200px;
   z-index: 1;
   margin-top: 240px;
   transition: transform 0.9s;
@@ -178,7 +180,7 @@
 
 .photography_image_3 {
   height: 660px;
-  width: 360px;
+  width: 200px;
   margin-top: 10px;
   transition: transform 0.9s;
 }
@@ -201,6 +203,10 @@
     background-repeat: no-repeat;
     background-position: center center;
     flex: 1;
+    height: 70px;
+  }
+  .section_two_image img {
+    height: 60px;
   }
   .photography_card_view .photography_card_item {
     width: 48%;
