@@ -123,6 +123,7 @@ nav {
 .content_one_heading {
   width: 56%;
   height: auto;
+
   /* margin-left: 4rem; */
   /* background-color: blue; */
 }
@@ -132,6 +133,8 @@ nav {
   font-size: 48px;
   font-weight: 700;
   font-family: "poppins";
+  bottom: -100px;
+  animation: slideUp 2s ease forwards;
 }
 
 .content_one_heading p {
@@ -139,6 +142,8 @@ nav {
   font-size: 28px;
   font-weight: 600;
   font-family: "poppins";
+  bottom: -100px;
+  animation: slideUp 3s ease forwards;
 }
 
 .content_two {
@@ -162,6 +167,7 @@ nav {
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
+  bottom: -100px;
 }
 
 .card_view .card_item {
@@ -291,6 +297,17 @@ footer p {
   /* background-color: blueviolet; */
   margin-left: 4rem;
   margin-right: 4rem;
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 760px) {
