@@ -7,7 +7,6 @@
   width: 100%;
   height: 100vh;
   background-size: cover;
-  /* background-color: aquamarine; */
 }
 
 .section_one_content {
@@ -15,16 +14,13 @@
   height: 720px;
   display: flex;
   justify-content: space-between;
-  /* background-color: blue; */
 }
 
 .section_one_image_view {
   width: 50%;
   height: fit-content;
-  /* height: fit-content; */
   margin: auto;
   display: flex;
-  /* background-color: blueviolet; */
 }
 
 .section_one_image_view img {
@@ -33,13 +29,13 @@
   height: auto;
   transition: transform 0.9s;
   border-radius: 10px;
+  bottom: -100px;
+  animation: slideUp 2s ease forwards;
 }
 
 .section_one_content_view {
   width: 50%;
   height: fit-content;
-  /* padding-top: 40px; */
-  /* background-color: rgb(42, 131, 172); */
 }
 
 .section_one_content_view p {
@@ -51,13 +47,14 @@
   padding-left: 2rem;
   padding-right: 2rem;
   padding-top: 140px;
+  bottom: -100px;
+  animation: slideUp 4s ease forwards;
 }
 
 .section_two {
   width: 100%;
   height: fit-content;
   background-size: cover;
-  /* background-color: aqua; */
 }
 
 .section_two h2 {
@@ -77,10 +74,8 @@
 }
 .section_two_image {
   width: 40%;
-  /* height: 100%; */
   max-height: 100%;
   box-sizing: border-box;
-  /* background-color: rgb(25, 45, 45); */
 }
 
 .section_two_image img {
@@ -93,10 +88,7 @@
 
 .section_two_text_view {
   width: 60%;
-  /* padding-left: 6rem;
-  padding-right: 6rem; */
   padding-top: 20px;
-  /* background-color: blue; */
 }
 
 .section_two_text_view h3 {
@@ -121,7 +113,6 @@
   width: 100%;
   height: fit-content;
   background-size: cover;
-  /* background-color: aqua;s */
 }
 
 .section_three h2 {
@@ -132,7 +123,6 @@
   margin-top: 120px;
 }
 .photography_card_view {
-  /* padding: 20px; */
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -143,21 +133,18 @@
 .photography_card_view .photography_card_item {
   padding-bottom: 40px;
   width: 30%;
-  /* background-color: aquamarine; */
   display: flex;
   justify-content: center;
 }
 .photography_card_item .photography_card_inner {
-  /* background-color: #575757; */
-  /* transition: transform 0.9s; */
   border-radius: 10px;
-  /* padding: 20px; */
   width: fit-content;
+  bottom: -100px;
+  animation: slideUp 2s ease forwards;
 }
 
 .photography_card_inner img {
   width: 100%;
-
   transition: transform 0.9s;
   border-radius: 10px;
   height: fit-content;
@@ -185,63 +172,79 @@
   transition: transform 0.9s;
 }
 
+/* Responsive screen at 1060px */
 @media (max-width: 1060px) {
   .section_one_content_view P {
     padding-left: 2rem;
     padding-right: 1rem;
+    bottom: -100px;
+    animation: slideUp 2s ease forwards;
   }
+
   .section_two_text_view h3 {
     padding-left: 2rem;
     padding-right: 2rem;
   }
+
   .section_two_text_view p {
     padding-left: 2rem;
     padding-right: 2rem;
   }
+
   .section_two_image {
-    background-size: cover; /* Cover the entire div */
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     flex: 1;
     height: 70px;
   }
+
   .section_two_image img {
     height: 60px;
   }
+
   .photography_card_view .photography_card_item {
     width: 48%;
   }
 }
 
-@media (max-width: 760px) {
+/* Responsive screen at 800px */
+@media (max-width: 800px) {
   .section_one {
     height: fit-content;
-    /* background-color: aquamarine; */
   }
+
   .section_one_content {
     flex-direction: column;
     height: fit-content;
   }
+
   .section_one_image_view {
     width: 100%;
   }
+
   .section_one_content_view {
     width: 100%;
   }
+
   .section_one_content_view P {
     padding-left: 2rem;
     padding-right: 1rem;
     padding-top: 40px;
     padding-bottom: 60px;
+    bottom: -100px;
+    animation: slideUp 2s ease forwards;
   }
 
   .travel_section_cardview {
     flex-direction: column;
     align-items: center;
   }
+
   .section_two_image {
     width: 100%;
   }
+
   .section_two_image img {
     height: 340px;
     border-radius: 10px;
@@ -257,11 +260,15 @@
   }
 }
 
+/* Responsive screen at 520px */
 @media (max-width: 520px) {
   .section_one_content_view P {
     padding-left: 1rem;
     padding-right: 1rem;
+    bottom: -100px;
+    animation: slideUp 2s ease forwards;
   }
+
   .section_two_text_view h3 {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -274,7 +281,6 @@
 
   .photography_card_view .photography_card_item {
     width: 100%;
-    /* align-items: center; */
   }
 
   .photography_image_1 {

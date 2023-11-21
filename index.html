@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Tab title -->
+    <!-- title -->
     <title>Abhishek Bandi</title>
+    <!-- css link -->
     <link href="styles/work.css" rel="StyleSheet" />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,11 +20,11 @@
       href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap"
       rel="stylesheet"
     />
-    <!-- Tab icon -->
+    <!--fav icon -->
     <link rel="icon" type="image/x-icon" href="assets/logo_white.svg?" />
   </head>
   <body>
-    <!-- Fixed Navigation Bar -->
+    <!-- Main Navigation Bar -->
     <nav>
       <div class="navigation_component">
         <a href="index.html"><img class="logo" src="assets/logo.svg" /></a>
@@ -38,10 +39,11 @@
             >
           </li>
         </ul>
+        <!-- hamburger icon visible at 560px  -->
         <img class="hamber" src="assets/hamber.svg" onclick="openNav()" />
       </div>
     </nav>
-    <!-- Side Navigation Bar -->
+    <!-- Side Navigation Bar View -->
     <div id="mySidenav" class="sidenav">
       <img src="assets/close.svg" class="closebtn" onclick="closeNav()" />
       <a href="index.html">Work</a>
@@ -63,16 +65,16 @@
             </h2>
             <p>Currently designing @Faarms</p>
           </div>
-          <div class="content_one_image">
-            <!-- <img src="assets/image_background.svg" /> -->
-          </div>
+          <!-- <div class="content_one_image">
+            <img src="assets/image_background.svg" />
+          </div> -->
         </section>
       </section>
       <!-- Section two about my work -->
       <section class="content_two">
         <section class="content_alignment">
           <h2>My work</h2>
-          <!-- Main component of cards -->
+          <!-- Main Component of Cards -->
           <div class="card_view">
             <!-- Each card view -->
             <div class="card_item">
@@ -81,7 +83,7 @@
                   <img src="assets/ecom_thumbnail.webp" />
                   <h3>E-commerce Mobile App</h3>
                   <p>
-                    Worked on Solving the problem and enhancing the user
+                    Worked on solving the problem and enhancing the user
                     experience of E-commerce mobile app
                   </p>
                 </div>
@@ -89,45 +91,23 @@
             </div>
             <!-- Each card view -->
             <div class="card_item">
-              <div class="card_inner">
-                <img src="assets/image.png" />
-                <h3>Heading</h3>
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s.
-                </p>
-              </div>
+              <a href="case_study_two.html" class="card-link">
+                <div class="card_inner">
+                  <img
+                    src="assets/case_study_warehouse_attendance_thumbnail.webp"
+                  />
+                  <h3>Warehouse Attendance Management</h3>
+                  <p>
+                    Contributed to Warehouse Attendance Management with seamless
+                    automation and tracking for efficient operations
+                  </p>
+                </div>
+              </a>
             </div>
-
-            <!-- <div class="card_item">
-              <div class="card_inner">
-                <img src="assets/image.png" />
-                <h3>Heading</h3>
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s.
-                </p>
-              </div>
-            </div>
-            
-            <div class="card_item">
-              <div class="card_inner">
-                <img src="assets/image.png" />
-                <h3>Heading</h3>
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s.
-                </p>
-              </div>
-            </div> -->
-            <!-- Each card view -->
           </div>
         </section>
       </section>
-      <!-- Section three about my articless -->
+      <!-- Section three about my articles -->
       <section class="content_three">
         <section class="content_alignment">
           <h2>Articles</h2>
@@ -189,19 +169,19 @@
         </section>
       </section>
       <!-- Footer section -->
-      <footer>
-        <div class="social_icons">
-          <a href="https://www.linkedin.com/in/abhishekbandi/" target="_blank"
-            ><img src="assets/linkedin.svg"
-          /></a>
-          <a href="https://github.com/abhishekbandi" target="_blank"
-            ><img src="assets/github.svg"
-          /></a>
-        </div>
-        <p>Abhishek Bandi</p>
-      </footer>
     </section>
-    <!-- Basic script for side navigation -->
+    <footer>
+      <div class="social_icons">
+        <a href="https://www.linkedin.com/in/abhishekbandi/" target="_blank"
+          ><img src="assets/linkedin.svg"
+        /></a>
+        <a href="https://github.com/abhishekbandi" target="_blank"
+          ><img src="assets/github.svg"
+        /></a>
+      </div>
+      <p>Abhishek Bandi</p>
+    </footer>
+    <!-- Script For Side Navigation -->
     <script>
       function openNav() {
         document.getElementById("mySidenav").style.width = "100%";

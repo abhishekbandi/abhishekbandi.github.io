@@ -3,9 +3,13 @@
   padding: 0%;
   font-family: "poppins";
 }
+hr {
+  margin-top: 60px;
+}
+
 .ecom_content_alignment {
-  margin-left: 8rem;
-  margin-right: 8rem;
+  margin-left: 18rem;
+  margin-right: 18rem;
 }
 
 .content_one_image img {
@@ -19,12 +23,14 @@
   font-family: "poppins";
   font-size: 32px;
   font-weight: 700;
+  line-height: 40px;
 }
 
 .heading_component h4 {
   margin-top: 16px;
   font-family: "poppins";
   font-size: 16px;
+  line-height: 24px;
   font-weight: 600;
   color: #575757;
 }
@@ -33,6 +39,8 @@
   margin-top: 30px;
   font-family: "poppins";
   font-size: 16px;
+  color: #000000;
+  line-height: 24px;
   font-weight: 400;
 }
 
@@ -50,11 +58,13 @@
 
 .content_in_horz h2 {
   font-size: 20px;
+  line-height: 28px;
 }
 
 .content_in_horz ul {
   margin-top: 20px;
   font-size: 16px;
+  line-height: 24px;
   margin-right: 12px;
   margin-left: 16px;
   color: #575757;
@@ -68,12 +78,14 @@
 
 .case_study_content_four .overview_text h4 {
   font-size: 18px;
+  line-height: 26px;
   margin-top: 60px;
   margin-bottom: 14px;
 }
 
 .case_study_content_four .overview_text p a {
   font-size: 14px;
+  line-height: 22px;
   color: #575757;
 }
 
@@ -84,18 +96,19 @@
 
 .case_study_content_six_empathize h2 {
   font-size: 24px;
+  line-height: 32px;
   margin-top: 60px;
   margin-bottom: 20px;
 }
 
 .case_study_content_six_empathize h4 {
   font-size: 16px;
+  line-height: 24px;
   font-weight: 400;
 }
 
 .case_study_content_six_empathize p {
   margin-top: 28px;
-  /* margin-bottom: px; */
   color: #575757;
 }
 
@@ -106,12 +119,14 @@
 }
 .case_study_content_seven_define h2 {
   font-size: 24px;
+  line-height: 32px;
   margin-top: 60px;
   margin-bottom: 20px;
 }
 
 .case_study_content_seven_define ul {
   font-size: 16px;
+  line-height: 24px;
   font-weight: 400;
   margin-top: 24px;
   margin-left: 24px;
@@ -120,6 +135,7 @@
 
 .case_study_content_seven_define p {
   font-size: 16px;
+  line-height: 24px;
   font-weight: 400;
   margin-top: 24px;
 }
@@ -133,16 +149,19 @@
 .case_study_content_seven_define h4 {
   margin-top: 60px;
   font-size: 18px;
+  line-height: 26px;
 }
 
 .case_study_content_eight_ideate h2 {
   font-size: 24px;
+  line-height: 32px;
   margin-top: 60px;
   margin-bottom: 20px;
 }
 
 .case_study_content_eight_ideate p {
   font-size: 16px;
+  line-height: 24px;
   font-weight: 400;
   margin-top: 24px;
   color: #575757;
@@ -150,6 +169,7 @@
 
 .case_study_content_eight_ideate h4 {
   font-size: 16px;
+  line-height: 24px;
   margin-top: 80px;
   margin-bottom: 20px;
   color: #575757;
@@ -167,6 +187,7 @@
 
 .ecom_design h4 {
   font-size: 20px;
+  line-height: 28px;
 }
 
 .ecom_design img {
@@ -183,6 +204,11 @@
   justify-content: space-between;
 }
 
+.ecom_prototype_video {
+  width: 50%;
+  text-align: center;
+}
+
 .ecom_prototype_view_reverse {
   margin-top: 80px;
   display: flex;
@@ -195,20 +221,22 @@
 
 .ecom_prototype h4 {
   font-size: 20px;
+  line-height: 28px;
 }
 .ecom_prototype_text ul li {
   margin-top: 20px;
 }
 
 .ecom_prototype_text {
-  margin-left: 260px;
+  padding-left: 40px;
   margin-top: 40px;
+  width: 50%;
+  margin: auto;
 }
 
 .ecom_prototype_text_2 {
-  margin-left: 60px;
+  width: 50%;
   margin-top: 100px;
-  margin-right: 260px;
 }
 
 .ecom_prototype_text_2 ul li {
@@ -241,13 +269,27 @@
   margin-bottom: 40px;
 }
 
-@media (max-width: 1000px) {
+/* Responsive screen at 1120px */
+@media (max-width: 1120px) {
+  .ecom_content_alignment {
+    margin-left: 8rem;
+    margin-right: 8rem;
+  }
+
   .ecom_prototype_view {
     display: block;
   }
-  .ecom_prototype_text {
-    margin-left: 0px;
+
+  .ecom_prototype_video {
+    width: 100%;
   }
+
+  .ecom_prototype_text {
+    padding-top: 60px;
+    width: 80%;
+    margin: auto;
+  }
+
   .ecom_prototype_text_2 {
     margin-right: 0px;
     margin-left: 0px;
@@ -258,13 +300,16 @@
     justify-content: center;
     align-items: center;
   }
+
   .ecom_prototype_view_reverse {
     display: none;
   }
+
   .ecom_prototype_view_small_screen {
     display: block;
     margin-top: 80px;
   }
+
   .ecom_prototype_view_small_screen .ecom_prototype_video {
     display: flex;
     justify-content: center;
@@ -272,31 +317,38 @@
   }
 }
 
+/* Responsive screen at 750px */
 @media (max-width: 750px) {
   .ecom_content_alignment {
-    margin-left: 3rem;
-    margin-right: 3rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 }
 
+/* Responsive screen at 600px */
 @media (max-width: 600px) {
   .content_in_horz {
     display: block;
   }
+
   .content_in_horz ul {
     margin-top: 20px;
     font-size: 16px;
+    line-height: 24px;
     margin-right: 0px;
     margin-left: 0px;
     color: #575757;
   }
+
   .content_in_horz li {
     margin-left: 16px;
     color: #575757;
   }
+
   .content_in_horz .roles {
     max-width: 100%;
   }
+
   .content_in_horz h2 {
     margin-top: 32px;
   }

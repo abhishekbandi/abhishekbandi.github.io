@@ -1,0 +1,447 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.header_image img {
+  width: 100%;
+  height: auto;
+  margin-top: 60px;
+}
+
+.main_content {
+  width: 100%;
+  height: fit-content;
+  margin: auto;
+  max-width: 1440px;
+  align-items: center;
+}
+
+.container_alignment {
+  margin-right: 18rem;
+  margin-left: 18rem;
+}
+.case_study_header_info {
+  padding-top: 40px;
+}
+.case_study_header_info h2 {
+  font-size: 30px;
+  font-family: "poppins";
+  color: #37352f;
+  padding-top: 16px;
+}
+
+.case_study_header_info h3 {
+  font-size: 16px;
+  font-family: "poppins";
+  color: #787774;
+  padding-top: 16px;
+}
+
+.case_study_header_info p {
+  font-size: 14px;
+  line-height: 22px;
+  font-family: "poppins";
+  font-weight: 400px;
+  color: #37352f;
+  padding-top: 16px;
+}
+
+.case_study_context_box {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 18px;
+}
+.case_study_context_box .context_box {
+  max-width: 30%;
+  min-width: 28%;
+}
+
+.case_study_context_box p {
+  font-size: 16px;
+  font-family: "poppins";
+  font-weight: 700;
+  color: #37352f;
+  align-items: self-start;
+  padding-bottom: 12px;
+}
+
+.case_study_context_box ul li {
+  font-size: 14px;
+  font-family: "poppins";
+  color: #37352f;
+  line-height: 26px;
+  margin-left: 16px;
+}
+
+/* horizontal line */
+hr {
+  margin-top: 32px;
+  font-size: 120px;
+}
+
+.project_overview h2 {
+  font-size: 24px;
+  line-height: 32px;
+  font-family: "poppins";
+  font-weight: 700;
+  color: #37352f;
+  padding-top: 32px;
+}
+
+.project_overview p {
+  font-size: 14px;
+  line-height: 24px;
+  font-family: "poppins";
+  font-weight: 400;
+  color: #37352f;
+  padding-top: 12px;
+}
+
+.project_overview h2 {
+  font-size: 24px;
+  line-height: 32px;
+  font-family: "poppins";
+  font-weight: 700;
+  color: #37352f;
+  padding-top: 52px;
+}
+
+.project_overview p {
+  font-size: 14px;
+  line-height: 24px;
+  font-family: "poppins";
+  font-weight: 400;
+  color: #37352f;
+  padding-top: 12px;
+}
+.problem_statement h2 {
+  font-size: 24px;
+  line-height: 32px;
+  font-family: "poppins";
+  font-weight: 700;
+  color: #37352f;
+  padding-top: 52px;
+}
+
+.problem_statement p {
+  font-size: 14px;
+  line-height: 24px;
+  font-family: "poppins";
+  font-weight: 400;
+  color: #37352f;
+  padding-top: 12px;
+}
+
+.research_and_discovery h2 {
+  font-size: 24px;
+  line-height: 32px;
+  font-family: "poppins";
+  font-weight: 700;
+  color: #37352f;
+  padding-top: 52px;
+}
+
+.research_and_discovery h3 {
+  font-size: 16px;
+  font-family: "poppins";
+  color: #787774;
+  padding-top: 36px;
+}
+
+.research_and_discovery p {
+  font-size: 14px;
+  line-height: 24px;
+  font-family: "poppins";
+  font-weight: 400;
+  color: #37352f;
+  padding-top: 12px;
+}
+
+.research_and_discovery ul {
+  font-size: 14px;
+  line-height: 24px;
+  font-family: "poppins";
+  font-weight: 400;
+  color: #37352f;
+  padding-top: 12px;
+}
+
+.research_and_discovery ul li {
+  font-size: 14px;
+  line-height: 24px;
+  font-family: "poppins";
+  font-weight: 400;
+  color: #37352f;
+  padding-top: 12px;
+  margin-left: 18px;
+}
+
+/* user journey map */
+.journey_map img {
+  width: 100%;
+  height: auto;
+  padding-top: 52px;
+}
+
+/* Design Goals */
+.design_goals h2 {
+  font-size: 24px;
+  line-height: 32px;
+  font-family: "poppins";
+  font-weight: 700;
+  color: #37352f;
+  padding-top: 52px;
+}
+
+.design_goals h3 {
+  font-size: 16px;
+  font-family: "poppins";
+  color: #787774;
+  padding-top: 36px;
+}
+.design_goals ol {
+  font-size: 14px;
+  line-height: 24px;
+  font-family: "poppins";
+  font-weight: 400;
+  color: #37352f;
+  padding-top: 12px;
+}
+
+.design_goals ol li {
+  font-size: 14px;
+  line-height: 24px;
+  font-family: "poppins";
+  font-weight: 400;
+  color: #37352f;
+  padding-top: 12px;
+  margin-left: 18px;
+}
+
+/* Design process */
+.design_process h2 {
+  font-size: 24px;
+  line-height: 32px;
+  font-family: "poppins";
+  font-weight: 700;
+  color: #37352f;
+  padding-top: 52px;
+}
+
+.design_process h3 {
+  font-size: 16px;
+  font-family: "poppins";
+  color: #787774;
+  padding-top: 36px;
+}
+
+.design_process p {
+  font-size: 14px;
+  line-height: 22px;
+  font-family: "poppins";
+  font-weight: 400px;
+  color: #37352f;
+  padding-top: 16px;
+}
+
+.design_process img {
+  width: 100%;
+  height: auto;
+  padding-top: 52px;
+}
+
+.prototype_view_1 {
+  display: flex;
+  justify-content: space-between;
+  height: auto;
+  padding-top: 64px;
+}
+
+.prototype_view_2 {
+  display: flex;
+  justify-content: space-between;
+  height: auto;
+  padding-top: 64px;
+}
+.prototype_view_small_screen {
+  display: none;
+}
+
+.prototype_video {
+  padding-top: 12px;
+  width: 50%;
+  text-align: center;
+}
+
+.prototype_text {
+  padding-top: 52px;
+  width: 50%;
+  margin-left: 30px;
+}
+
+.prototype_text ul li {
+  font-size: 14px;
+  line-height: 24px;
+  font-family: "poppins";
+  font-weight: 400;
+  color: #37352f;
+  padding-top: 24px;
+}
+
+/* User testing */
+.user_testing h2 {
+  font-size: 24px;
+  line-height: 32px;
+  font-family: "poppins";
+  font-weight: 700;
+  color: #37352f;
+  padding-top: 52px;
+}
+.user_testing p {
+  font-size: 14px;
+  line-height: 24px;
+  font-family: "poppins";
+  font-weight: 400;
+  color: #37352f;
+  padding-top: 12px;
+}
+
+.user_testing ul {
+  font-size: 14px;
+  line-height: 24px;
+  font-family: "poppins";
+  font-weight: 400;
+  color: #37352f;
+  padding-top: 12px;
+}
+
+.user_testing ul li {
+  font-size: 14px;
+  line-height: 24px;
+  font-family: "poppins";
+  font-weight: 400;
+  color: #37352f;
+  padding-top: 12px;
+  margin-left: 18px;
+}
+
+/* user journey map */
+.user_testing img {
+  width: 100%;
+  height: auto;
+  padding-top: 12px;
+}
+
+.conclusion h2 {
+  font-size: 24px;
+  line-height: 32px;
+  font-family: "poppins";
+  font-weight: 700;
+  color: #37352f;
+  padding-top: 52px;
+}
+
+.conclusion h3 {
+  font-size: 16px;
+  font-family: "poppins";
+  color: #787774;
+  padding-top: 36px;
+}
+
+.conclusion p {
+  font-size: 14px;
+  line-height: 24px;
+  font-family: "poppins";
+  font-weight: 400;
+  color: #37352f;
+  padding-top: 12px;
+}
+
+/* Next Step */
+.next_step h2 {
+  font-size: 24px;
+  line-height: 32px;
+  font-family: "poppins";
+  font-weight: 700;
+  color: #37352f;
+  padding-top: 52px;
+}
+
+.next_step h3 {
+  font-size: 16px;
+  font-family: "poppins";
+  color: #787774;
+  padding-top: 36px;
+}
+
+.next_step p {
+  font-size: 14px;
+  line-height: 24px;
+  font-family: "poppins";
+  font-weight: 400;
+  color: #37352f;
+  padding-top: 12px;
+}
+
+/* Responsive screen at 1120px */
+@media (max-width: 1120px) {
+  .container_alignment {
+    margin-left: 6rem;
+    margin-right: 6rem;
+  }
+}
+
+/* Responsive screen at 750px */
+@media screen and (max-width: 750px) {
+  .container_alignment {
+    margin-left: 4rem;
+    margin-right: 4rem;
+  }
+
+  .prototype_view_1 {
+    display: block;
+    height: auto;
+    padding-top: 64px;
+  }
+
+  .prototype_view_2 {
+    display: none;
+  }
+
+  .prototype_view_small_screen {
+    display: block;
+    height: auto;
+    padding-top: 64px;
+  }
+
+  .prototype_video {
+    padding-top: 12px;
+    width: 100%;
+  }
+
+  .prototype_text {
+    padding-top: 24px;
+    width: 90%;
+    margin: auto;
+    align-items: center;
+  }
+}
+
+/* Responsive screen at 600px */
+@media screen and (max-width: 600px) {
+  .container_alignment {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+
+  .case_study_context_box {
+    display: block;
+    padding-top: 18px;
+  }
+
+  .case_study_context_box .context_box {
+    max-width: 100%;
+    padding-top: 28px;
+  }
+}
