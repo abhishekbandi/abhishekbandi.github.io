@@ -193,6 +193,8 @@
         <div class="journey_map">
           <img
             src="assets/case_study_indent_and_quotation_user_journey_map.webp"
+            alt="view image"
+            class="modal-trigger"
           />
         </div>
         <!-- Design objectives -->
@@ -205,7 +207,11 @@
             wireframes to look after how our design aligns with the requirements
             and the problem we are trying to solve.
           </p>
-          <img src="assets/case_study_indent_and_quotation_wireframe.webp" />
+          <img
+            src="assets/case_study_indent_and_quotation_wireframe.webp"
+            alt="view image"
+            class="modal-trigger"
+          />
           <!-- High fertility design -->
           <h3>High fertility design</h3>
           <p>
@@ -213,7 +219,11 @@
             easy to navigate and perform actions quickly. below are some screens
             representing the designs
           </p>
-          <img src="assets/case_study_indent_and_quotation_design.webp" />
+          <img
+            src="assets/case_study_indent_and_quotation_design.webp"
+            alt="view image"
+            class="modal-trigger"
+          />
           <!-- Prototyping -->
           <h3>Prototyping</h3>
           <p>
@@ -238,6 +248,8 @@
           <h2>Test and result</h2>
           <img
             src="assets/case_study_indent_and_quotation_test_and_result.webp"
+            alt="view image"
+            class="modal-trigger"
           />
         </div>
         <!-- Conclusion -->
@@ -252,6 +264,12 @@
         </div>
       </div>
     </section>
+    <!-- Popup image view -->
+    <div class="modal">
+      <span class="close-button" onclick="closeModal()">&times;</span>
+
+      <img src="" alt="Modal Image" class="modal-content" />
+    </div>
     <!-- Footer -->
     <footer>
       <div class="social_icons">
@@ -266,6 +284,27 @@
     </footer>
     <!-- Script for side navigation -->
     <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var modalTriggers = document.querySelectorAll(".modal-trigger");
+        var modal = document.querySelector(".modal");
+        var modalContent = document.querySelector(".modal-content");
+
+        modalTriggers.forEach(function (trigger) {
+          trigger.addEventListener("click", function () {
+            var imageURL = this.src;
+            modalContent.src = imageURL;
+            modal.style.display = "flex";
+          });
+        });
+
+        modal.addEventListener("click", function () {
+          modal.style.display = "none";
+        });
+      });
+
+      function closeModal() {
+        modal.style.display = "none";
+      }
       function openNav() {
         document.getElementById("mySidenav").style.width = "100%";
       }

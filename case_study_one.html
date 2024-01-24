@@ -161,7 +161,11 @@
     <!-- Design thinking process -->
     <section class="case_study_content_five">
       <section class="ecom_content_alignment">
-        <img src="assets/ecom_design_thinking_process.webp" />
+        <img
+          src="assets/ecom_design_thinking_process.webp"
+          alt="view image"
+          class="modal-trigger"
+        />
       </section>
     </section>
     <!-- Empathize -->
@@ -196,7 +200,11 @@
           on buying them.
         </p>
         <div class="empathize_graphs">
-          <img src="assets/ecom_empathize_graph.webp" />
+          <img
+            src="assets/ecom_empathize_graph.webp"
+            alt="view image"
+            class="modal-trigger"
+          />
         </div>
       </section>
     </section>
@@ -223,8 +231,16 @@
           needs and challenges.
         </p>
         <div class="define_img">
-          <img src="assets/ecom_persona_one.webp" />
-          <img src="assets/ecom_persona_two.webp" />
+          <img
+            src="assets/ecom_persona_one.webp"
+            alt="view image"
+            class="modal-trigger"
+          />
+          <img
+            src="assets/ecom_persona_two.webp"
+            alt="view image"
+            class="modal-trigger"
+          />
         </div>
         <h4><b>Task Analysis & Journey Maps</b></h4>
         <p>
@@ -233,7 +249,11 @@
           points and the opportunities for improvement.
         </p>
         <div class="define_img">
-          <img src="assets/ecom_Journey_map.webp" />
+          <img
+            src="assets/ecom_Journey_map.webp"
+            alt="view image"
+            class="modal-trigger"
+          />
         </div>
       </section>
     </section>
@@ -313,13 +333,25 @@
         </div>
         <!-- Wireframe image -->
         <div class="ecom_wireframe_img">
-          <img src="assets/ecom_wireframe_one.webp" />
-          <img src="assets/ecom_wireframe_two.webp" />
+          <img
+            src="assets/ecom_wireframe_one.webp"
+            alt="view image"
+            class="modal-trigger"
+          />
+          <img
+            src="assets/ecom_wireframe_two.webp"
+            alt="view image"
+            class="modal-trigger"
+          />
         </div>
         <!-- Design image -->
         <div class="ecom_design">
           <h4><b>Design</b></h4>
-          <img src="assets/ecom_design.webp" />
+          <img
+            src="assets/ecom_design.webp"
+            alt="view image"
+            class="modal-trigger"
+          />
         </div>
         <!-- Prototype view -->
         <div class="ecom_prototype">
@@ -520,6 +552,12 @@
         </p>
       </section>
     </section>
+    <!-- Popup image view -->
+    <div class="modal">
+      <span class="close-button" onclick="closeModal()">&times;</span>
+
+      <img src="" alt="Modal Image" class="modal-content" />
+    </div>
     <!-- Footer -->
     <footer>
       <div class="social_icons">
@@ -534,6 +572,27 @@
     </footer>
     <!-- Script for side navigation -->
     <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var modalTriggers = document.querySelectorAll(".modal-trigger");
+        var modal = document.querySelector(".modal");
+        var modalContent = document.querySelector(".modal-content");
+
+        modalTriggers.forEach(function (trigger) {
+          trigger.addEventListener("click", function () {
+            var imageURL = this.src;
+            modalContent.src = imageURL;
+            modal.style.display = "flex";
+          });
+        });
+
+        modal.addEventListener("click", function () {
+          modal.style.display = "none";
+        });
+      });
+
+      function closeModal() {
+        modal.style.display = "none";
+      }
       function openNav() {
         document.getElementById("mySidenav").style.width = "100%";
       }

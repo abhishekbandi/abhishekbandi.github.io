@@ -187,7 +187,11 @@
         </div>
         <!-- Journey image -->
         <div class="journey_map">
-          <img src="assets/case_study_warehouse_attendance_journey_map.webp" />
+          <img
+            src="assets/case_study_warehouse_attendance_journey_map.webp"
+            alt="view image"
+            class="modal-trigger"
+          />
         </div>
         <!-- Design goals -->
         <div class="design_goals">
@@ -209,7 +213,11 @@
             the user journey, ensuring easy navigation and clear information
             presentation.
           </p>
-          <img src="assets/case_study_warehouse_attendance_wireframes.webp" />
+          <img
+            src="assets/case_study_warehouse_attendance_wireframes.webp"
+            alt="view image"
+            class="modal-trigger"
+          />
           <!-- Visual Design -->
           <h3>Visual Design:</h3>
           <p>
@@ -217,7 +225,11 @@
             warehouse-themed color palette and iconography. Prioritized clarity
             and readability for quick interaction.
           </p>
-          <img src="assets/case_study_warehouse_attendance_design.webp" />
+          <img
+            src="assets/case_study_warehouse_attendance_design.webp"
+            alt="view image"
+            class="modal-trigger"
+          />
           <!-- Prototyping -->
           <h3>Prototyping</h3>
           <p>
@@ -340,6 +352,8 @@
             </li>
             <img
               src="assets/case_study_warehouse_attendance_user_testing_overview.webp"
+              alt="view image"
+              class="modal-trigger"
             />
           </ul>
         </div>
@@ -372,6 +386,12 @@
         </div>
       </div>
     </section>
+    <!-- Popup image view -->
+    <div class="modal">
+      <span class="close-button" onclick="closeModal()">&times;</span>
+
+      <img src="" alt="Modal Image" class="modal-content" />
+    </div>
     <!-- Footer -->
     <footer>
       <div class="social_icons">
@@ -386,6 +406,27 @@
     </footer>
     <!-- Script for side navigation -->
     <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var modalTriggers = document.querySelectorAll(".modal-trigger");
+        var modal = document.querySelector(".modal");
+        var modalContent = document.querySelector(".modal-content");
+
+        modalTriggers.forEach(function (trigger) {
+          trigger.addEventListener("click", function () {
+            var imageURL = this.src;
+            modalContent.src = imageURL;
+            modal.style.display = "flex";
+          });
+        });
+
+        modal.addEventListener("click", function () {
+          modal.style.display = "none";
+        });
+      });
+
+      function closeModal() {
+        modal.style.display = "none";
+      }
       function openNav() {
         document.getElementById("mySidenav").style.width = "100%";
       }
