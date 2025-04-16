@@ -1,33 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Basic Meta Tags -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Titel -->
+
+    <!-- Document Title -->
     <title>Abhishek Bandi</title>
-    <!-- CSS link -->
+
+    <!-- Linking External CSS Stylesheets -->
     <link rel="stylesheet" href="/styles/work.css" />
     <link rel="stylesheet" href="/styles/about.css" />
-    <!-- Fonts -->
+
+    <!-- Google Fonts Integration -->
+    <!-- Establishing Preconnection for faster font loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <!-- Defining the font family and styles to be used from Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <!-- Fav icon -->
+
+    <!-- Favicon Setup -->
+    <!-- Linking the favicon for the website -->
     <link rel="icon" type="image/x-icon" href="assets/logo_white.svg?" />
   </head>
-  <!-- Google tag (gtag.js) -->
+
+  <!-- Google Analytics Tag (gtag.js) -->
+  <!-- Including Google Analytics for tracking website usage -->
   <script
     async
     src="https://www.googletagmanager.com/gtag/js?id=G-ZYZFHTBGBB"
   ></script>
+  <!-- Initializing Google Analytics -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() {
       dataLayer.push(arguments);
     }
+    // Adding the date to the analytics
     gtag("js", new Date());
 
     gtag("config", "G-ZYZFHTBGBB");
@@ -35,10 +47,13 @@
   <body>
     <!-- Navigation Bar -->
     <nav>
+        <!-- Navigation Component Container -->
       <div class="navigation_component">
+         <!-- Logo Link to Home Page -->
         <a href="index.html"><img class="logo" src="assets/logo.svg" /></a>
-        <ul>
-          <li><a href="index.html">Work</a></li>
+        <!-- Navigation Links -->
+        <ul class="nav-links">
+            <li><a href="index.html">Work</a></li>
           <li><a href="about.html">About</a></li>
           <li>
             <a
@@ -47,74 +62,62 @@
               >Resume</a
             >
           </li>
+           <!-- End of Navigation Links -->
         </ul>
-        <!-- hamburger icon visible at 560px -->
+        <!-- Hamburger Icon for Mobile Navigation -->
         <img class="hamber" src="assets/hamber.svg" onclick="openNav()" />
       </div>
     </nav>
+    
     <!-- Side Navigation Bar -->
+    <!-- Side Navigation Bar Container -->
     <div id="mySidenav" class="sidenav">
+      <!-- Close Button for Side Navigation -->
       <img src="assets/close.svg" class="closebtn" onclick="closeNav()" />
+       <!-- Side Navigation Links -->
       <a href="index.html">Work</a>
       <a href="about.html">About</a>
       <a
         href="https://drive.google.com/file/d/1McoD311y4lXf57YeFkbk08wmDZsB_Nla/view"
         target="_blank"
         >Resume</a
-      >
+      ><!-- End of Side Navigation Links -->
     </div>
+
     <!-- Body content view with information -->
+     <!-- Main Content Section -->
     <section class="content">
-      <!-- Contains about me information -->
+      <!-- About Me Section -->
       <section class="section_one">
+        <!-- Content Alignment Container -->
         <section class="content_alignment">
+          <!-- About Me Content Container -->
           <div class="section_one_content">
             <div class="section_one_image_view">
-              <img src="assets/image_abhishek_bandi.webp" />
+              <!-- Profile Image -->
+              <img src="assets/image_abhishek_bandi.webp" alt="Abhishek Bandi" />
             </div>
             <div class="section_one_content_view">
               <p>
-                I am a Sr UI/UX Designer working on the Saas Automation Testing
-                Product at FireFlink, completed my computer application in 2020.
+                Greetings! I'm Abhishek Bandi, a Product Designer currently
+                contributing to multiple SaaS products at Zopping. I completed my
+                studies in computer applications in 2020.
                 <br />
                 <br />I started out working on mobile development at my college
                 but fascinated by the project planning and why behind the
                 development, which led me to explore the UX field after working
                 as an intern and doing some projects, which interested me to
-                choose a career in UX Design.<br />
+                choose a career in UX Design.
               </p>
-            </div>
+              
+            </div><!-- End of About Me Content -->
           </div>
-        </section>
       </section>
-      <!-- Contains traveling information -->
-      <!-- <section class="section_two">
-        <section class="content_alignment">
-          <h2>Travel</h2>
-          <div class="travel_section_cardview">
-            <div class="section_two_image">
-              <img src="assets/abhishekbandi_travelling.webp" />
-            </div>
-            <div class="section_two_text_view">
-              <h3>Travelling</h3>
-              <p>
-                As a traveler, I've had the privilege of exploring various
-                corners of India and experiencing the beauty of diverse
-                landscapes, cultures, and people. Here are a few lines from my
-                perspective:<br /><br />Traveling has been my greatest teacher.
-                It has shown me that there is so much more in our world than we
-                can ever imagine. It's a lifelong love affair with the world, an
-                ever-evolving adventure that reminds me that there's always
-                something new to discover around the next corner.<br /><br />
-              </p>
-            </div>
-          </div>
-        </section>
-      </section> -->
-      <!-- Contains photography information -->
+      <!-- Photography Section -->
       <section class="section_three">
-        <section class="content_alignment">
-          <h2>Photography</h2>
+         <!-- Content Alignment Container -->
+        <section class="content_alignment" id="photography">
+          <h2 >Photography</h2>
           <div class="photography_card_view">
             <div class="photography_card_item">
               <div class="photography_card_inner">
@@ -187,15 +190,19 @@
                   class="photography_image_1"
                 />
               </div>
+
             </div>
           </div>
         </section>
       </section>
     </section>
+
     <!-- Footer information -->
-    <footer>
+     <!-- Footer Section -->
+    <footer class="footer_view">
       <div class="social_icons">
-        <a href="https://www.linkedin.com/in/abhishekbandi/" target="_blank"
+        <!-- Social Media Links -->
+         <a href="https://www.linkedin.com/in/abhishekbandi/" target="_blank"
           ><img src="assets/linkedin.svg"
         /></a>
         <a href="https://github.com/abhishekbandi" target="_blank"
@@ -204,6 +211,7 @@
       </div>
       <p>Abhishek Bandi</p>
     </footer>
+
     <!-- Script for side navigation -->
     <script>
       function openNav() {
