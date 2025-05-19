@@ -1,194 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Basic Meta Tags -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Document Title -->
-    <title>Abhishek Bandi</title>
+<head>
+  <!-- Basic Meta Tags -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Linking External CSS Stylesheets -->
-    <link rel="stylesheet" href="/styles/work.css" />
-    <link rel="stylesheet" href="/styles/about.css" />
+  <!-- Document Title -->
+  <title>Abhishek Bandi</title>
 
-    <!-- Google Fonts Integration -->
-    <!-- Establishing Preconnection for faster font loading -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-    <!-- Defining the font family and styles to be used from Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Linking External CSS Stylesheets -->
+  <link rel="stylesheet" href="/styles/work.css" />
+  <link rel="stylesheet" href="/styles/about.css" />
 
-    <!-- Favicon Setup -->
-    <!-- Linking the favicon for the website -->
-    <link rel="icon" type="image/x-icon" href="assets/logo_white.svg?" />
-  </head>
+  <!-- Google Fonts Integration -->
+  <!-- Establishing Preconnection for faster font loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <!-- Defining the font family and styles to be used from Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
 
-  <!-- Google Analytics Tag (gtag.js) -->
-  <!-- Including Google Analytics for tracking website usage -->
-  <script
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=G-ZYZFHTBGBB"
-  ></script>
-  <!-- Initializing Google Analytics -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    // Adding the date to the analytics
-    gtag("js", new Date());
+  <!-- Favicon Setup -->
+  <!-- Linking the favicon for the website -->
+  <link rel="icon" type="image/x-icon" href="assets/logo_white.svg?" />
+</head>
 
-    gtag("config", "G-ZYZFHTBGBB");
-  </script>
-  <body>
-    <!-- Navigation Bar -->
-    <nav>
-        <!-- Navigation Component Container -->
-      <div class="navigation_component">
-         <!-- Logo Link to Home Page -->
-        <a href="index.html"><img class="logo" src="assets/logo.svg" /></a>
-        <!-- Navigation Links -->
-        <ul class="nav-links">
-            <li><a href="index.html">Work</a></li>
-          <li><a href="about.html">About</a></li>
-          <li>
-            <a
-              href="https://drive.google.com/file/d/1McoD311y4lXf57YeFkbk08wmDZsB_Nla/view"
-              target="_blank"
-              >Resume</a
-            >
-          </li>
-           <!-- End of Navigation Links -->
-        </ul>
-        <!-- Hamburger Icon for Mobile Navigation -->
-        <img class="hamber" src="assets/hamber.svg" onclick="openNav()" />
-      </div>
-    </nav>
-    
-    <!-- Side Navigation Bar -->
-    <!-- Side Navigation Bar Container -->
-    <div id="mySidenav" class="sidenav">
-      <!-- Close Button for Side Navigation -->
-      <img src="assets/close.svg" class="closebtn" onclick="closeNav()" />
-       <!-- Side Navigation Links -->
-      <a href="index.html">Work</a>
-      <a href="about.html">About</a>
-      <a
-        href="https://drive.google.com/file/d/1McoD311y4lXf57YeFkbk08wmDZsB_Nla/view"
-        target="_blank"
-        >Resume</a
-      ><!-- End of Side Navigation Links -->
+<!-- Google Analytics Tag (gtag.js) -->
+<!-- Including Google Analytics for tracking website usage -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZYZFHTBGBB"></script>
+<!-- Initializing Google Analytics -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  // Adding the date to the analytics
+  gtag("js", new Date());
+
+  gtag("config", "G-ZYZFHTBGBB");
+</script>
+
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <!-- Navigation Component Container -->
+    <div class="navigation_component">
+      <!-- Logo Link to Home Page -->
+      <a href="index.html"><img class="logo" src="assets/logo.svg" /></a>
+      <!-- Navigation Links -->
+      <ul class="nav-links">
+        <li><a href="index.html">Work</a></li>
+        <li><a href="about.html">About</a></li>
+        <li>
+          <a href="https://drive.google.com/file/d/1McoD311y4lXf57YeFkbk08wmDZsB_Nla/view" target="_blank">Resume</a>
+        </li>
+        <!-- End of Navigation Links -->
+      </ul>
+      <!-- Hamburger Icon for Mobile Navigation -->
+      <img class="hamber" src="assets/hamber.svg" onclick="openNav()" />
     </div>
+  </nav>
 
-    <!-- Body content view with information -->
-     <!-- Main Content Section -->
-    <section class="content">
-      <!-- About Me Section -->
-      <section class="section_one">
-        <!-- Content Alignment Container -->
-        <section class="content_alignment">
-          <!-- About Me Content Container -->
-          <div class="section_one_content">
-            <div class="section_one_image_view">
-              <!-- Profile Image -->
-              <img src="assets/image_abhishek_bandi.webp" alt="Abhishek Bandi" />
-            </div>
-            <div class="section_one_content_view">
-              <p>
-                Greetings! I'm Abhishek Bandi, a Product Designer currently
-                contributing to multiple SaaS products at Zopping. I completed my
-                studies in computer applications in 2020.
-                <br />
-                <br />I started out working on mobile development at my college
-                but fascinated by the project planning and why behind the
-                development, which led me to explore the UX field after working
-                as an intern and doing some projects, which interested me to
-                choose a career in UX Design.
-              </p>
-              
-            </div><!-- End of About Me Content -->
+  <!-- Side Navigation Bar -->
+  <!-- Side Navigation Bar Container -->
+  <div id="mySidenav" class="sidenav">
+    <!-- Close Button for Side Navigation -->
+    <img src="assets/close.svg" class="closebtn" onclick="closeNav()" />
+    <!-- Side Navigation Links -->
+    <a href="index.html">Work</a>
+    <a href="about.html">About</a>
+    <a href="https://drive.google.com/file/d/1McoD311y4lXf57YeFkbk08wmDZsB_Nla/view"
+      target="_blank">Resume</a><!-- End of Side Navigation Links -->
+  </div>
+
+  <!-- Body content view with information -->
+  <!-- Main Content Section -->
+  <section class="content">
+    <!-- About Me Section -->
+    <section class="section_one">
+      <!-- Content Alignment Container -->
+      <section class="content_alignment">
+        <!-- About Me Content Container -->
+        <div class="section_one_content">
+          <div class="section_one_image_view">
+            <!-- Profile Image -->
+            <img src="assets/image_abhishek_bandi.webp" alt="Abhishek Bandi" />
           </div>
+          <div class="section_one_content_view">
+            <p>
+              Greetings! I'm Abhishek Bandi, a Product Designer currently
+              contributing to multiple SaaS products at Zopping. I completed my
+              studies in computer applications in 2020.
+              <br />
+              <br />I started out working on mobile development at my college
+              but fascinated by the project planning and why behind the
+              development, which led me to explore the UX field after working
+              as an intern and doing some projects, which interested me to
+              choose a career in UX Design.
+            </p>
+
+          </div><!-- End of About Me Content -->
+        </div>
       </section>
       <!-- Photography Section -->
       <section class="section_three">
-         <!-- Content Alignment Container -->
+        <!-- Content Alignment Container -->
         <section class="content_alignment" id="photography">
-          <h2 >Photography</h2>
+          <h2>Photography</h2>
           <div class="photography_card_view">
             <div class="photography_card_item">
               <div class="photography_card_inner">
-                <img
-                  src="assets/photography_1.webp"
-                  class="photography_image_1"
-                />
+                <img src="assets/photography_1.webp" class="photography_image_1" />
               </div>
             </div>
             <div class="photography_card_item">
               <div class="photography_card_inner">
-                <img
-                  src="assets/photography_2.webp"
-                  class="photography_image_2"
-                />
+                <img src="assets/photography_2.webp" class="photography_image_2" />
               </div>
             </div>
             <div class="photography_card_item">
               <div class="photography_card_inner">
-                <img
-                  src="assets/photography_3.webp"
-                  class="photography_image_3"
-                />
+                <img src="assets/photography_3.webp" class="photography_image_3" />
               </div>
             </div>
             <div class="photography_card_item">
               <div class="photography_card_inner">
-                <img
-                  src="assets/photography_4.webp"
-                  class="photography_image_1"
-                />
+                <img src="assets/photography_4.webp" class="photography_image_1" />
               </div>
             </div>
             <div class="photography_card_item">
               <div class="photography_card_inner">
-                <img
-                  src="assets/photography_5.webp"
-                  class="photography_image_2"
-                />
+                <img src="assets/photography_5.webp" class="photography_image_2" />
               </div>
             </div>
             <div class="photography_card_item">
               <div class="photography_card_inner">
-                <img
-                  src="assets/photography_6.webp"
-                  class="photography_image_3"
-                />
+                <img src="assets/photography_6.webp" class="photography_image_3" />
               </div>
             </div>
             <div class="photography_card_item">
               <div class="photography_card_inner">
-                <img
-                  src="assets/photography_7.webp"
-                  class="photography_image_1"
-                />
+                <img src="assets/photography_7.webp" class="photography_image_1" />
               </div>
             </div>
             <div class="photography_card_item">
               <div class="photography_card_inner">
-                <img
-                  src="assets/photography_8.webp"
-                  class="photography_image_2"
-                />
+                <img src="assets/photography_8.webp" class="photography_image_2" />
               </div>
             </div>
             <div class="photography_card_item">
               <div class="photography_card_inner">
-                <img
-                  src="assets/photography_9.webp"
-                  class="photography_image_1"
-                />
+                <img src="assets/photography_9.webp" class="photography_image_1" />
               </div>
 
             </div>
@@ -196,31 +160,29 @@
         </section>
       </section>
     </section>
+  </section>
 
-    <!-- Footer information -->
-     <!-- Footer Section -->
-    <footer class="footer_view">
-      <div class="social_icons">
-        <!-- Social Media Links -->
-         <a href="https://www.linkedin.com/in/abhishekbandi/" target="_blank"
-          ><img src="assets/linkedin.svg"
-        /></a>
-        <a href="https://github.com/abhishekbandi" target="_blank"
-          ><img src="assets/github.svg"
-        /></a>
-      </div>
-      <p>Abhishek Bandi</p>
-    </footer>
+  <!-- Footer information -->
+  <!-- Footer Section -->
+  <footer class="footer_view">
+    <div class="social_icons">
+      <!-- Social Media Links -->
+      <a href="https://www.linkedin.com/in/abhishekbandi/" target="_blank"><img src="assets/linkedin.svg" /></a>
+      <a href="https://github.com/abhishekbandi" target="_blank"><img src="assets/github.svg" /></a>
+    </div>
+    <p>Abhishek Bandi</p>
+  </footer>
 
-    <!-- Script for side navigation -->
-    <script>
-      function openNav() {
-        document.getElementById("mySidenav").style.width = "100%";
-      }
+  <!-- Script for side navigation -->
+  <script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "100%";
+    }
 
-      function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-      }
-    </script>
-  </body>
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+  </script>
+</body>
+
 </html>
