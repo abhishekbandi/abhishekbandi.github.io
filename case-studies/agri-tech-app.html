@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Case study — Agri Tech (E-com) Mobile App. Redesigned e-commerce platform for farmers across 7+ states, achieving 84% usability approval through iterative research and testing." />
+  <meta property="og:title" content="Agri Tech (E-com) Mobile App — Abhishek Bandi" />
+  <meta property="og:description" content="Mobile e-commerce redesign for agricultural products across 7+ states with multi-language support and 84% usability approval rating." />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://abhishekbandi.me/images/index/Logo.png" />
+  <link rel="icon" type="image/png" href="../images/index/Logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agri Tech (E-com) Mobile App — Abhishek Bandi</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .cs-hero {
+      padding: 80px 0 0;
+      background: #E8F5EE;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cs-hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 480px; height: 480px;
+      border-radius: 50%;
+      background: rgba(1,105,56,0.12);
+      pointer-events: none;
+    }
+
+    .cs-hero-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
+
+    .cs-breadcrumb { display: flex; align-items: center; gap: 10px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey-600); margin-bottom: 48px; }
+    .cs-breadcrumb a { color: var(--grey-600); text-decoration: none; transition: color 0.2s; }
+    .cs-breadcrumb a:hover { color: var(--black); }
+    .cs-breadcrumb span { color: var(--grey-400); }
+
+    .cs-hero-title { font-size: clamp(40px, 6vw, 80px); font-family: var(--font-display); font-weight: 300; line-height: 1.05; letter-spacing: -0.02em; color: var(--black); margin-bottom: 20px; }
+    .cs-hero-title em { font-style: italic; color: rgba(15,15,13,0.5); }
+
+    .cs-hero-subtitle { font-size: 16px; line-height: 1.7; color: var(--grey-600); max-width: 560px; margin-bottom: 40px; }
+
+    .cs-hero-meta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 64px; }
+    .cs-hero-year { font-size: 11px; color: var(--grey-600); border: 1px solid rgba(15,15,13,0.2); padding: 5px 14px; border-radius: 20px; letter-spacing: 0.06em; }
+    .cs-hero-tag { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey-600); background: rgba(255,255,255,0.7); border: 1px solid rgba(1,105,56,0.2); padding: 4px 12px; border-radius: 20px; }
+    .cs-hero-image { height: 680px; background: rgba(1,105,56,0.08); border-radius: 16px 16px 0 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 120px; font-weight: 300; color: rgba(255,255,255,0.5); overflow: hidden; position: relative; }
+
+    .cs-overview { background: var(--grey-100); border-bottom: 1px solid var(--grey-200); }
+    .cs-overview-grid { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: repeat(4, 1fr); border-left: 1px solid var(--grey-200); }
+    .cs-overview-cell { padding: 36px 32px; border-right: 1px solid var(--grey-200); }
+    .cs-overview-label { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--grey-400); margin-bottom: 8px; }
+    .cs-overview-value { font-family: var(--font-display); font-size: 20px; font-weight: 300; color: var(--black); line-height: 1.3; }
+
+    .cs-content { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
+
+    .cs-section { display: grid; grid-template-columns: 240px 1fr; gap: 64px; padding: 80px 0; border-bottom: 1px solid var(--grey-200); }
+    .cs-section:last-of-type { border-bottom: none; }
+
+    .cs-section-label { font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--grey-600); padding-top: 6px; }
+    .cs-section-label::before { content: ''; display: block; width: 24px; height: 1px; background: #016938; margin-bottom: 16px; }
+
+    .cs-section-num { font-family: var(--font-display); font-size: 13px; font-weight: 300; color: var(--grey-400); margin-bottom: 6px; }
+
+    .cs-role-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 24px 0 0; }
+    .cs-role-card { padding: 0 22px; display: flex; flex-direction: column; gap: 8px; border-left: 1px solid var(--grey-200); }
+    .cs-role-card:first-child { padding-left: 0; border-left: none; }
+    .cs-role-card-heading { font-size: 13px; font-weight: 700; color: var(--black); letter-spacing: 0.02em; text-transform: uppercase; }
+    .cs-role-card-body { font-size: 13px; line-height: 1.65; color: var(--grey-600); }
+
+    .cs-section-body h3 { font-size: clamp(28px, 3vw, 40px); font-weight: 300; margin-bottom: 24px; line-height: 1.2; }
+    .cs-section-body h4 { font-size: 15px; font-weight: 600; margin-bottom: 12px; margin-top: 32px; color: var(--black); }
+    .cs-section-body p { font-size: 15px; line-height: 1.85; color: var(--grey-600); margin-bottom: 20px; }
+    .cs-section-body p:last-child { margin-bottom: 0; }
+    .cs-section-body ul { list-style: none; padding: 0; margin-bottom: 20px; }
+    .cs-section-body ul li { font-size: 15px; line-height: 1.85; color: var(--grey-600); padding-left: 20px; position: relative; margin-bottom: 10px; }
+    .cs-section-body ul li::before { content: '—'; position: absolute; left: 0; color: #016938; }
+
+    .cs-highlight { background: var(--grey-100); border-left: 3px solid #016938; padding: 24px 28px; border-radius: 0 8px 8px 0; margin: 28px 0; }
+    .cs-highlight p { font-family: var(--font-display); font-size: 18px; font-weight: 300; font-style: italic; color: var(--black) !important; margin-bottom: 0 !important; line-height: 1.6; }
+    .cs-highlight-label { display: block; font-family: var(--font-body); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #016938; margin-bottom: 10px; }
+
+    .cs-steps { display: flex; flex-direction: column; gap: 32px; margin-top: 8px; }
+    .cs-step { display: grid; grid-template-columns: 48px 1fr; gap: 24px; align-items: flex-start; }
+    .cs-step-num { font-family: var(--font-display); font-size: 36px; font-weight: 300; color: var(--grey-200); line-height: 1; padding-top: 2px; }
+    .cs-step-content h4 { font-family: var(--font-body); font-size: 14px; font-weight: 600; letter-spacing: 0.04em; color: var(--black); margin-bottom: 8px; margin-top: 0; }
+    .cs-step-content p { font-size: 14px; line-height: 1.75; color: var(--grey-600); margin-bottom: 0; }
+
+    .cs-problems-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 28px; }
+    .cs-problem-card { border: 1px solid var(--grey-200); border-radius: 12px; padding: 24px; }
+    .cs-problem-card h4 { font-size: 13px; font-weight: 700; color: var(--black); margin-bottom: 8px; margin-top: 0; text-transform: uppercase; letter-spacing: 0.04em; }
+    .cs-problem-card p { font-size: 13px; line-height: 1.65; color: var(--grey-600); margin-bottom: 0; }
+
+    .cs-goals-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 28px; }
+    .cs-goal-card { border: 1px solid var(--grey-200); border-radius: 12px; padding: 24px; }
+    .cs-goal-card h4 { font-size: 13px; font-weight: 700; color: var(--black); margin-bottom: 8px; margin-top: 0; text-transform: uppercase; letter-spacing: 0.04em; }
+    .cs-goal-card p { font-size: 13px; line-height: 1.65; color: var(--grey-600); margin-bottom: 0; }
+
+    .cs-persona-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 28px; }
+    .cs-persona-card { border: 1px solid var(--grey-200); border-radius: 12px; padding: 24px; }
+    .cs-persona-card h4 { font-size: 15px; font-weight: 600; color: var(--black); margin-bottom: 4px; margin-top: 0; }
+    .cs-persona-sub { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #016938; margin-bottom: 12px; display: block; }
+    .cs-persona-card p { font-size: 13px; line-height: 1.65; color: var(--grey-600); margin-bottom: 0; }
+
+    .cs-image-placeholder { background: var(--grey-100); border: 2px dashed var(--grey-200); border-radius: 12px; height: 320px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; margin: 32px 0; color: var(--grey-400); }
+    .cs-image-placeholder-icon { font-size: 32px; opacity: 0.5; }
+    .cs-image-placeholder-label { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grey-400); }
+
+    /* ── FIGMA BAR ── */
+    .cs-figma-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: var(--grey-100);
+      border: 1px solid var(--grey-200);
+      border-radius: 10px;
+      padding: 14px 20px;
+      margin-top: 16px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .cs-figma-bar:hover { background: var(--grey-200); border-color: var(--grey-400); box-shadow: 0 4px 16px rgba(0,0,0,0.08); transform: translateY(-2px); }
+    .cs-figma-bar:hover .cs-figma-icon svg { transform: scale(1.08); }
+    .cs-figma-bar-left { display: flex; align-items: center; gap: 12px; }
+    .cs-figma-icon { display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .cs-figma-icon svg { width: 38px; height: 57px; transition: transform 0.2s ease; }
+    .cs-figma-bar-text { font-size: 13px; color: var(--grey-600); }
+    .cs-figma-bar-text strong { display: block; font-size: 13px; font-weight: 600; color: var(--black); margin-bottom: 2px; }
+    .cs-figma-btn { font-size: 12px; font-weight: 500; color: var(--black); border: 1px solid var(--grey-200); border-radius: 6px; padding: 6px 14px; white-space: nowrap; background: var(--white); flex-shrink: 0; }
+
+    .cs-feature-group { margin-top: 32px; }
+    .cs-feature-group-label { font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #016938; margin-bottom: 16px; display: block; }
+    .cs-feature-list { list-style: none; padding: 0; margin: 0 0 24px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .cs-feature-list li { font-size: 13px; line-height: 1.6; color: var(--grey-600); padding-left: 16px; position: relative; }
+    .cs-feature-list li::before { content: '→'; position: absolute; left: 0; color: #016938; font-size: 11px; top: 2px; }
+
+    /* ── PROTOTYPE BLOCKS ── */
+    .cs-proto-block {
+      margin-top: 32px;
+      padding: 40px;
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .cs-proto-block .cs-feature-group-label { color: #016938; }
+    .cs-proto-block .cs-proto-list li { color: var(--grey-600); }
+    .cs-proto-block .cs-proto-list li::before { color: #016938; }
+
+    .cs-proto-header { margin-bottom: 0; }
+
+    .cs-proto-list { list-style: none; padding: 0; margin: 16px 0 0; display: flex; flex-direction: column; gap: 10px; }
+    .cs-proto-list li { font-size: 15px; line-height: 1.75; color: var(--grey-600); padding-left: 18px; position: relative; }
+    .cs-proto-list li::before { content: '→'; position: absolute; left: 0; color: #016938; font-size: 11px; top: 4px; }
+
+    .cs-results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--grey-200); border: 1px solid var(--grey-200); border-radius: 12px; overflow: hidden; margin-top: 32px; }
+    .cs-result-cell { background: var(--white); padding: 32px 28px; }
+    .cs-result-num { font-family: var(--font-display); font-size: 24px; font-weight: 300; color: var(--black); line-height: 1; margin-bottom: 8px; }
+    .cs-section-body .cs-result-num { font-size: 24px; }
+    .cs-result-label { font-size: 12px; line-height: 1.6; color: var(--grey-600); }
+
+    .cs-next-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+    .cs-next-step-card { border: 1px solid var(--grey-200); border-radius: 12px; padding: 24px; }
+    .cs-next-step-card h4 { font-size: 13px; font-weight: 700; color: var(--black); margin-bottom: 8px; margin-top: 0; text-transform: uppercase; letter-spacing: 0.04em; }
+    .cs-next-step-card p { font-size: 13px; line-height: 1.65; color: var(--grey-600); margin-bottom: 0; }
+
+    .cs-content img, .cs-section img { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); }
+
+    .cs-next { border-top: 1px solid var(--grey-200); }
+    .cs-next-inner { max-width: var(--max-w); margin: 0 auto; padding: 64px 40px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+    .cs-next-label { font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--grey-400); margin-bottom: 12px; }
+    .cs-next-title { font-family: var(--font-display); font-size: clamp(28px, 3vw, 42px); font-weight: 300; color: var(--black); text-decoration: none; display: block; transition: color 0.25s; }
+    .cs-next-title:hover { color: #016938; }
+    .cs-next-arrow { width: 56px; height: 56px; border: 1px solid var(--grey-200); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; color: var(--grey-400); text-decoration: none; flex-shrink: 0; transition: all 0.25s; }
+    .cs-next-arrow:hover { border-color: var(--black); background: var(--black); color: var(--white); }
+
+    @media (max-width: 900px) {
+      .cs-overview-grid { grid-template-columns: repeat(2, 1fr); }
+      .cs-section { grid-template-columns: 1fr; gap: 24px; }
+      .cs-results-grid { grid-template-columns: repeat(2, 1fr); }
+      .cs-persona-grid, .cs-problems-grid, .cs-goals-grid, .cs-next-steps { grid-template-columns: 1fr; }
+      .cs-role-grid { grid-template-columns: 1fr; }
+      .cs-feature-list { grid-template-columns: 1fr; }
+      .cs-next-inner { flex-direction: column; align-items: flex-start; }
+      .cs-proto-block { grid-template-columns: 1fr; gap: 32px; padding: 28px; }
+      .proto-video-thumb { max-width: 240px; margin-left: auto; margin-right: auto; justify-self: center; width: 100%; }
+    }
+
+    @media (max-width: 600px) {
+      .cs-hero-inner, .cs-content { padding: 0 24px; }
+      .cs-overview-grid { padding: 0 24px; grid-template-columns: 1fr 1fr; }
+      .cs-results-grid { grid-template-columns: 1fr; }
+      .cs-hero-image { height: 460px; font-size: 72px; }
+      .cs-next-inner { padding: 48px 24px; }
+      .cs-image-placeholder { height: 220px; }
+      .proto-video-thumb { max-width: 200px; margin-left: auto; margin-right: auto; justify-self: center; width: 100%; }
+    }
+      @media (max-width: 360px) {
+        .cs-hero-inner, .cs-content { padding: 0 16px; }
+        .cs-overview-grid { padding: 0 16px; }
+        .cs-next-inner { padding: 40px 16px; }
+      }
+
+  </style>
+</head>
+<body id="top">
+
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="../index.html">Abhishek<span>.</span>Bandi</a>
+      <ul class="nav-links">
+        <li><a href="../work.html" class="active">Work</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../resume.html">Resume</a></li>
+      </ul>
+        <button class="nav-hamburger" aria-label="Toggle menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('nav-open')"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+
+  <main>
+
+    <div class="cs-hero">
+      <div class="cs-hero-inner">
+        <div class="cs-breadcrumb">
+          <a href="../work.html">Work</a>
+          <span>/</span>
+          <span>Agri Tech (E-com) Mobile App</span>
+        </div>
+        <h1 class="cs-hero-title">Agri Tech <em>(E-com) Mobile App</em></h1>
+        <p class="cs-hero-subtitle">An e-commerce mobile app redesign connecting farmers across 7+ Indian states with agricultural products — built for low digital literacy, multilingual needs, and high trust requirements.</p>
+        <div class="cs-hero-meta">
+          <span class="cs-hero-year">Mar – Jun 2022</span>
+          <span class="cs-hero-tag">UX Research</span>
+          <span class="cs-hero-tag">UI Design</span>
+          <span class="cs-hero-tag">Mobile App</span>
+          <span class="cs-hero-tag">E-commerce</span>
+        </div>
+        <div class="cs-hero-image">
+          <img loading="lazy" src="../images/case-studies/agri-tech-app/ecom_agri_tech_thumbnail.jpg" alt="Agri Tech App" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;" />
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-overview">
+      <div class="cs-overview-grid">
+        <div class="cs-overview-cell">
+          <p class="cs-overview-label">Role</p>
+          <p class="cs-overview-value">UI / UX Design</p>
+        </div>
+        <div class="cs-overview-cell">
+          <p class="cs-overview-label">Timeline</p>
+          <p class="cs-overview-value">Mar – Jun 2022</p>
+        </div>
+        <div class="cs-overview-cell">
+          <p class="cs-overview-label">Tools</p>
+          <p class="cs-overview-value">Figma, Adobe Illustrator, FigJam</p>
+        </div>
+        <div class="cs-overview-cell">
+          <p class="cs-overview-label">Platform</p>
+          <p class="cs-overview-value">iOS &amp; Android</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-content">
+
+      <!-- MY CONTRIBUTION -->
+      <div class="cs-section">
+        <div>
+          <p class="cs-section-label">My Contribution</p>
+        </div>
+        <div class="cs-section-body">
+          <h3>Roles &amp; <em>Responsibilities</em></h3>
+          <p>An industry project focused on redesigning an agricultural e-commerce mobile app to serve farmers across 7+ Indian states — addressing poor usability, absent design guidelines, and the complete lack of multilingual support that was blocking adoption.</p>
+          <div class="cs-role-grid">
+            <div class="cs-role-card">
+              <span class="cs-role-card-heading">UX Research</span>
+              <span class="cs-role-card-body">User engagement analysis, geographic distribution mapping, demographic profiling, and persona development with empathy maps and journey mapping.</span>
+            </div>
+            <div class="cs-role-card">
+              <span class="cs-role-card-heading">UX Design</span>
+              <span class="cs-role-card-body">Information architecture, task analysis, wireframing, and end-to-end flow design from onboarding through to checkout and payment confirmation.</span>
+            </div>
+            <div class="cs-role-card">
+              <span class="cs-role-card-heading">UI Design</span>
+              <span class="cs-role-card-body">Agricultural-themed visual language with earthy tones and greens, high-fidelity screens, and an interactive prototype tested with real users.</span>
+            </div>
+          </div>
+
+          <a class="cs-figma-bar" href="https://www.figma.com/design/4I8oy19i6CWWJ5CJxgHt7U/Case-Study--E-com-?node-id=1-7&t=WZfFOXW2g9bPh1IA-1" target="_blank" rel="noopener">
+            <div class="cs-figma-bar-left">
+              <div class="cs-figma-icon">
+                <svg viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 9.5C0 4.253 4.253 0 9.5 0H19V19H9.5C4.253 19 0 14.747 0 9.5Z" fill="#F24E1E"/>
+                  <path d="M19 0H28.5C33.747 0 38 4.253 38 9.5C38 14.747 33.747 19 28.5 19H19V0Z" fill="#FF7262"/>
+                  <path d="M0 28.5C0 23.253 4.253 19 9.5 19H19V38H9.5C4.253 38 0 33.747 0 28.5Z" fill="#A259FF"/>
+                  <path d="M38 28.5C38 33.747 33.747 38 28.5 38C23.253 38 19 33.747 19 28.5C19 23.253 23.253 19 28.5 19C33.747 19 38 23.253 38 28.5Z" fill="#1ABCFE"/>
+                  <path d="M0 47.5C0 42.253 4.253 38 9.5 38H19V47.5C19 52.747 14.747 57 9.5 57C4.253 57 0 52.747 0 47.5Z" fill="#0ACF83"/>
+                </svg>
+              </div>
+              <div class="cs-figma-bar-text">
+                <strong>Agri Tech Mobile App — Design File</strong>
+                View the full design in Figma
+              </div>
+            </div>
+            <span class="cs-figma-btn">View Design →</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- THE PROBLEM -->
+      <div class="cs-section">
+        <div>
+          <p class="cs-section-label">The Problem</p>
+        </div>
+        <div class="cs-section-body">
+          <h3>Existing <em>Problem</em></h3>
+          <p>The existing app had a bad user experience with no design guidelines and UI elements, which made it difficult for the user to find or buy the products through the app. Even though the app is serviceable in multiple states of India, multiple language options were not available for the user. <em>(Detailed overview is discussed in the phase below.)</em></p>
+          <div class="cs-highlight">
+            <span class="cs-highlight-label">What can be Done?</span>
+            <p>Design a mobile app that facilitates farmers to purchase agricultural products easily. It aims to simplify the process of viewing products, checking prices, and making purchases online across 7+ states with multiple languages. The app will feature a user-friendly interface, intuitive navigation, and vibrant UI color schemes to enhance the user experience. <em>(Detailed overview is discussed in the phase below.)</em></p>
+          </div>
+          <img loading="lazy" src="../images/case-studies/agri-tech-app/e-com_agri_tech_app_design_thinking_process.jpg" alt="Design Thinking Process" style="width:100%;border-radius:12px;margin-top:28px;display:block;" />
+        </div>
+      </div>
+
+      <!-- 1. EMPATHIZE -->
+      <div class="cs-section">
+        <div>
+          <p class="cs-section-num">01</p>
+          <p class="cs-section-label">Empathize</p>
+        </div>
+        <div class="cs-section-body">
+          <h3>Understanding <em>who the farmers are</em> and how they behave</h3>
+          <p>The first phase focused on deeply understanding the existing user base before any design decisions were made. Research activities included analysing platform engagement data, mapping the geographic distribution of active users, and profiling the demographic spread across age, gender, and agricultural focus areas.</p>
+          <ul>
+            <li><strong>User engagement analysis</strong> — identified active user segments and their behavioural patterns within the existing app.</li>
+            <li><strong>Geographic distribution mapping</strong> — locating high-concentration regions to understand regional context and connectivity constraints.</li>
+            <li><strong>Demographic profiling</strong> — understanding age range, gender split, and agricultural product interests of the existing and target user base.</li>
+            <li><strong>Buying feedback exploration</strong> — gathering qualitative signals around trust, hesitation, and satisfaction with existing purchase flows.</li>
+          </ul>
+
+          <img loading="lazy" src="../images/case-studies/agri-tech-app/e-com_agri_tech_app__empathize_graph.jpg" alt="User Research & Empathy Maps" style="width:100%;border-radius:12px;margin-top:32px;display:block;" />
+        </div>
+      </div>
+
+      <!-- 2. DEFINE -->
+      <div class="cs-section">
+        <div>
+          <p class="cs-section-num">02</p>
+          <p class="cs-section-label">Define</p>
+        </div>
+        <div class="cs-section-body">
+          <h3>Synthesising research into <em>clear problems and goals</em></h3>
+          <p>Research was synthesised into two user personas with empathy maps, followed by task analysis and customer journey mapping to pinpoint the exact friction points causing drop-off and low adoption.</p>
+
+          <div class="cs-persona-grid">
+            <div>
+              <p style="font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grey-400); margin-bottom: 12px;">Persona 1</p>
+              <img loading="lazy" src="../images/case-studies/agri-tech-app/e-com_agri_tech_app_persona_one.jpg" alt="Persona 1" style="width:100%;border-radius:12px;display:block;" />
+            </div>
+            <div>
+              <p style="font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grey-400); margin-bottom: 12px;">Persona 2</p>
+              <img loading="lazy" src="../images/case-studies/agri-tech-app/e-com_agri_tech_app_persona_two.jpg" alt="Persona 2" style="width:100%;border-radius:12px;display:block;" />
+            </div>
+          </div>
+
+          <h4>The Problems</h4>
+          <div class="cs-problems-grid">
+            <div class="cs-problem-card">
+              <h4>Complexity in Purchasing</h4>
+              <p>Farmers found it challenging to buy agricultural products online due to complicated interfaces and a lack of guidance through the purchase flow.</p>
+            </div>
+            <div class="cs-problem-card">
+              <h4>Inefficient User Experience</h4>
+              <p>The existing app had a dull, cluttered layout making it difficult for farmers to find and purchase the products they needed.</p>
+            </div>
+            <div class="cs-problem-card">
+              <h4>Language Barriers</h4>
+              <p>Many farmers were not proficient in English, leading to confusion and frustration when navigating the app with no multilingual support available.</p>
+            </div>
+            <div class="cs-problem-card">
+              <h4>Poor UI &amp; Visual Design</h4>
+              <p>The existing color schemes were neither visually appealing nor representative of the agricultural context — failing to build confidence or trust.</p>
+            </div>
+          </div>
+
+          <h4>The Goals</h4>
+          <div class="cs-goals-grid">
+            <div class="cs-goal-card">
+              <h4>Streamlined User Experience</h4>
+              <p>Provide farmers with a seamless and intuitive experience from product discovery through to checkout — removing unnecessary steps and decision points.</p>
+            </div>
+            <div class="cs-goal-card">
+              <h4>Multilingual Support</h4>
+              <p>Enable farmers to use the app comfortably in their preferred language — reducing language as a barrier to adoption and trust.</p>
+            </div>
+            <div class="cs-goal-card">
+              <h4>One-Click Purchase</h4>
+              <p>Enable farmers to make purchases with minimal effort — reducing the cognitive load of a multi-step checkout for infrequent digital buyers.</p>
+            </div>
+            <div class="cs-goal-card">
+              <h4>Appealing UI &amp; Agricultural Theme</h4>
+              <p>Improve the visual design to align with the agricultural context — using earthy tones and greens to evoke familiarity, trust, and ease.</p>
+            </div>
+          </div>
+
+          <p style="margin-top: 28px;">The personas and empathy maps helped us outline challenges faced, which we then used to create a journey map highlighting the pain points and the opportunities for improvement.</p>
+          <img loading="lazy" src="../images/case-studies/agri-tech-app/e-com_agri_tech_app_Journey_map.jpg" alt="Journey Map & Task Analysis" style="width:100%;border-radius:12px;margin-top:28px;display:block;" />
+        </div>
+      </div>
+
+      <!-- 3. IDEATE & WIREFRAME -->
+      <div class="cs-section">
+        <div>
+          <p class="cs-section-num">03</p>
+          <p class="cs-section-label">Ideate &amp; Wireframe</p>
+        </div>
+        <div class="cs-section-body">
+          <h3>Mapping the <em>navigation and core flows</em> before visual design</h3>
+          <p>Wireframes focused on establishing the structural foundation — defining how users would navigate between core areas of the app and interact with key features before a single visual decision was made.</p>
+
+          <div class="cs-steps">
+            <div class="cs-step">
+              <span class="cs-step-num">01</span>
+              <div class="cs-step-content">
+                <h4>Navigation Architecture</h4>
+                <p>Defined a bottom-tab navigation structure: Home, FaarmsTV (Learning Content), News, and User Profile. Kept the primary navigation to 4 items to reduce cognitive load for first-time users.</p>
+              </div>
+            </div>
+            <div class="cs-step">
+              <span class="cs-step-num">02</span>
+              <div class="cs-step-content">
+                <h4>Search &amp; Discovery Flow</h4>
+                <p>Wireframed a search experience with auto-suggestions, filter and sort controls, voice search entry, and category discovery based on user preferences — addressing the discoverability problem from the existing cluttered layout.</p>
+              </div>
+            </div>
+            <div class="cs-step">
+              <span class="cs-step-num">03</span>
+              <div class="cs-step-content">
+                <h4>Checkout &amp; Payment Flow</h4>
+                <p>Mapped the end-to-end purchase journey: product detail → cart → address → payment — with a mini-cart preview, promo code entry, and multiple payment method options, all within minimal steps.</p>
+              </div>
+            </div>
+            <div class="cs-step">
+              <span class="cs-step-num">04</span>
+              <div class="cs-step-content">
+                <h4>Educational Content Section</h4>
+                <p>Introduced a dedicated "FaarmsTV" section for farming educational content — addressing engagement beyond transactional use and increasing daily active usage beyond purchase events.</p>
+              </div>
+            </div>
+          </div>
+
+          <img loading="lazy" src="../images/case-studies/agri-tech-app/e-com_agri_tech_app_wireframe_one.jpg" alt="Low-Fidelity Wireframes — Part 1" style="width:100%;border-radius:12px;margin-top:32px;display:block;" />
+          <img loading="lazy" src="../images/case-studies/agri-tech-app/e-com_agri_tech_app_wireframe_two.jpg" alt="Low-Fidelity Wireframes — Part 2" style="width:100%;border-radius:12px;margin-top:16px;display:block;" />
+        </div>
+      </div>
+
+      <!-- 4. DESIGN & PROTOTYPE -->
+      <div class="cs-section">
+        <div>
+          <p class="cs-section-num">04</p>
+          <p class="cs-section-label">Design &amp; Prototype</p>
+        </div>
+        <div class="cs-section-body">
+          <h3>A high-fidelity UI built for <em>trust, clarity, and speed</em></h3>
+          <p>The high-fidelity UI was designed with an agricultural-themed visual language — earthy tones and greens to evoke familiarity — while maintaining a clean, uncluttered layout that low-literacy users could navigate confidently.</p>
+
+          <!-- High-fidelity overview image -->
+          <img loading="lazy" src="../images/case-studies/agri-tech-app/e-com_agri_tech_app_hifi_design.png" alt="High-Fidelity UI Screens" style="width:100%;border-radius:12px;margin-top:28px;display:block;" />
+
+          <!-- Prototype section header -->
+          <div style="margin-top: 56px; margin-bottom: 4px;">
+            <h4 style="font-size: 18px; font-weight: 600; color: var(--black); margin-bottom: 8px; margin-top: 0;">Interactive Prototypes</h4>
+            <p style="font-size: 15px; line-height: 1.7; color: var(--grey-600); margin: 0;">Three key flows were prototyped and tested with real farmers across home, discovery, and checkout — validating usability before development handoff.</p>
+          </div>
+
+          <!-- Home Screen -->
+          <div class="cs-proto-block">
+            <div class="cs-proto-header">
+              <span class="cs-feature-group-label">Home Screen</span>
+              <ul class="cs-proto-list">
+                <li>Quick access to all app features for a seamless experience</li>
+                <li>Essential services: agri-inputs, insurance, banking, bill payments</li>
+                <li>Tab switching: Home, FaarmsTV, News, Profile</li>
+                <li>Single-click customer care access</li>
+              </ul>
+            </div>
+            <div class="proto-video-thumb" data-video="../images/case-studies/agri-tech-app/ecom_agri_tech_prototype_1.mp4" role="button" tabindex="0" aria-label="Play Home Screen prototype video">
+              <video src="../images/case-studies/agri-tech-app/ecom_agri_tech_prototype_1.mp4" autoplay loop muted playsinline class="proto-thumb-video"></video>
+              <div class="proto-play-overlay">
+                <div class="proto-play-btn">&#9654;</div>
+                <span class="proto-play-label">Watch Prototype 1</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Search & Discovery -->
+          <div class="cs-proto-block">
+            <div class="cs-proto-header">
+              <span class="cs-feature-group-label">Search &amp; Discovery</span>
+              <ul class="cs-proto-list">
+                <li>Auto-suggestions for search queries</li>
+                <li>Filter and sort refinement options</li>
+                <li>Voice-to-search for products and information</li>
+                <li>Recent search history revisiting</li>
+                <li>Relevant category discovery based on preferences</li>
+              </ul>
+            </div>
+            <div class="proto-video-thumb" data-video="../images/case-studies/agri-tech-app/ecom_agri_tech_prototype_2.mp4" role="button" tabindex="0" aria-label="Play Search & Discovery prototype video">
+              <video src="../images/case-studies/agri-tech-app/ecom_agri_tech_prototype_2.mp4" autoplay loop muted playsinline class="proto-thumb-video"></video>
+              <div class="proto-play-overlay">
+                <div class="proto-play-btn">&#9654;</div>
+                <span class="proto-play-label">Watch Prototype 2</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Shopping & Checkout -->
+          <div class="cs-proto-block">
+            <div class="cs-proto-header">
+              <span class="cs-feature-group-label">Shopping &amp; Checkout</span>
+              <ul class="cs-proto-list">
+                <li>Detailed product descriptions and exploration</li>
+                <li>Add to cart with quantity adjustment</li>
+                <li>Mini-cart preview for quick content check</li>
+                <li>Address set or modify during checkout</li>
+                <li>Discount coupon and promo code redemption</li>
+                <li>Multiple payment method options</li>
+              </ul>
+            </div>
+            <div class="proto-video-thumb" data-video="../images/case-studies/agri-tech-app/ecom_agri_tech_prototype_3.mp4" role="button" tabindex="0" aria-label="Play Shopping & Checkout prototype video">
+              <video src="../images/case-studies/agri-tech-app/ecom_agri_tech_prototype_3.mp4" autoplay loop muted playsinline class="proto-thumb-video"></video>
+              <div class="proto-play-overlay">
+                <div class="proto-play-btn">&#9654;</div>
+                <span class="proto-play-label">Watch Prototype 3</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. TEST & EVALUATE -->
+      <div class="cs-section">
+        <div>
+          <p class="cs-section-num">05</p>
+          <p class="cs-section-label">Test &amp; Evaluate</p>
+        </div>
+        <div class="cs-section-body">
+          <h3>Validated through <em>real user testing</em></h3>
+          <p>The prototype was tested with target users to evaluate usability, comprehension, and trust. Results confirmed that the redesigned flows significantly improved the ease of navigation, product discovery, and payment confidence for both first-time and returning users.</p>
+
+          <div class="cs-highlight">
+            <p>"An 84% positive usability response indicates that users found the e-commerce mobile app prototype highly usable and user-friendly."</p>
+          </div>
+
+          <div class="cs-results-grid">
+            <div class="cs-result-cell">
+              <p class="cs-result-num">84%</p>
+              <p class="cs-result-label">Positive usability score from user testing sessions</p>
+            </div>
+            <div class="cs-result-cell">
+              <p class="cs-result-num">7+</p>
+              <p class="cs-result-label">Indian states served by the platform</p>
+            </div>
+            <div class="cs-result-cell">
+              <p class="cs-result-num">High</p>
+              <p class="cs-result-label">User satisfaction with streamlined purchase flow and consistent responsive design</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NEXT PROCESS -->
+      <div class="cs-section">
+        <div>
+          <p class="cs-section-label">Next Phase</p>
+        </div>
+        <div class="cs-section-body">
+          <h3>Planned <em>future iterations</em></h3>
+          <p>Following the initial launch, subsequent design phases were scoped to deepen platform engagement and expand functionality for both buyers and sellers.</p>
+          <div class="cs-next-steps">
+            <div class="cs-next-step-card">
+              <h4>Ratings &amp; Reviews</h4>
+              <p>Product rating and review capabilities to build social proof and help farmers make more confident purchasing decisions.</p>
+            </div>
+            <div class="cs-next-step-card">
+              <h4>Seller Mode</h4>
+              <p>A dedicated seller-side product catalog interface enabling farmers to list and manage their own produce directly on the platform.</p>
+            </div>
+            <div class="cs-next-step-card">
+              <h4>Local Seller Discovery</h4>
+              <p>Proximity-based purchasing options to connect buyers with local sellers — reducing delivery time and supporting community commerce.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <div class="cs-next">
+    <div class="cs-next-inner">
+      <div>
+        <p class="cs-next-label">Next Case Study</p>
+        <a class="cs-next-title" href="fashion-theme.html">Fashion Theme →</a>
+      </div>
+      <a class="cs-next-arrow" href="fashion-theme.html">→</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-quote">Design is not just what it looks like and feels like. Design is how it works.</span>
+      <a class="footer-top" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to top ↑</a>
+    </div>
+  </footer>
+
+<script src="../lightbox.js"></script>
+
+<!-- Shared video modal for prototypes -->
+<div id="proto-video-modal" aria-modal="true" role="dialog" aria-label="Prototype video">
+  <button id="proto-modal-close" aria-label="Close video">&times;</button>
+  <div id="proto-modal-inner">
+    <video id="proto-modal-video" controls playsinline></video>
+  </div>
+</div>
+
+<style>
+  .proto-video-thumb {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    background: transparent;
+    margin-right: 32px;
+  }
+
+  .proto-thumb-video {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    pointer-events: none;
+  }
+
+  .proto-play-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: rgba(0, 0, 0, 0);
+    opacity: 0;
+    transition: opacity 0.25s, background 0.25s;
+    border-radius: 12px;
+  }
+
+  .proto-video-thumb:hover .proto-play-overlay,
+  .proto-video-thumb:focus-visible .proto-play-overlay {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .proto-play-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.9);
+    transition: transform 0.2s, border-color 0.2s;
+    padding-left: 4px;
+  }
+
+  .proto-video-thumb:hover .proto-play-btn {
+    transform: scale(1.1);
+    border-color: #fff;
+  }
+
+  .proto-play-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  #proto-video-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #fff;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #proto-video-modal.active { display: flex; }
+
+  #proto-modal-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+  }
+
+  #proto-modal-video {
+    display: block;
+    max-width: 100vw;
+    max-height: 100vh;
+    border-radius: 0;
+  }
+
+  #proto-modal-close {
+    position: fixed;
+    top: 20px;
+    right: 24px;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.08);
+    border: none;
+    border-radius: 50%;
+    color: #333;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    z-index: 10000;
+  }
+
+  #proto-modal-close:hover { background: rgba(0, 0, 0, 0.15); }
+
+  @media (max-width: 900px) {
+    .proto-video-thumb {
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 240px;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .proto-video-thumb {
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 200px;
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    var modal = document.getElementById('proto-video-modal');
+    var modalVideo = document.getElementById('proto-modal-video');
+    var closeBtn = document.getElementById('proto-modal-close');
+
+    function openModal(src) {
+      modalVideo.src = src;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      modalVideo.play();
+    }
+
+    function closeModal() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+      modalVideo.pause();
+      modalVideo.src = '';
+    }
+
+    document.querySelectorAll('.proto-video-thumb').forEach(function (thumb) {
+      thumb.addEventListener('click', function () { openModal(thumb.dataset.video); });
+      thumb.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(thumb.dataset.video); }
+      });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal || e.target === document.getElementById('proto-modal-inner')) closeModal();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+    });
+  })();
+</script>
+</body>
+</html>

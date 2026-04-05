@@ -1,0 +1,963 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Feature design — FireFlink AI Chat Bot. Conversational UI for an AI-powered chatbot enabling test case generation and debugging through natural language interactions."
+    />
+    <meta
+      property="og:title"
+      content="FireFlink AI Chat Bot — Abhishek Bandi"
+    />
+    <meta
+      property="og:description"
+      content="Conversational UI design for an AI chatbot within FireFlink — natural language test case generation and debugging for QA teams."
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="https://abhishekbandi.me/images/index/Logo.png" />
+    <link rel="icon" type="image/png" href="../images/index/Logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FireFlink AI Chat Bot — Abhishek Bandi</title>
+    <link rel="stylesheet" href="../style.css" />
+    <style>
+      .cs-hero {
+        padding: 80px 0 0;
+        background: #f9eeff;
+        position: relative;
+        overflow: hidden;
+      }
+      .cs-hero::before {
+        content: "";
+        position: absolute;
+        top: -120px;
+        right: -120px;
+        width: 480px;
+        height: 480px;
+        border-radius: 50%;
+        background: rgba(204, 51, 255, 0.12);
+        pointer-events: none;
+      }
+      .cs-hero-inner {
+        max-width: var(--max-w);
+        margin: 0 auto;
+        padding: 0 40px;
+      }
+      .cs-breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--grey-600);
+        margin-bottom: 48px;
+      }
+      .cs-breadcrumb a {
+        color: var(--grey-600);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .cs-breadcrumb a:hover {
+        color: var(--black);
+      }
+      .cs-breadcrumb span {
+        color: var(--grey-400);
+      }
+      .cs-feature-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #cc33ff;
+        background: rgba(204, 51, 255, 0.08);
+        border: 1px solid rgba(204, 51, 255, 0.25);
+        padding: 5px 14px;
+        border-radius: 20px;
+        margin-bottom: 20px;
+      }
+      .cs-feature-badge::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #cc33ff;
+      }
+      .cs-hero-title {
+        font-size: clamp(40px, 6vw, 80px);
+        font-family: var(--font-display);
+        font-weight: 300;
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        color: var(--black);
+        margin-bottom: 20px;
+      }
+      .cs-hero-title em {
+        font-style: italic;
+        color: rgba(15, 15, 13, 0.5);
+      }
+      .cs-hero-subtitle {
+        font-size: 16px;
+        line-height: 1.7;
+        color: var(--grey-600);
+        max-width: 560px;
+        margin-bottom: 40px;
+      }
+      .cs-hero-meta {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 64px;
+      }
+      .cs-hero-year {
+        font-size: 11px;
+        color: var(--grey-600);
+        border: 1px solid rgba(15, 15, 13, 0.2);
+        padding: 5px 14px;
+        border-radius: 20px;
+        letter-spacing: 0.06em;
+      }
+      .cs-hero-tag {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--grey-600);
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(204, 51, 255, 0.2);
+        padding: 4px 12px;
+        border-radius: 20px;
+      }
+      .cs-hero-image {
+        height: 680px;
+        background: rgba(204, 51, 255, 0.08);
+        border-radius: 16px 16px 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-display);
+        font-size: 120px;
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.5);
+        overflow: hidden;
+        position: relative;
+      }
+      .cs-overview {
+        background: var(--grey-100);
+        border-bottom: 1px solid var(--grey-200);
+      }
+      .cs-overview-grid {
+        max-width: var(--max-w);
+        margin: 0 auto;
+        padding: 0 40px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border-left: 1px solid var(--grey-200);
+      }
+      .cs-overview-cell {
+        padding: 36px 32px;
+        border-right: 1px solid var(--grey-200);
+      }
+      .cs-overview-label {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--grey-400);
+        margin-bottom: 8px;
+      }
+      .cs-overview-value {
+        font-family: var(--font-display);
+        font-size: 20px;
+        font-weight: 300;
+        color: var(--black);
+        line-height: 1.3;
+      }
+      .cs-content {
+        max-width: var(--max-w);
+        margin: 0 auto;
+        padding: 0 40px;
+      }
+      .cs-section {
+        display: grid;
+        grid-template-columns: 240px 1fr;
+        gap: 64px;
+        padding: 80px 0;
+        border-bottom: 1px solid var(--grey-200);
+      }
+      .cs-section:last-of-type {
+        border-bottom: none;
+      }
+      .cs-section-label {
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--grey-600);
+        padding-top: 6px;
+      }
+      .cs-section-label::before {
+        content: "";
+        display: block;
+        width: 24px;
+        height: 1px;
+        background: #cc33ff;
+        margin-bottom: 16px;
+      }
+      .cs-section-num {
+        font-family: var(--font-display);
+        font-size: 13px;
+        font-weight: 300;
+        color: var(--grey-400);
+        margin-bottom: 6px;
+      }
+      .cs-section-body h3 {
+        font-size: clamp(28px, 3vw, 40px);
+        font-weight: 300;
+        margin-bottom: 24px;
+        line-height: 1.2;
+      }
+      .cs-section-body h4 {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        margin-top: 28px;
+        color: var(--black);
+      }
+      .cs-section-body p {
+        font-size: 15px;
+        line-height: 1.85;
+        color: var(--grey-600);
+        margin-bottom: 20px;
+      }
+      .cs-section-body p:last-child {
+        margin-bottom: 0;
+      }
+      .cs-section-body ul {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 20px;
+      }
+      .cs-section-body ul li {
+        font-size: 15px;
+        line-height: 1.85;
+        color: var(--grey-600);
+        padding-left: 20px;
+        position: relative;
+        margin-bottom: 10px;
+      }
+      .cs-section-body ul li::before {
+        content: "—";
+        position: absolute;
+        left: 0;
+        color: #cc33ff;
+      }
+      .cs-highlight {
+        background: var(--grey-100);
+        border-left: 3px solid #cc33ff;
+        padding: 24px 28px;
+        border-radius: 0 8px 8px 0;
+        margin: 28px 0;
+      }
+      .cs-highlight p {
+        font-family: var(--font-display);
+        font-size: 20px;
+        font-weight: 300;
+        font-style: italic;
+        color: var(--black) !important;
+        margin-bottom: 0 !important;
+        line-height: 1.5;
+      }
+      .cs-highlight-label {
+        display: block;
+        font-family: var(--font-body);
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #cc33ff;
+        margin-bottom: 10px;
+      }
+      .cs-image-placeholder {
+        background: var(--grey-100);
+        border: 2px dashed var(--grey-200);
+        border-radius: 12px;
+        height: 320px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin: 32px 0;
+      }
+      .cs-image-placeholder-icon {
+        font-size: 32px;
+        opacity: 0.5;
+        color: var(--grey-400);
+      }
+      .cs-image-placeholder-label {
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--grey-400);
+      }
+      /* CONTRIBUTION TAGS */
+      .cs-contrib-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 28px;
+      }
+      .cs-contrib-tag {
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        color: var(--grey-600);
+        background: var(--grey-100);
+        border: 1px solid var(--grey-200);
+        padding: 6px 16px;
+        border-radius: 20px;
+      }
+      /* COMPARISON TABLE */
+      .cs-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 28px;
+      }
+      .cs-table th {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--grey-400);
+        text-align: left;
+        padding: 12px 16px;
+        border-bottom: 2px solid var(--grey-200);
+      }
+      .cs-table th:first-child {
+        width: 28%;
+      }
+      .cs-table td {
+        font-size: 14px;
+        line-height: 1.7;
+        color: var(--grey-600);
+        padding: 16px;
+        border-bottom: 1px solid var(--grey-200);
+        vertical-align: top;
+      }
+      .cs-table td:first-child {
+        font-weight: 600;
+        color: var(--black);
+        font-size: 13px;
+      }
+      .cs-table tr:last-child td {
+        border-bottom: none;
+      }
+      /* FLOW STEPS */
+      .cs-flow {
+        display: flex;
+        align-items: flex-start;
+        gap: 0;
+        margin-top: 28px;
+        flex-wrap: wrap;
+      }
+      .cs-flow-step {
+        flex: 1;
+        min-width: 120px;
+        position: relative;
+        padding-right: 28px;
+      }
+      .cs-flow-step:not(:last-child)::after {
+        content: "→";
+        position: absolute;
+        right: 6px;
+        top: 14px;
+        font-size: 16px;
+        color: #cc33ff;
+      }
+      .cs-flow-num {
+        font-family: var(--font-display);
+        font-size: 11px;
+        font-weight: 300;
+        color: #cc33ff;
+        margin-bottom: 6px;
+      }
+      .cs-flow-title {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--black);
+        margin-bottom: 6px;
+      }
+      .cs-flow-desc {
+        font-size: 12px;
+        line-height: 1.6;
+        color: var(--grey-600);
+      }
+      /* RESULT CARDS */
+      .cs-result-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-top: 32px;
+      }
+      .cs-result-card {
+        background: var(--grey-100);
+        border-radius: 12px;
+        padding: 32px 28px;
+      }
+      .cs-section-body .cs-result-num {
+        font-family: var(--font-display);
+        font-size: 24px;
+        font-weight: 300;
+        color: var(--black);
+        margin-bottom: 8px;
+        line-height: 1.1;
+      }
+      .cs-result-label {
+        font-size: 13px;
+        color: var(--grey-600);
+        line-height: 1.5;
+        margin-bottom: 0;
+      }
+      /* FIGMA BAR */
+      .cs-figma-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        background: var(--grey-100);
+        border: 1px solid var(--grey-200);
+        border-radius: 10px;
+        padding: 14px 20px;
+        margin-top: 16px;
+        text-decoration: none;
+        transition:
+          background 0.2s ease,
+          border-color 0.2s ease,
+          box-shadow 0.2s ease,
+          transform 0.2s ease;
+      }
+      .cs-figma-bar:hover {
+        background: var(--grey-200);
+        border-color: var(--grey-400);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        transform: translateY(-2px);
+      }
+      .cs-figma-bar:hover .cs-figma-icon svg {
+        transform: scale(1.08);
+      }
+      .cs-figma-bar-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .cs-figma-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .cs-figma-icon svg {
+        width: 38px;
+        height: 57px;
+        transition: transform 0.2s ease;
+      }
+      .cs-figma-bar-text {
+        font-size: 13px;
+        color: var(--grey-600);
+      }
+      .cs-figma-bar-text strong {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--black);
+        margin-bottom: 2px;
+      }
+      .cs-figma-btn {
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--black);
+        border: 1px solid var(--grey-200);
+        border-radius: 6px;
+        padding: 6px 14px;
+        white-space: nowrap;
+        background: var(--white);
+        flex-shrink: 0;
+      }
+      .cs-next {
+        border-top: 1px solid var(--grey-200);
+      }
+      .cs-next-inner {
+        max-width: var(--max-w);
+        margin: 0 auto;
+        padding: 64px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+      }
+      .cs-next-label {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--grey-400);
+        margin-bottom: 12px;
+      }
+      .cs-next-title {
+        font-family: var(--font-display);
+        font-size: clamp(28px, 3vw, 42px);
+        font-weight: 300;
+        color: var(--black);
+        text-decoration: none;
+        display: block;
+        transition: color 0.25s;
+      }
+      .cs-next-title:hover {
+        color: #cc33ff;
+      }
+      .cs-next-arrow {
+        width: 56px;
+        height: 56px;
+        border: 1px solid var(--grey-200);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        color: var(--grey-400);
+        text-decoration: none;
+        flex-shrink: 0;
+        transition: all 0.25s;
+      }
+      .cs-next-arrow:hover {
+        border-color: var(--black);
+        background: var(--black);
+        color: var(--white);
+      }
+      @media (max-width: 900px) {
+        .cs-overview-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .cs-section {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+        .cs-result-row {
+          grid-template-columns: 1fr;
+        }
+        .cs-flow {
+          gap: 24px;
+        }
+        .cs-flow-step {
+          padding-right: 0;
+        }
+        .cs-flow-step:not(:last-child)::after {
+          display: none;
+        }
+        .cs-next-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+      @media (max-width: 600px) {
+        .cs-hero-inner,
+        .cs-content {
+          padding: 0 24px;
+        }
+        .cs-overview-grid {
+          padding: 0 24px;
+          grid-template-columns: 1fr 1fr;
+        }
+        .cs-hero-image {
+          height: 460px;
+          font-size: 72px;
+        }
+        .cs-next-inner {
+          padding: 48px 24px;
+        }
+        .cs-image-placeholder {
+          height: 220px;
+        }
+        .cs-table {
+          font-size: 13px;
+        }
+      }
+      @media (max-width: 360px) {
+        .cs-hero-inner, .cs-content { padding: 0 16px; }
+        .cs-overview-grid { padding: 0 16px; }
+        .cs-next-inner { padding: 40px 16px; }
+      }
+
+    </style>
+  </head>
+  <body id="top">
+    <nav>
+      <div class="nav-inner">
+        <a class="nav-logo" href="../index.html">Abhishek<span>.</span>Bandi</a>
+        <ul class="nav-links">
+          <li><a href="../work.html" class="active">Work</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+        </ul>
+        <button
+          class="nav-hamburger"
+          aria-label="Toggle menu"
+          onclick="
+            this.classList.toggle('open');
+            document.querySelector('.nav-links').classList.toggle('nav-open');
+          "
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <main>
+      <div class="cs-hero">
+        <div class="cs-hero-inner">
+          <div class="cs-breadcrumb">
+            <a href="../work.html">Work</a>
+            <span>/</span>
+            <span>Features</span>
+            <span>/</span>
+            <span>FireFlink AI Chat Bot</span>
+          </div>
+          <div class="cs-feature-badge">Product Feature</div>
+          <h1 class="cs-hero-title">FireFlink <em>AI Chat Bot</em></h1>
+          <p class="cs-hero-subtitle">
+            Bridging the gap between manual intent and automated execution —
+            transforming plain-English prompts into executable test suites.
+          </p>
+          <div class="cs-hero-meta">
+            <span class="cs-hero-year">Nov 2024</span>
+            <span class="cs-hero-tag">AI</span>
+            <span class="cs-hero-tag">Test Automation</span>
+            <span class="cs-hero-tag">Web</span>
+          </div>
+          <div class="cs-hero-image">
+            <img
+              loading="lazy"
+              src="../images/product-features/fireflink-ai-chatbot/fireflink_ai_thumbnail.jpg"
+              alt="FireFlink AI Chatbot"
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: inherit;
+              "
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-overview">
+        <div class="cs-overview-grid">
+          <div class="cs-overview-cell">
+            <p class="cs-overview-label">Role</p>
+            <p class="cs-overview-value">UI / UX Design</p>
+          </div>
+          <div class="cs-overview-cell">
+            <p class="cs-overview-label">Timeline</p>
+            <p class="cs-overview-value">Nov 2024</p>
+          </div>
+          <div class="cs-overview-cell">
+            <p class="cs-overview-label">Tools</p>
+            <p class="cs-overview-value">Figma, FigJam</p>
+          </div>
+          <div class="cs-overview-cell">
+            <p class="cs-overview-label">Platform</p>
+            <p class="cs-overview-value">Web</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-content">
+        <!-- CONTEXT -->
+        <div class="cs-section">
+          <div>
+            <p class="cs-section-num">01</p>
+            <p class="cs-section-label">Context</p>
+          </div>
+          <div class="cs-section-body">
+            <h3>The evolution <em>of efficiency</em></h3>
+            <p>
+              FireFlink originally pioneered test automation using a robust
+              library of predefined NLP steps — allowing users to "write"
+              scripts by selecting functional English phrases. It was a powerful
+              system. But as test suites grew in complexity, manually assembling
+              these steps became a new bottleneck.
+            </p>
+            <div class="cs-highlight">
+              <span class="cs-highlight-label">The Problem</span>
+              <p>
+                Even with NLP steps available, QA engineers were still spending
+                too much time searching, mapping, and assembling — step by step.
+              </p>
+            </div>
+            <ul>
+              <li>
+                <strong>Discovery Fatigue</strong> — Searching through thousands
+                of predefined NLP steps to find the right one was time-consuming
+              </li>
+              <li>
+                <strong>Logical Mapping</strong> — Testers still had to manually
+                define the sequence of automation logic
+              </li>
+              <li>
+                <strong>Scalability</strong> — Building a 50-step test case one
+                step at a time was too slow for rapid release cycles
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- CONTRIBUTION -->
+        <div class="cs-section">
+          <div>
+            <p class="cs-section-num">02</p>
+            <p class="cs-section-label">My Contribution</p>
+          </div>
+          <div class="cs-section-body">
+            <h3>What I <em>worked on</em></h3>
+            <p>
+              I designed the AI Chatbot interface — an intelligent layer built
+              on top of the existing NLP engine. The goal was to move the user
+              from "Step Builder" to "Intent Architect" describe what you want
+              to test, and let the AI figure out the steps.
+            </p>
+            <div class="cs-contrib-tags">
+              <span class="cs-contrib-tag">Generative Flow Design</span>
+              <span class="cs-contrib-tag">Chatbot Interface</span>
+              <span class="cs-contrib-tag">Batch Validation UI</span>
+              <span class="cs-contrib-tag">Wireframing</span>
+              <span class="cs-contrib-tag">High-Fidelity UI</span>
+              <span class="cs-contrib-tag">Prototyping</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- THE SHIFT -->
+        <div class="cs-section">
+          <div>
+            <p class="cs-section-num">03</p>
+            <p class="cs-section-label">The Shift</p>
+          </div>
+          <div class="cs-section-body">
+            <h3>
+              From "Search &amp; Select" <em>to "Prompt &amp; Generate"</em>
+            </h3>
+            <p>
+              The core innovation wasn't just adding a chat box — it was
+              leveraging AI to navigate the existing automation architecture on
+              behalf of the user. The interface had to make this shift feel
+              natural and trustworthy.
+            </p>
+            <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+            <table class="cs-table">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Legacy NLP Tool</th>
+                  <th>FireFlink AI</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Input Method</td>
+                  <td>Searching for specific NLP phrases</td>
+                  <td>Describing a full user journey in plain English</td>
+                </tr>
+                <tr>
+                  <td>Effort</td>
+                  <td>Manual step-by-step assembly</td>
+                  <td>Instant generation of entire test flows</td>
+                </tr>
+                <tr>
+                  <td>Logic</td>
+                  <td>User defines the sequence</td>
+                  <td>AI interprets intent and maps to the correct steps</td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- THE FLOW -->
+        <div class="cs-section">
+          <div>
+            <p class="cs-section-num">04</p>
+            <p class="cs-section-label">The Flow</p>
+          </div>
+          <div class="cs-section-body">
+            <h3>How the <em>co-pilot works</em></h3>
+            <p>
+              The chatbot acts as a co-pilot — sitting alongside the test
+              editor, understanding intent, and generating structured output the
+              QA engineer can immediately use or refine.
+            </p>
+            <div class="cs-flow">
+              <div class="cs-flow-step">
+                <p class="cs-flow-num">01</p>
+                <p class="cs-flow-title">Intent Capture</p>
+                <p class="cs-flow-desc">
+                  User enters a high-level goal — e.g., "Test the login flow for
+                  a guest user using credentials."
+                </p>
+              </div>
+              <div class="cs-flow-step">
+                <p class="cs-flow-num">02</p>
+                <p class="cs-flow-title">Mapping &amp; Retrieval</p>
+                <p class="cs-flow-desc">
+                  AI analyzes the prompt and queries the predefined NLP library
+                  to find the exact steps required.
+                </p>
+              </div>
+              <div class="cs-flow-step">
+                <p class="cs-flow-num">03</p>
+                <p class="cs-flow-title">Sequence Generation</p>
+                <p class="cs-flow-desc">
+                  Instead of one step, the chatbot presents a complete list of
+                  test cases formatted for the FireFlink engine.
+                </p>
+              </div>
+              <div class="cs-flow-step">
+                <p class="cs-flow-num">04</p>
+                <p class="cs-flow-title">Refinement</p>
+                <p class="cs-flow-desc">
+                  User can tweak the list — e.g., "Add a step to verify the
+                  email" — before injecting it into the editor.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DESIGN -->
+        <div class="cs-section">
+          <div>
+            <p class="cs-section-num">05</p>
+            <p class="cs-section-label">Design</p>
+          </div>
+          <div class="cs-section-body">
+            <h3>From wireframes <em>to high fidelity</em></h3>
+            <p>
+              The design had to feel like a natural extension of the existing
+              FireFlink editor — not a separate tool. Three key interface
+              decisions shaped the final output.
+            </p>
+
+            <h4>The Chatbot Interface</h4>
+            <p>
+              A docked side panel that maintains the context of the current test
+              suite — always visible, never disruptive to the editor workflow.
+            </p>
+            <div style="margin: 32px 0; border-radius: 12px; overflow: hidden">
+              <img
+                loading="lazy"
+                src="../images/product-features/fireflink-ai-chatbot/fireflink_ai_hifi_1.png"
+                alt="FireFlink AI Chatbot Interface"
+                style="width: 100%; display: block"
+              />
+            </div>
+
+            <h4>Visual Feedback</h4>
+            <p>
+              Variables and locators within the chat response are visually
+              highlighted — giving the user a window into the AI's reasoning and
+              building trust in the generated output.
+            </p>
+            <div style="margin: 32px 0; border-radius: 12px; overflow: hidden">
+              <img
+                loading="lazy"
+                src="../images/product-features/fireflink-ai-chatbot/fireflink_ai_hifi_2.png"
+                alt="Visual Feedback States"
+                style="width: 100%; display: block"
+              />
+            </div>
+
+            <h4>The "Add to Script" Action</h4>
+            <p>
+              A clear primary CTA bridges the gap between the chat output and
+              the test editor — making it one action to move from AI suggestion
+              to live script.
+            </p>
+            <div style="margin: 32px 0; border-radius: 12px; overflow: hidden">
+              <img
+                loading="lazy"
+                src="../images/product-features/fireflink-ai-chatbot/fireflink_ai_hifi_3.png"
+                alt="Add to Script Flow"
+                style="width: 100%; display: block"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- OUTCOME -->
+        <div class="cs-section">
+          <div>
+            <p class="cs-section-num">06</p>
+            <p class="cs-section-label">Outcome</p>
+          </div>
+          <div class="cs-section-body">
+            <h3>What <em>changed</em></h3>
+            <p>
+              By shifting the interaction to a generative chatbot model, the
+              feature unlocked a new level of productivity for QA engineers —
+              removing the search and assembly overhead entirely.
+            </p>
+            <div class="cs-result-row">
+              <div class="cs-result-card">
+                <p class="cs-result-num">Zero search time</p>
+                <p class="cs-result-label">
+                  Users no longer browse the NLP library — the AI surfaces the
+                  right steps automatically
+                </p>
+              </div>
+              <div class="cs-result-card">
+                <p class="cs-result-num">70% faster scripting</p>
+                <p class="cs-result-label">
+                  Complex end-to-end flows that took 20 minutes to assemble are
+                  now generated in seconds
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="cs-next">
+      <div class="cs-next-inner">
+        <div>
+          <p class="cs-next-label">Next Feature</p>
+          <a class="cs-next-title" href="fireflink-mobile-app.html"
+            >FireFlink Mobile App →</a
+          >
+        </div>
+        <a class="cs-next-arrow" href="fireflink-mobile-app.html">→</a>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-inner">
+        <span class="footer-quote"
+          >Design is not just what it looks like and feels like. Design is how
+          it works.</span
+        >
+        <a
+          class="footer-top" href="#top"
+          >Back to top ↑</a
+        >
+      </div>
+    </footer>
+
+    <script src="../lightbox.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Work by Abhishek Bandi — case studies and product feature designs across retail tech, agri-tech, SaaS, and mobile applications."
+    />
+    <meta property="og:title" content="Work — Abhishek Bandi" />
+    <meta
+      property="og:description"
+      content="Explore Abhishek Bandi's case studies and product features spanning kiosk design, POS systems, mobile apps, and enterprise SaaS."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://abhishekbandi.me/images/index/Logo.png" />
+    <link rel="icon" type="image/png" href="images/index/Logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Work — Abhishek Bandi</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* ── WORK PAGE ── */
+      .page-header {
+        padding: 72px 0 64px;
+        border-bottom: 1px solid var(--grey-200);
+      }
+
+      .page-header-inner {
+        max-width: var(--max-w);
+        margin: 0 auto;
+        padding: 0 40px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 40px;
+      }
+
+      .page-header-meta p {
+        font-size: 13px;
+        color: var(--grey-600);
+        line-height: 1.6;
+        max-width: 280px;
+        text-align: right;
+      }
+
+      .page-header h1 {
+        font-size: clamp(48px, 6vw, 80px);
+      }
+
+      .page-header h1 em {
+        font-style: italic;
+        color: var(--grey-400);
+      }
+
+      .projects-section-heading {
+        font-family: var(--font-body);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--grey-400);
+        padding: 32px 0 8px;
+        border-bottom: 1px solid var(--grey-200);
+        margin-bottom: 0;
+      }
+
+      /* ── FILTER ── */
+      .filter-bar {
+        max-width: var(--max-w);
+        margin: 0 auto;
+        padding: 32px 40px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border-bottom: 1px solid var(--grey-200);
+      }
+
+      .filter-btn {
+        font-family: var(--font-body);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--grey-600);
+        background: none;
+        border: 1px solid var(--grey-200);
+        padding: 8px 18px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .filter-btn:hover,
+      .filter-btn.active {
+        border-color: var(--black);
+        color: var(--black);
+        background: var(--black);
+        color: var(--white);
+      }
+
+      /* ── PROJECT LIST ── */
+      .projects-list {
+        max-width: var(--max-w);
+        margin: 0 auto;
+        padding: 0 40px;
+      }
+
+      .project-row {
+        display: grid;
+        grid-template-columns: 380px 1fr;
+        min-height: 220px;
+        border: 1px solid var(--grey-200);
+        border-radius: 16px;
+        overflow: hidden;
+        text-decoration: none;
+        color: inherit;
+        margin-bottom: 16px;
+        transition:
+          box-shadow 0.35s var(--ease),
+          transform 0.35s var(--ease);
+      }
+
+      .project-row:hover {
+        box-shadow: 0 16px 48px rgba(15, 15, 13, 0.09);
+        transform: translateY(-3px);
+      }
+
+      .project-image {
+        background: var(--grey-100);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .project-image-bg {
+        position: absolute;
+        inset: 0;
+        transition: transform 0.6s var(--ease);
+      }
+
+      .project-row:hover .project-image-bg {
+        transform: scale(1.04);
+      }
+
+      .project-image-placeholder {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-display);
+        font-size: 48px;
+        font-weight: 300;
+        font-style: italic;
+        color: var(--grey-400);
+        opacity: 0.4;
+      }
+
+      .project-body {
+        padding: 28px 32px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .project-body-top {
+      }
+
+      .project-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+
+      .project-title {
+        font-family: var(--font-body);
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--black);
+        line-height: 1.3;
+      }
+
+      .project-year {
+        font-size: 11px;
+        color: var(--grey-400);
+        border: 1px solid var(--grey-200);
+        padding: 3px 10px;
+        border-radius: 20px;
+        background: transparent;
+        flex-shrink: 0;
+      }
+
+      .project-desc {
+        font-size: 13px;
+        line-height: 1.7;
+        color: var(--grey-600);
+        margin-bottom: 16px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .project-tags {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+
+      .tag {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--grey-600);
+        background: var(--grey-100);
+        border: 1px solid var(--grey-200);
+        padding: 3px 10px;
+        border-radius: 20px;
+      }
+
+      .project-body-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+
+      .project-arrow-btn {
+        width: 32px;
+        height: 32px;
+        border: 1px solid var(--grey-200);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--grey-400);
+        transition:
+          border-color 0.2s,
+          color 0.2s,
+          background 0.2s;
+        flex-shrink: 0;
+      }
+
+      .project-row:hover .project-arrow-btn {
+        border-color: var(--black);
+        color: var(--black);
+        background: var(--black);
+        color: var(--white);
+      }
+
+      @media (max-width: 900px) {
+        .project-row {
+          grid-template-columns: 1fr;
+        }
+        .project-image {
+          height: 200px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .project-body {
+          padding: 20px 20px;
+        }
+      }
+
+      /* ── FEATURED PROJECT (large card) ── */
+      .featured-project {
+        max-width: var(--max-w);
+        margin: 120px auto 80px;
+        padding: 0 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+      }
+
+      .featured-label {
+        font-family: var(--font-display);
+        font-size: clamp(28px, 3vw, 40px);
+        font-weight: 300;
+        color: var(--black);
+        margin-bottom: 4px;
+        letter-spacing: -0.01em;
+      }
+
+      .featured-sublabel {
+        font-size: 14px;
+        line-height: 1.7;
+        color: var(--grey-600);
+        margin-bottom: 0;
+      }
+
+      .featured-card {
+        background: var(--grey-100);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 420px;
+        text-decoration: none;
+        color: inherit;
+        overflow: hidden;
+        transition: box-shadow 0.3s;
+      }
+
+      .featured-card:hover {
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+      }
+
+      .featured-visual {
+        background: linear-gradient(135deg, #dce8e4 0%, #c8d8d0 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-display);
+        font-size: 80px;
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .featured-info {
+        padding: 48px 48px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+      }
+
+      .featured-date {
+        position: absolute;
+        top: 48px;
+        right: 48px;
+        font-size: 11px;
+        color: var(--grey-400);
+        border: 1px solid var(--grey-200);
+        padding: 4px 12px;
+        border-radius: 20px;
+        letter-spacing: 0.06em;
+      }
+
+      .featured-info h2 {
+        font-size: clamp(26px, 3vw, 38px);
+        margin-bottom: 16px;
+        padding-right: 80px;
+      }
+
+      .featured-info p {
+        font-size: 14px;
+        line-height: 1.75;
+        color: var(--grey-600);
+        margin-bottom: 20px;
+      }
+
+      .featured-tags {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        margin-bottom: 32px;
+      }
+
+      /* ── CASE STUDY CARD ── */
+      .cs-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 340px;
+        background: var(--grey-100);
+        text-decoration: none;
+        color: inherit;
+        overflow: hidden;
+        position: relative;
+        transition:
+          box-shadow 0.35s var(--ease),
+          transform 0.35s var(--ease);
+        opacity: 0;
+        transform: translateY(28px);
+      }
+
+      .cs-card::after {
+        content: "";
+        position: absolute;
+        bottom: 14px;
+        right: 14px;
+        width: 32px;
+        height: 32px;
+        background-color: #0f0f0d;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='7' y1='17' x2='17' y2='7'/%3E%3Cpolyline points='7 7 17 7 17 17'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 14px 14px;
+        border-radius: 50%;
+        opacity: 0;
+        transform: scale(0.7) translateY(4px);
+        transition:
+          opacity 0.25s ease,
+          transform 0.25s ease;
+        pointer-events: none;
+        z-index: 10;
+      }
+
+      .cs-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+        transition:
+          opacity 0.6s var(--ease),
+          transform 0.6s var(--ease),
+          box-shadow 0.35s var(--ease);
+      }
+
+      .cs-card:hover {
+        box-shadow: 0 24px 64px rgba(0, 0, 0, 0.1);
+        transform: translateY(-4px);
+      }
+
+      .cs-card:hover::after {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+
+      .cs-image {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cs-image-bg {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, #dce8e4 0%, #c8d4cc 100%);
+        transition: transform 0.6s var(--ease);
+      }
+
+      .cs-card:hover .cs-image-bg {
+        transform: scale(1.04);
+      }
+
+      .cs-image-placeholder {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-display);
+        font-size: 80px;
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .cs-info {
+        padding: 48px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .cs-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 20px;
+      }
+
+      .cs-title {
+        font-size: clamp(26px, 2.8vw, 38px);
+        font-weight: 300;
+        line-height: 1.15;
+      }
+
+      .cs-title em {
+        font-style: italic;
+        color: var(--black);
+      }
+
+      .cs-date {
+        font-size: 11px;
+        color: var(--grey-400);
+        border: 1px solid var(--grey-200);
+        padding: 4px 12px;
+        border-radius: 20px;
+        letter-spacing: 0.06em;
+        white-space: nowrap;
+        flex-shrink: 0;
+        margin-top: 6px;
+      }
+
+      .cs-desc {
+        font-size: 14px;
+        line-height: 1.75;
+        color: var(--grey-600);
+        margin-bottom: 20px;
+      }
+
+      .cs-tags {
+        display: flex;
+        margin-bottom: 28px;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 900px) {
+        .page-header-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .page-header-meta {
+          text-align: left;
+        }
+        .project-row {
+          grid-template-columns: 48px 1fr;
+        }
+        .project-year {
+          display: none;
+        }
+        .cs-card {
+          grid-template-columns: 1fr;
+        }
+        .cs-image {
+          height: 240px;
+        }
+        .featured-project {
+          margin: 80px auto 60px;
+          gap: 40px;
+        }
+        .cs-info {
+          padding: 32px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .filter-bar,
+        .projects-list,
+        .featured-project {
+          padding: 0 24px;
+        }
+        .project-row {
+          gap: 20px;
+        }
+        .cs-info {
+          padding: 24px;
+        }
+        .cs-image {
+          height: 200px;
+        }
+        .page-header-inner {
+          padding: 48px 24px;
+        }
+        .project-row {
+          grid-template-columns: 1fr;
+          min-height: auto;
+        }
+        .project-image {
+          height: 180px;
+        }
+        .project-body {
+          padding: 16px 20px;
+        }
+        .projects-list {
+          padding: 0 24px;
+        }
+        .featured-card {
+          grid-template-columns: 1fr;
+          min-height: auto;
+        }
+        .featured-visual {
+          height: 200px;
+        }
+        .featured-info {
+          padding: 24px;
+        }
+        .featured-info h2 {
+          padding-right: 0;
+        }
+      }
+    </style>
+  </head>
+  <body id="top">
+    <!-- NAV -->
+    <nav>
+      <div class="nav-inner">
+        <a class="nav-logo" href="index.html">Abhishek<span>.</span>Bandi</a>
+        <ul class="nav-links">
+          <li><a href="work.html" class="active">Work</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="resume.html">Resume</a></li>
+        </ul>
+        <button
+          class="nav-hamburger"
+          aria-label="Toggle menu"
+          onclick="
+            this.classList.toggle('open');
+            document.querySelector('.nav-links').classList.toggle('nav-open');
+          "
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <main>
+      <!-- PAGE HEADER -->
+      <div class="page-header">
+        <div class="page-header-inner">
+          <div>
+            <h1>My <em>Work</em></h1>
+          </div>
+          <div class="page-header-meta">
+            <p>
+              A curated selection of projects spanning product design, brand
+              identity, and digital experiences.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CASE STUDIES -->
+      <div class="featured-project">
+        <div>
+          <p class="featured-label">Case Studies</p>
+          <p class="featured-sublabel">
+            An in-depth look at selected projects — covering the problem,
+            process, and outcome.<br />Each study walks through the decisions
+            that shaped the final experience.
+          </p>
+        </div>
+        <a class="cs-card" href="case-studies/kiosk-device.html">
+          <div class="cs-image">
+            <div
+              class="cs-image-bg"
+              style="background: linear-gradient(135deg, #dce8e4, #c8d4cc)"
+            ></div>
+            <img
+              loading="lazy"
+              src="images/case-studies/kiosk-device/endless_aisle_kiosk_thumbnaill.jpeg"
+              alt="Kiosk Device"
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-radius: inherit;
+              "
+            />
+          </div>
+          <div class="cs-info">
+            <div class="cs-info-top">
+              <div class="cs-header">
+                <h2 class="cs-title"><em>The Endless Aisle Kiosk</em></h2>
+                <span class="cs-date">Nov 2025</span>
+              </div>
+              <p class="cs-desc">
+                Designed an end-to-end kiosk experience for self-service
+                ordering — simplifying complex workflows into a touch-first,
+                accessible interface.
+              </p>
+              <div class="cs-tags">
+                <span class="tag">Kiosk</span>
+                <span class="tag">Touch UI</span>
+                <span class="tag">Self-service</span>
+              </div>
+            </div>
+            <div class="cs-info-bottom">
+              <span class="btn" style="font-size: 11px; padding: 10px 22px"
+                >View Case Study</span
+              >
+            </div>
+          </div>
+        </a>
+
+        <a class="cs-card" href="case-studies/pos-device.html">
+          <div class="cs-image">
+            <div
+              class="cs-image-bg"
+              style="background: linear-gradient(135deg, #dce4e8, #c8d0da)"
+            ></div>
+            <img
+              loading="lazy"
+              src="images/case-studies/pos-device/pos_device_thumbnaill.jpeg"
+              alt="POS Device"
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-radius: inherit;
+              "
+            />
+          </div>
+          <div class="cs-info">
+            <div class="cs-info-top">
+              <div class="cs-header">
+                <h2 class="cs-title"><em>POS Device</em></h2>
+                <span class="cs-date">Apr 2025</span>
+              </div>
+              <p class="cs-desc">
+                Redesigned a point-of-sale interface to reduce transaction time
+                and cashier errors — built for speed, clarity, and high-volume
+                retail environments.
+              </p>
+              <div class="cs-tags">
+                <span class="tag">POS</span>
+                <span class="tag">Retail</span>
+                <span class="tag">UI Design</span>
+              </div>
+            </div>
+            <div class="cs-info-bottom">
+              <span class="btn" style="font-size: 11px; padding: 10px 22px"
+                >View Case Study</span
+              >
+            </div>
+          </div>
+        </a>
+
+        <a class="cs-card" href="case-studies/restaurant-theme.html">
+          <div class="cs-image">
+            <div
+              class="cs-image-bg"
+              style="background: linear-gradient(135deg, #e4dce8, #d4c8da)"
+            ></div>
+            <img
+              loading="lazy"
+              src="images/case-studies/restaurant-theme/restaurant_theme_thumbnaill.png"
+              alt="Restaurant Theme"
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-radius: inherit;
+              "
+            />
+          </div>
+          <div class="cs-info">
+            <div class="cs-info-top">
+              <div class="cs-header">
+                <h2 class="cs-title"><em>Restaurant Theme</em></h2>
+                <span class="cs-date">Aug – Sep 2025</span>
+              </div>
+              <p class="cs-desc">
+                End-to-end food delivery & table reservation platform — bridging
+                the gap between rigid meal combos and post-checkout engagement
+                with a Flexi Bundle system.
+              </p>
+              <div class="cs-tags">
+                <span class="tag">Product Design</span>
+                <span class="tag">Web</span>
+                <span class="tag">Mobile App</span>
+              </div>
+            </div>
+            <div class="cs-info-bottom">
+              <span class="btn" style="font-size: 11px; padding: 10px 22px"
+                >View Case Study</span
+              >
+            </div>
+          </div>
+        </a>
+
+        <a class="cs-card" href="case-studies/agri-tech-app.html">
+          <div class="cs-image">
+            <div
+              class="cs-image-bg"
+              style="background: linear-gradient(135deg, #dce8e0, #c8d8cc)"
+            ></div>
+            <img
+              loading="lazy"
+              src="images/case-studies/agri-tech-app/ecom_agri_tech_thumbnail.jpg"
+              alt="Agri Tech App"
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-radius: inherit;
+              "
+            />
+          </div>
+          <div class="cs-info">
+            <div class="cs-info-top">
+              <div class="cs-header">
+                <h2 class="cs-title">
+                  <em>Agri Tech (E-com)<br />Mobile App</em>
+                </h2>
+                <span class="cs-date">Mar – Jun 2022</span>
+              </div>
+              <p class="cs-desc">
+                Redesigned an e-commerce platform for farmers across 7+ states,
+                achieving an 84% usability approval rating through iterative
+                testing and user research.
+              </p>
+              <div class="cs-tags">
+                <span class="tag">Mobile App</span>
+                <span class="tag">Agri Tech</span>
+                <span class="tag">E-commerce</span>
+              </div>
+            </div>
+            <div class="cs-info-bottom">
+              <span class="btn" style="font-size: 11px; padding: 10px 22px"
+                >View Case Study</span
+              >
+            </div>
+          </div>
+        </a>
+
+        <a class="cs-card" href="case-studies/fashion-theme.html">
+          <div class="cs-image">
+            <div
+              class="cs-image-bg"
+              style="background: linear-gradient(135deg, #e8dce4, #d4c0cc)"
+            ></div>
+            <img
+              loading="lazy"
+              src="images/case-studies/fashion-theme/fashion_theme_thumbnaill.png"
+              alt="Fashion Theme"
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-radius: inherit;
+              "
+            />
+          </div>
+          <div class="cs-info">
+            <div class="cs-info-top">
+              <div class="cs-header">
+                <h2 class="cs-title"><em>Fashion Theme</em></h2>
+                <span class="cs-date">Oct – Nov 2025</span>
+              </div>
+              <p class="cs-desc">
+                End-to-end e-commerce experience bridging editorial inspiration
+                and seamless checkout — with a style-first IA, soft sign-in, and
+                post-purchase engagement flow.
+              </p>
+              <div class="cs-tags">
+                <span class="tag">Product Design</span>
+                <span class="tag">E-commerce</span>
+                <span class="tag">Web &amp; Mobile</span>
+              </div>
+            </div>
+            <div class="cs-info-bottom">
+              <span class="btn" style="font-size: 11px; padding: 10px 22px"
+                >View Case Study</span
+              >
+            </div>
+          </div>
+        </a>
+
+        <a class="cs-card" href="case-studies/warehouse-attendance.html">
+          <div class="cs-image">
+            <div
+              class="cs-image-bg"
+              style="background: linear-gradient(135deg, #e0e8dc, #ccd8c8)"
+            ></div>
+            <img
+              loading="lazy"
+              src="images/case-studies/warehouse-attendance/warehouse_attendance_thumbnail.jpg"
+              alt="Warehouse Attendance"
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-radius: inherit;
+              "
+            />
+          </div>
+          <div class="cs-info">
+            <div class="cs-info-top">
+              <div class="cs-header">
+                <h2 class="cs-title">
+                  <em>Warehouse Attendance<br />Management</em>
+                </h2>
+                <span class="cs-date">Jul – Sep 2023</span>
+              </div>
+              <p class="cs-desc">
+                Mobile app for warehouse delivery personnel — replacing manual
+                attendance registers with one-click digital tracking, location
+                detection, and in-app notifications. Scored 4.2/5 in usability
+                testing.
+              </p>
+              <div class="cs-tags">
+                <span class="tag">User Research</span>
+                <span class="tag">UI Design</span>
+                <span class="tag">Mobile App</span>
+              </div>
+            </div>
+            <div class="cs-info-bottom">
+              <span class="btn" style="font-size: 11px; padding: 10px 22px"
+                >View Case Study</span
+              >
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- FEATURES -->
+      <div class="featured-project" id="features">
+        <div>
+          <p class="featured-label">Product Features</p>
+          <p class="featured-sublabel">
+            Highlights of specific capabilities and craft details across my
+            work.<br />From micro-interactions to design systems — the details
+            that make a difference.
+          </p>
+        </div>
+
+        <a class="cs-card" href="product-features/fireflink-ai-chatbot.html">
+          <div class="cs-image">
+            <div
+              class="cs-image-bg"
+              style="background: linear-gradient(135deg, #e8dce4, #d8c8d4)"
+            ></div>
+            <img
+              loading="lazy"
+              src="images/product-features/fireflink-ai-chatbot/fireflink_ai_thumbnail.jpg"
+              alt="FireFlink AI Chatbot"
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-radius: inherit;
+              "
+            />
+          </div>
+          <div class="cs-info">
+            <div class="cs-info-top">
+              <div class="cs-header">
+                <h2 class="cs-title"><em>FireFlink AI Chat Bot</em></h2>
+                <span class="cs-date">Nov 2024</span>
+              </div>
+              <p class="cs-desc">
+                Designed the conversational UI for an AI-powered chatbot within
+                FireFlink, enabling users to generate and debug test cases
+                through natural language interactions.
+              </p>
+              <div class="cs-tags">
+                <span class="tag">AI</span>
+                <span class="tag">Conversational UI</span>
+                <span class="tag">SaaS</span>
+              </div>
+            </div>
+            <div class="cs-info-bottom">
+              <span class="btn" style="font-size: 11px; padding: 10px 22px"
+                >View Feature</span
+              >
+            </div>
+          </div>
+        </a>
+
+        <a class="cs-card" href="product-features/fireflink-mobile-app.html">
+          <div class="cs-image">
+            <div
+              class="cs-image-bg"
+              style="background: linear-gradient(135deg, #dce4e8, #c8d4da)"
+            ></div>
+            <img
+              loading="lazy"
+              src="images/product-features/fireflink-mobile-app/Mockup Result.png"
+              alt="FireFlink Mobile App"
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-radius: inherit;
+              "
+            />
+          </div>
+          <div class="cs-info">
+            <div class="cs-info-top">
+              <div class="cs-header">
+                <h2 class="cs-title"><em>FireFlink Mobile App</em></h2>
+                <span class="cs-date">Jun 2024</span>
+              </div>
+              <p class="cs-desc">
+                Designed a mobile companion app for FireFlink, bringing test
+                monitoring and reporting capabilities to iOS and Android with an
+                intuitive, thumb-friendly interface.
+              </p>
+              <div class="cs-tags">
+                <span class="tag">Mobile App</span>
+                <span class="tag">iOS & Android</span>
+                <span class="tag">Automation</span>
+              </div>
+            </div>
+            <div class="cs-info-bottom">
+              <span class="btn" style="font-size: 11px; padding: 10px 22px"
+                >View Feature</span
+              >
+            </div>
+          </div>
+        </a>
+
+        <a class="cs-card" href="product-features/user-management.html">
+          <div class="cs-image">
+            <div
+              class="cs-image-bg"
+              style="background: linear-gradient(135deg, #e4e8dc, #d0d8c4)"
+            ></div>
+            <img
+              loading="lazy"
+              src="images/product-features/user-management/user_management_thumbnail.jpg"
+              alt="User Management"
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-radius: inherit;
+              "
+            />
+          </div>
+          <div class="cs-info">
+            <div class="cs-info-top">
+              <div class="cs-header">
+                <h2 class="cs-title"><em>User Management</em></h2>
+                <span class="cs-date">Oct – Nov 2023</span>
+              </div>
+              <p class="cs-desc">
+                Designed a scalable user management system with role-based
+                access control, streamlining admin workflows and reducing
+                onboarding friction across teams.
+              </p>
+              <div class="cs-tags">
+                <span class="tag">SaaS</span>
+                <span class="tag">Admin</span>
+                <span class="tag">RBAC</span>
+              </div>
+            </div>
+            <div class="cs-info-bottom">
+              <span class="btn" style="font-size: 11px; padding: 10px 22px"
+                >View Feature</span
+              >
+            </div>
+          </div>
+        </a>
+
+        <a class="cs-card" href="product-features/indent-quotation.html">
+          <div class="cs-image">
+            <div
+              class="cs-image-bg"
+              style="background: linear-gradient(135deg, #e8e4d8, #d8d0c0)"
+            ></div>
+            <img
+              loading="lazy"
+              src="images/product-features/indent-quotation/indent_and_quotation_thumbnail.jpg"
+              alt="Indent & Quotation"
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-radius: inherit;
+              "
+            />
+          </div>
+          <div class="cs-info">
+            <div class="cs-info-top">
+              <div class="cs-header">
+                <h2 class="cs-title"><em>Indent & Quotation</em></h2>
+                <span class="cs-date">Aug – Sep 2022</span>
+              </div>
+              <p class="cs-desc">
+                Redesigned the indent and quotation workflow for a procurement
+                platform, reducing multi-step complexity into a clear, guided
+                process that cut task completion time significantly.
+              </p>
+              <div class="cs-tags">
+                <span class="tag">Procurement</span>
+                <span class="tag">Workflow</span>
+                <span class="tag">B2B</span>
+              </div>
+            </div>
+            <div class="cs-info-bottom">
+              <span class="btn" style="font-size: 11px; padding: 10px 22px"
+                >View Feature</span
+              >
+            </div>
+          </div>
+        </a>
+
+        <!-- Shopify App Integration — commented out, add back later
+      <a class="cs-card" href="product-features/shopify-app-integration.html">
+        <div class="cs-image">
+          <div class="cs-image-bg" style="background:linear-gradient(135deg,#dce8e0,#c8d8cc);"></div>
+          <div class="cs-image-placeholder">✦</div>
+        </div>
+        <div class="cs-info">
+          <div class="cs-info-top">
+            <div class="cs-header">
+              <h2 class="cs-title"><em>Shopify App Integration</em></h2>
+              <span class="cs-date">2024</span>
+            </div>
+            <p class="cs-desc">Designed the end-to-end UX for a Shopify app integration — bridging merchant workflows with a seamless embedded experience that follows Shopify's Polaris design guidelines.</p>
+            <div class="cs-tags">
+              <span class="tag">Shopify</span>
+              <span class="tag">Integration</span>
+              <span class="tag">E-commerce</span>
+            </div>
+          </div>
+          <div class="cs-info-bottom">
+            <span class="btn" style="font-size:11px;padding:10px 22px;">View Feature</span>
+          </div>
+        </div>
+      </a>
+      --></div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <span class="footer-quote"
+          >Design is not just what it looks like and feels like. Design is how
+          it works.</span
+        >
+        <a
+          class="footer-top" href="#top"
+          >Back to top ↑</a
+        >
+      </div>
+    </footer>
+
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+              observer.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+
+      document
+        .querySelectorAll(".cs-card")
+        .forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>

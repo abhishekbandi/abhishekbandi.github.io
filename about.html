@@ -1,0 +1,1526 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="About Abhishek Bandi — product designer with experience in UX research, interaction design, and building user-centred digital products."
+    />
+    <meta property="og:title" content="About — Abhishek Bandi" />
+    <meta
+      property="og:description"
+      content="Get to know Abhishek Bandi — his background, design philosophy, articles, and interests outside of work."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://abhishekbandi.me/images/index/Logo.png" />
+    <link rel="icon" type="image/png" href="images/index/Logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About — Abhishek Bandi</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* ── ABOUT PAGE ── */
+      .about-hero {
+        max-width: var(--max-w);
+        margin: 0 auto;
+        padding: 72px 40px 80px;
+        display: grid;
+        grid-template-columns: 1fr 400px;
+        gap: 80px;
+        align-items: start;
+        border-bottom: 1px solid var(--grey-200);
+      }
+
+      .about-hero h1 {
+        font-size: clamp(48px, 6vw, 80px);
+        margin-bottom: 32px;
+      }
+
+      .about-hero h1 em {
+        font-style: italic;
+        color: var(--grey-400);
+      }
+
+      .about-hero-lead {
+        font-size: 18px;
+        line-height: 1.75;
+        color: var(--grey-600);
+        max-width: 520px;
+        margin-bottom: 40px;
+        font-weight: 300;
+      }
+
+      .about-hero-actions {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      /* Photo card */
+      .about-photo-card {
+        position: sticky;
+        top: calc(var(--nav-height) + 32px);
+      }
+
+      .about-photo-frame {
+        width: 100%;
+        aspect-ratio: 3/4;
+        background: var(--grey-100);
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 24px;
+        z-index: 1;
+        transition: transform 0.35s ease;
+      }
+
+      .about-photo-card:hover .about-photo-frame {
+        transform: translate(4px, -4px);
+      }
+
+      .about-photo-card::before {
+        content: "";
+        position: absolute;
+        top: -16px;
+        left: -16px;
+        width: 100%;
+        aspect-ratio: 3/4;
+        background: #e8d9c0;
+        z-index: 0;
+      }
+
+      .about-photo-placeholder {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        color: var(--grey-400);
+        font-size: 13px;
+        letter-spacing: 0.06em;
+      }
+
+      .about-photo-placeholder svg {
+        opacity: 0.4;
+      }
+
+      .about-contact-card {
+        border: 1px solid var(--grey-200);
+        padding: 24px;
+      }
+
+      .about-contact-label {
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--grey-400);
+        margin-bottom: 12px;
+      }
+
+      .about-contact-email {
+        font-family: var(--font-display);
+        font-size: 20px;
+        font-weight: 300;
+        color: var(--black);
+        text-decoration: none;
+        display: block;
+        margin-bottom: 16px;
+        transition: color 0.2s;
+      }
+
+      .about-contact-email:hover {
+        color: var(--accent);
+      }
+
+      .about-contact-socials {
+        display: flex;
+        gap: 12px;
+        list-style: none;
+      }
+
+      .about-contact-socials a {
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--grey-400);
+        text-decoration: none;
+        border: 1px solid var(--grey-200);
+        padding: 6px 12px;
+        transition: all 0.2s;
+      }
+
+      .about-contact-socials a:hover {
+        border-color: var(--black);
+        color: var(--black);
+      }
+
+      /* ── STORY SECTION ── */
+      .about-story {
+        max-width: var(--max-w);
+        margin: 0 auto;
+        padding: 80px 40px;
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 80px;
+      }
+
+      .story-sidebar {
+        position: sticky;
+        top: calc(var(--nav-height) + 32px);
+        height: fit-content;
+      }
+
+      .story-sidebar h3 {
+        font-size: 14px;
+        font-weight: 400;
+        font-family: var(--font-body);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--grey-400);
+        margin-bottom: 24px;
+      }
+
+      .story-nav {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .story-nav a {
+        font-size: 14px;
+        color: var(--grey-400);
+        text-decoration: none;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--grey-200);
+        display: block;
+        transition: color 0.2s;
+      }
+
+      .story-nav a:hover {
+        color: var(--black);
+      }
+
+      .story-content {
+      }
+
+      .story-block {
+        margin-bottom: 64px;
+        scroll-margin-top: calc(var(--nav-height) + 32px);
+      }
+
+      .story-block h2 {
+        font-size: 36px;
+        margin-bottom: 20px;
+      }
+
+      .story-block p {
+        font-size: 15px;
+        line-height: 1.85;
+        color: var(--grey-600);
+        margin-bottom: 20px;
+      }
+
+      /* ── SKILLS ── */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2px;
+        margin-top: 40px;
+      }
+
+      .skill-item {
+        background: var(--grey-100);
+        padding: 24px;
+      }
+
+      .skill-name {
+        font-family: var(--font-display);
+        font-size: 22px;
+        font-weight: 300;
+        color: var(--black);
+        margin-bottom: 8px;
+      }
+
+      .skill-desc {
+        font-size: 13px;
+        color: var(--grey-400);
+        line-height: 1.6;
+      }
+
+      /* ── EXPERIENCE ── */
+      .experience-list {
+        margin-top: 8px;
+      }
+
+      .exp-item {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        gap: 32px;
+        padding: 28px 0;
+        border-bottom: 1px solid var(--grey-200);
+      }
+
+      .exp-year {
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        color: var(--grey-400);
+        padding-top: 4px;
+      }
+
+      .exp-role {
+        font-family: var(--font-display);
+        font-size: 22px;
+        font-weight: 300;
+        color: var(--black);
+        margin-bottom: 4px;
+      }
+
+      .exp-company {
+        font-size: 13px;
+        color: var(--grey-600);
+        margin-bottom: 10px;
+      }
+
+      .exp-desc {
+        font-size: 13px;
+        color: var(--grey-400);
+        line-height: 1.65;
+      }
+
+      /* ── INTERESTS ── */
+      .interest-sections {
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+        margin-top: 32px;
+      }
+
+      .interest-section-title {
+        font-family: var(--font-display);
+        font-size: 22px;
+        font-weight: 300;
+        font-style: italic;
+        color: var(--black);
+        margin-bottom: 16px;
+        border-bottom: 1px solid var(--grey-200);
+        padding-bottom: 12px;
+      }
+
+      .interest-content-area {
+        min-height: 200px;
+        background: var(--grey-100);
+        border: 1px dashed var(--grey-200);
+      }
+
+      /* ── PHOTO BENTO GRID ── */
+      .photo-bento {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 180px;
+        gap: 6px;
+      }
+
+      .photo-bento-item {
+        overflow: hidden;
+        background: var(--grey-200);
+        position: relative;
+      }
+
+      .photo-bento-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.55s var(--ease);
+      }
+
+      .photo-bento-item:hover img {
+        transform: scale(1.06);
+      }
+
+      .bento-big {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+      .bento-wide {
+        grid-column: span 2;
+      }
+      .bento-tall {
+        grid-row: span 2;
+      }
+
+      .photo-bento-item {
+        cursor: pointer;
+      }
+
+      @media (max-width: 768px) {
+        .photo-bento {
+          grid-template-columns: repeat(2, 1fr);
+          grid-auto-rows: 140px;
+        }
+        .bento-big {
+          grid-column: span 2;
+          grid-row: span 2;
+        }
+        .bento-wide {
+          grid-column: span 2;
+        }
+        .bento-tall {
+          grid-row: span 2;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .photo-bento {
+          grid-template-columns: repeat(2, 1fr);
+          grid-auto-rows: 120px;
+        }
+      }
+
+      /* ── LIGHTBOX ── */
+      .lightbox {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        background: rgba(0, 0, 0, 0.92);
+        align-items: center;
+        justify-content: center;
+      }
+
+      .lightbox.open {
+        display: flex;
+      }
+
+      .lightbox-img {
+        max-width: 80vw;
+        max-height: 80vh;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+      }
+
+      .lightbox-bg-fill {
+        max-width: 80vw;
+        max-height: 80vh;
+        width: 70vw;
+        height: 70vh;
+        border-radius: 4px;
+      }
+
+      .lightbox-close {
+        position: fixed;
+        top: 24px;
+        right: 24px;
+        width: 44px;
+        height: 44px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.2s;
+        z-index: 1001;
+      }
+
+      .lightbox-close:hover {
+        background: rgba(255, 255, 255, 0.18);
+      }
+
+      .lightbox-arrow {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 48px;
+        height: 48px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.2s;
+        z-index: 1001;
+      }
+
+      .lightbox-arrow:hover {
+        background: rgba(255, 255, 255, 0.18);
+      }
+      .lightbox-prev {
+        left: 24px;
+      }
+      .lightbox-next {
+        right: 24px;
+      }
+
+      /* ── TRAVEL CARDS ── */
+      .travel-cards {
+        display: flex;
+        gap: 16px;
+      }
+
+      .travel-card {
+        flex: 1;
+        overflow: hidden;
+        position: relative;
+        text-decoration: none;
+        color: inherit;
+        border: 1px solid var(--grey-200);
+        transition:
+          box-shadow 0.35s var(--ease),
+          transform 0.35s var(--ease);
+      }
+
+      .travel-card:hover {
+        box-shadow: 0 16px 48px rgba(15, 15, 13, 0.09);
+        transform: translateY(-4px);
+      }
+
+      .travel-card-image {
+        width: 100%;
+        aspect-ratio: 4/3;
+        background: var(--grey-200);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .travel-card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.6s var(--ease);
+      }
+
+      .travel-card:hover .travel-card-image img {
+        transform: scale(1.04);
+      }
+
+      .travel-card-location {
+        padding: 12px 16px;
+        font-size: 13px;
+        color: var(--grey-600);
+        background: var(--white);
+        border-top: 1px solid var(--grey-200);
+      }
+
+      /* ── BOOK SCROLL ── */
+      .book-scroll-outer {
+        overflow-x: auto;
+        overflow-y: visible;
+        scrollbar-width: none;
+        cursor: grab;
+        padding-bottom: 32px;
+        width: calc(100% + 40px + max(0px, (100vw - var(--max-w)) / 2));
+      }
+
+      .book-scroll-outer::-webkit-scrollbar {
+        display: none;
+      }
+      .book-scroll-outer:active {
+        cursor: grabbing;
+      }
+
+      .book-scroll-track {
+        display: flex;
+        gap: 16px;
+        width: max-content;
+        scroll-snap-type: x mandatory;
+        padding-right: 40px;
+      }
+
+      .book-card {
+        flex: 0 0 45%;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid var(--grey-200);
+        overflow: hidden;
+        scroll-snap-align: start;
+        background: var(--white);
+        transition:
+          box-shadow 0.35s var(--ease),
+          transform 0.35s var(--ease);
+      }
+
+      .book-card:hover {
+        box-shadow: 0 16px 48px rgba(15, 15, 13, 0.09);
+        transform: translateY(-4px);
+      }
+
+      .book-card-image {
+        width: 100%;
+        aspect-ratio: 4/5;
+        background: var(--grey-100);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .book-card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.6s var(--ease);
+      }
+
+      .book-card:hover .book-card-image img {
+        transform: scale(1.04);
+      }
+
+      .book-card-body {
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        flex: 1;
+      }
+
+      .book-card-title {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--black);
+        line-height: 1.4;
+      }
+
+      .book-card-btn {
+        font-family: var(--font-body);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--black);
+        text-decoration: none;
+        border: 1px solid var(--grey-200);
+        padding: 7px 10px;
+        text-align: center;
+        transition:
+          background 0.2s,
+          border-color 0.2s,
+          color 0.2s;
+        margin-top: auto;
+      }
+
+      .book-card-btn:hover {
+        background: var(--black);
+        border-color: var(--black);
+        color: var(--white);
+      }
+
+      /* ── ARTICLE SCROLL ── */
+      .article-scroll-outer {
+        overflow-x: auto;
+        overflow-y: visible;
+        scrollbar-width: none;
+        cursor: grab;
+        padding-bottom: 32px;
+        width: calc(100% + 40px + max(0px, (100vw - var(--max-w)) / 2));
+      }
+
+      .article-scroll-outer::-webkit-scrollbar {
+        display: none;
+      }
+      .article-scroll-outer:active {
+        cursor: grabbing;
+      }
+
+      .article-scroll-track {
+        display: flex;
+        gap: 16px;
+        width: max-content;
+        scroll-snap-type: x mandatory;
+        padding-right: 40px;
+      }
+
+      .article-card {
+        flex: 0 0 260px;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid var(--grey-200);
+        overflow: hidden;
+        scroll-snap-align: start;
+        background: var(--white);
+        transition:
+          box-shadow 0.35s var(--ease),
+          transform 0.35s var(--ease);
+      }
+
+      .article-card:hover {
+        box-shadow: 0 16px 48px rgba(15, 15, 13, 0.09);
+        transform: translateY(-4px);
+      }
+
+      .article-card-image {
+        width: 100%;
+        aspect-ratio: 16/9;
+        background: var(--grey-100);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .article-card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.6s var(--ease);
+      }
+
+      .article-card:hover .article-card-image img {
+        transform: scale(1.04);
+      }
+
+      .article-card-body {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        flex: 1;
+      }
+
+      .article-card-title {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--black);
+        line-height: 1.45;
+      }
+
+      .article-card-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        color: var(--black);
+        text-decoration: none;
+        margin-top: auto;
+        transition: gap 0.2s var(--ease);
+      }
+
+      .article-card-link:hover {
+        gap: 10px;
+      }
+
+      .article-card-link svg {
+        flex-shrink: 0;
+        transition: transform 0.2s var(--ease);
+      }
+
+      .article-card-link:hover svg {
+        transform: translateX(2px);
+      }
+
+      @media (max-width: 960px) {
+        .about-hero {
+          grid-template-columns: 1fr;
+        }
+        .about-photo-card {
+          position: static;
+        }
+        .about-photo-frame {
+          aspect-ratio: 4/3;
+        }
+        .about-story {
+          grid-template-columns: 1fr;
+        }
+        .story-sidebar {
+          position: static;
+        }
+        .story-nav {
+          display: none;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .about-hero {
+          gap: 40px;
+          padding: 48px 32px;
+        }
+        .about-story {
+          gap: 32px;
+          padding: 48px 32px;
+        }
+        .skills-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 12px;
+        }
+        .articles-scroll-track .article-card {
+          flex: 0 0 280px;
+        }
+        .book-scroll-outer {
+          width: 100%;
+          margin-left: 0;
+          padding-left: 32px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .about-hero,
+        .about-story {
+          padding: 48px 24px;
+        }
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+        .exp-item {
+          grid-template-columns: 1fr;
+          gap: 4px;
+        }
+        .book-scroll-outer {
+          padding-left: 24px;
+        }
+        .articles-scroll-track .article-card {
+          flex: 0 0 260px;
+        }
+        .photo-bento {
+          grid-auto-rows: 100px;
+        }
+      }
+    </style>
+  </head>
+  <body id="top">
+    <!-- NAV -->
+    <nav>
+      <div class="nav-inner">
+        <a class="nav-logo" href="index.html">Abhishek<span>.</span>Bandi</a>
+        <ul class="nav-links">
+          <li><a href="work.html">Work</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="resume.html">Resume</a></li>
+        </ul>
+        <button
+          class="nav-hamburger"
+          aria-label="Toggle menu"
+          onclick="
+            this.classList.toggle('open');
+            document.querySelector('.nav-links').classList.toggle('nav-open');
+          "
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <main>
+      <!-- ABOUT HERO -->
+      <div class="about-hero" id="contact">
+        <div class="fade-up">
+          <div class="section-label">About Me</div>
+          <h1>Hello, I'm<br /><em>Abhishek Bandi</em></h1>
+          <p class="about-hero-lead">
+            A Product Designer with 4+ years of experience bridging the gap
+            between complex SaaS workflows and intuitive user experiences.
+            Specialized in building scalable design systems and AI-driven design
+            efficiency.
+          </p>
+          <div class="about-hero-actions">
+            <a class="btn" href="resume.html">View Resume</a>
+            <a class="btn btn-ghost" href="work.html">See My Work</a>
+          </div>
+        </div>
+
+        <div class="about-photo-card fade-up">
+          <div class="about-photo-frame">
+            <img
+              src="images/about/myself.jpg"
+              alt="Abhishek Bandi"
+              style="width: 100%; height: 100%; object-fit: cover; display: block;"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- STORY -->
+      <div class="about-story">
+        <div class="story-sidebar">
+          <h3>Contents</h3>
+          <ul class="story-nav">
+            <li><a href="#story">My Story</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#interests">Interests</a></li>
+          </ul>
+        </div>
+
+        <div class="story-content">
+          <div class="story-block" id="story">
+            <div class="section-label">My Story</div>
+            <h2>How I got <em>here</em></h2>
+            <p>
+              I started my journey with a Bachelor's in Computer Applications,
+              where I discovered that the intersection of technology and human
+              behaviour was where I wanted to spend my career. What began as a
+              curiosity about how software feels to use quickly became a deep
+              passion for designing experiences that actually work for people.
+            </p>
+            <p>
+              Over 4+ years I've worked across SaaS platforms, agri-tech
+              e-commerce, and automation tooling — each role sharpening a
+              different edge. From redesigning a logistics platform that reduced
+              task creation time by 20%, to building scalable design systems
+              that cut developer handoff friction by 25%, I've learned that good
+              design lives in the details and scales through systems.
+            </p>
+            <p>
+              Today I'm focused on the places where AI meets design workflow —
+              finding ways to move faster without sacrificing craft. I'm
+              currently a Product Designer at Zopping Technology, and I'm always
+              open to conversations about interesting problems worth solving.
+            </p>
+          </div>
+
+          <div class="story-block" id="skills">
+            <div class="section-label">Skills</div>
+            <h2>What I <em>bring</em></h2>
+            <p>
+              I work across the full design process — from early research and
+              strategy through to final delivery and design systems.
+            </p>
+            <div class="skills-grid">
+              <div class="skill-item">
+                <div class="skill-name">Design Systems</div>
+                <div class="skill-desc">
+                  Figma Variables, Tokens, scalable component libraries,
+                  developer handoff
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-name">User Research</div>
+                <div class="skill-desc">
+                  Usability testing, user interviews, journey mapping.
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-name">Product Strategy</div>
+                <div class="skill-desc">
+                  Stakeholder alignment, roadmap thinking, business objective
+                  mapping
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-name">Prototyping</div>
+                <div class="skill-desc">
+                  High-fidelity prototypes, micro-interactions, AI-assisted
+                  workflows
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="story-block" id="experience">
+            <div class="section-label">Experience</div>
+            <h2>Where I've <em>worked</em></h2>
+            <div class="experience-list">
+              <div class="exp-item">
+                <span class="exp-year">2025 — Now</span>
+                <div>
+                  <div class="exp-role">Product Designer</div>
+                  <div class="exp-company">Zopping Technology Pvt Ltd</div>
+                  <div class="exp-desc">
+                    Building scalable design systems with Figma Variables and
+                    Tokens, leading end-to-end product design across web and
+                    mobile, and implementing AI-driven workflows to improve
+                    design efficiency.
+                  </div>
+                </div>
+              </div>
+              <div class="exp-item">
+                <span class="exp-year">2024 — 2025</span>
+                <div>
+                  <div class="exp-role">Sr. UI/UX Designer</div>
+                  <div class="exp-company">FireFlink Pvt Ltd</div>
+                  <div class="exp-desc">
+                    Transformed a complex web-based automation testing tool into
+                    a user-centric interface, collaborating with product and
+                    engineering to align design strategy with business
+                    objectives.
+                  </div>
+                </div>
+              </div>
+              <div class="exp-item">
+                <span class="exp-year">2021 — 2024</span>
+                <div>
+                  <div class="exp-role">UI/UX Designer</div>
+                  <div class="exp-company">
+                    Faarms Global Tech Venture Pvt Ltd
+                  </div>
+                  <div class="exp-desc">
+                    Enhanced e-commerce UX across an agri-tech platform,
+                    addressing 25+ usability issues, designing a logistics case
+                    study that improved task creation speed by 20%, and
+                    standardising UI for a 2x faster design process.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="story-block" id="interests">
+            <div class="section-label">Beyond Work</div>
+            <h2>Things I <em>love</em></h2>
+            <p>
+              Outside of design, I'm interested in the things that make the
+              world more interesting — Travelling, Reading, Writing, and
+              Photography.
+            </p>
+            <div class="interest-sections">
+              <!-- Travelling -->
+              <div>
+                <h4 class="interest-section-title">Travelling</h4>
+                <div class="travel-cards">
+                  <a class="travel-card" href="javascript:void(0)">
+                    <div class="travel-card-image">
+                      <img
+                        loading="lazy"
+                        src="images/about/travelling/Chikmagalur.jpg"
+                        alt="Chikmagalur"
+                      />
+                    </div>
+                    <div class="travel-card-location">Chikmagalur, India</div>
+                  </a>
+                  <a class="travel-card" href="javascript:void(0)">
+                    <div class="travel-card-image">
+                      <img
+                        loading="lazy"
+                        src="images/about/travelling/kerala.png"
+                        alt="Kerala"
+                      />
+                    </div>
+                    <div class="travel-card-location">Kerala, India</div>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Reading — commented out, add back when book links are ready
+              <div>
+                <h4 class="interest-section-title">Reading</h4>
+                <div class="book-scroll-outer" id="bookTrack">
+                  <div class="book-scroll-track">
+
+                    <div class="book-card">
+                      <div class="book-card-image" style="background:linear-gradient(135deg,#dce8e4,#c8d4cc);"></div>
+                      <div class="book-card-body">
+                        <p class="book-card-title">Book Title One</p>
+                        <a class="book-card-btn" href="#" target="_blank" rel="noopener">View on Amazon</a>
+                      </div>
+                    </div>
+
+                    <div class="book-card">
+                      <div class="book-card-image" style="background:linear-gradient(135deg,#dce4e8,#c8d0da);"></div>
+                      <div class="book-card-body">
+                        <p class="book-card-title">Book Title Two</p>
+                        <a class="book-card-btn" href="#" target="_blank" rel="noopener">View on Amazon</a>
+                      </div>
+                    </div>
+
+                    <div class="book-card">
+                      <div class="book-card-image" style="background:linear-gradient(135deg,#e4dce8,#d4c8da);"></div>
+                      <div class="book-card-body">
+                        <p class="book-card-title">Book Title Three</p>
+                        <a class="book-card-btn" href="#" target="_blank" rel="noopener">View on Amazon</a>
+                      </div>
+                    </div>
+
+                    <div class="book-card">
+                      <div class="book-card-image" style="background:linear-gradient(135deg,#e8e4dc,#d8d0c4);"></div>
+                      <div class="book-card-body">
+                        <p class="book-card-title">Book Title Four</p>
+                        <a class="book-card-btn" href="#" target="_blank" rel="noopener">View on Amazon</a>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              -->
+
+              <!-- Writing -->
+              <div>
+                <h4 class="interest-section-title">Writing</h4>
+                <div class="article-scroll-outer" id="articleTrack">
+                  <div class="article-scroll-track">
+                    <a
+                      class="article-card"
+                      href="https://medium.com/@iabhishekbandi/time-during-covid-16695125d663"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      <div
+                        class="article-card-image"
+                        style="
+                          background: linear-gradient(135deg, #e4e8dc, #d0d8c4);
+                        "
+                      >
+                        <img
+                          loading="lazy"
+                          src="images/article_1.webp"
+                          alt="Time During Covid"
+                          style="width: 100%; height: 100%; object-fit: cover"
+                        />
+                      </div>
+                      <div class="article-card-body">
+                        <p class="article-card-title">Time During Covid</p>
+                        <span class="article-card-link">
+                          Read more
+                          <svg
+                            width="14"
+                            height="14"
+                            viewBox="0 0 14 14"
+                            fill="none"
+                          >
+                            <path
+                              d="M1 7h12M8 3l5 4-5 4"
+                              stroke="currentColor"
+                              stroke-width="1.2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                    </a>
+
+                    <a
+                      class="article-card"
+                      href="https://medium.com/@iabhishekbandi/recycled-phone-numbers-a-silent-threat-to-digital-privacy-c5a1ef6408e3"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      <div
+                        class="article-card-image"
+                        style="
+                          background: linear-gradient(135deg, #dce4e8, #c8d4da);
+                        "
+                      >
+                        <img
+                          loading="lazy"
+                          src="images/article_2.webp"
+                          alt="Recycled Phone Numbers: A Silent Threat to Digital Privacy"
+                          style="width: 100%; height: 100%; object-fit: cover"
+                        />
+                      </div>
+                      <div class="article-card-body">
+                        <p class="article-card-title">
+                          Recycled Phone Numbers: A Silent Threat to Digital
+                          Privacy
+                        </p>
+                        <span class="article-card-link">
+                          Read more
+                          <svg
+                            width="14"
+                            height="14"
+                            viewBox="0 0 14 14"
+                            fill="none"
+                          >
+                            <path
+                              d="M1 7h12M8 3l5 4-5 4"
+                              stroke="currentColor"
+                              stroke-width="1.2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Photography -->
+              <div>
+                <h4 class="interest-section-title">Photography</h4>
+                <div class="photo-bento">
+                  <div class="photo-bento-item bento-big">
+                    <img
+                      loading="lazy"
+                      src="images/about/photography/photography_1.jpg"
+                      alt="Photography 1"
+                    />
+                  </div>
+                  <div class="photo-bento-item">
+                    <img
+                      loading="lazy"
+                      src="images/about/photography/photography_2.jpg"
+                      alt="Photography 2"
+                    />
+                  </div>
+                  <div class="photo-bento-item">
+                    <img
+                      loading="lazy"
+                      src="images/about/photography/photography_3.jpg"
+                      alt="Photography 3"
+                    />
+                  </div>
+                  <div class="photo-bento-item bento-tall">
+                    <img
+                      loading="lazy"
+                      src="images/about/photography/photography_4.jpg"
+                      alt="Photography 4"
+                    />
+                  </div>
+                  <div class="photo-bento-item">
+                    <img
+                      loading="lazy"
+                      src="images/about/photography/photography_5.jpg"
+                      alt="Photography 5"
+                    />
+                  </div>
+                  <div class="photo-bento-item bento-wide">
+                    <img
+                      loading="lazy"
+                      src="images/about/photography/photography_6.jpg"
+                      alt="Photography 6"
+                    />
+                  </div>
+                  <div class="photo-bento-item">
+                    <img
+                      loading="lazy"
+                      src="images/about/photography/photography_7.jpg"
+                      alt="Photography 7"
+                    />
+                  </div>
+                  <div class="photo-bento-item">
+                    <img
+                      loading="lazy"
+                      src="images/about/photography/photography_8.jpg"
+                      alt="Photography 8"
+                    />
+                  </div>
+                  <div class="photo-bento-item bento-wide">
+                    <img
+                      loading="lazy"
+                      src="images/about/photography/photography_9.jpg"
+                      alt="Photography 9"
+                    />
+                  </div>
+                  <div class="photo-bento-item">
+                    <img
+                      loading="lazy"
+                      src="images/about/photography/photography_10.jpg"
+                      alt="Photography 10"
+                    />
+                  </div>
+                  <div class="photo-bento-item bento-big">
+                    <img
+                      loading="lazy"
+                      src="images/about/photography/photography_11.jpg"
+                      alt="Photography 11"
+                    />
+                  </div>
+                  <div class="photo-bento-item">
+                    <img
+                      loading="lazy"
+                      src="images/about/photography/photography_12.jpg"
+                      alt="Photography 12"
+                    />
+                  </div>
+                  <div class="photo-bento-item">
+                    <img
+                      loading="lazy"
+                      src="images/about/photography/photography_13.jpg"
+                      alt="Photography 13"
+                    />
+                  </div>
+                  <div class="photo-bento-item bento-wide">
+                    <img
+                      loading="lazy"
+                      src="images/about/photography/photography_15.jpg"
+                      alt="Photography 14"
+                    />
+                  </div>
+                  <div class="photo-bento-item">
+                    <img
+                      loading="lazy"
+                      src="images/about/photography/photography_16.jpg"
+                      alt="Photography 15"
+                    />
+                  </div>
+                  <div class="photo-bento-item">
+                    <img
+                      loading="lazy"
+                      src="images/about/photography/photography_17.JPG"
+                      alt="Photography 16"
+                    />
+                  </div>
+                  <div class="photo-bento-item bento-wide">
+                    <img
+                      loading="lazy"
+                      src="images/about/photography/photography_18.jpg"
+                      alt="Photography 17"
+                    />
+                  </div>
+                  <div class="photo-bento-item">
+                    <img
+                      loading="lazy"
+                      src="images/about/photography/photography_20.jpg"
+                      alt="Photography 18"
+                    />
+                  </div>
+                  <div class="photo-bento-item">
+                    <img
+                      loading="lazy"
+                      src="images/about/photography/photography_21.jpg"
+                      alt="Photography 19"
+                    />
+                  </div>
+                  <div class="photo-bento-item">
+                    <img
+                      loading="lazy"
+                      src="images/about/photography/photography_22.jpg"
+                      alt="Photography 20"
+                    />
+                  </div>
+                  <div class="photo-bento-item">
+                    <img
+                      loading="lazy"
+                      src="images/about/photography/photography_23.jpg"
+                      alt="Photography 21"
+                    />
+                  </div>
+                  <div class="photo-bento-item">
+                    <img
+                      loading="lazy"
+                      src="images/about/photography/photography_24.jpg"
+                      alt="Photography 22"
+                    />
+                  </div>
+                  <div class="photo-bento-item">
+                    <img
+                      loading="lazy"
+                      src="images/about/photography/photography_25.jpg"
+                      alt="Photography 23"
+                    />
+                  </div>
+                  <div class="photo-bento-item">
+                    <img
+                      loading="lazy"
+                      src="images/about/photography/photography_26.jpg"
+                      alt="Photography 24"
+                    />
+                  </div>
+                  <div class="photo-bento-item">
+                    <img
+                      loading="lazy"
+                      src="images/about/photography/photography_27.jpg"
+                      alt="Photography 25"
+                    />
+                  </div>
+                  <div class="photo-bento-item">
+                    <img
+                      loading="lazy"
+                      src="images/about/photography/photography_28.jpg"
+                      alt="Photography 26"
+                    />
+                  </div>
+                  <div class="photo-bento-item">
+                    <img
+                      loading="lazy"
+                      src="images/about/photography/photography_29.jpg"
+                      alt="Photography 27"
+                    />
+                  </div>
+                  <div class="photo-bento-item">
+                    <img
+                      loading="lazy"
+                      src="images/about/photography/photography_30.jpg"
+                      alt="Photography 28"
+                    />
+                  </div>
+                  <div class="photo-bento-item">
+                    <img
+                      loading="lazy"
+                      src="images/about/photography/photography_31.jpg"
+                      alt="Photography 29"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path
+            d="M2 2l12 12M14 2L2 14"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          />
+        </svg>
+      </button>
+      <button
+        class="lightbox-arrow lightbox-prev"
+        id="lightboxPrev"
+        aria-label="Previous"
+      >
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path
+            d="M10 3L5 8l5 5"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+      <div id="lightboxContent"></div>
+      <button
+        class="lightbox-arrow lightbox-next"
+        id="lightboxNext"
+        aria-label="Next"
+      >
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path
+            d="M6 3l5 5-5 5"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <span class="footer-quote"
+          >Design is not just what it looks like and feels like. Design is how
+          it works.</span
+        >
+        <a
+          class="footer-top" href="#top"
+          >Back to top ↑</a
+        >
+      </div>
+    </footer>
+
+    <script>
+      // Lightbox
+      const items = Array.from(document.querySelectorAll(".photo-bento-item"));
+      const lightbox = document.getElementById("lightbox");
+      const content = document.getElementById("lightboxContent");
+      let current = 0;
+
+      function showSlide(index) {
+        current = (index + items.length) % items.length;
+        const item = items[current];
+        const img = item.querySelector("img");
+        const bg = item.style.background || item.style.backgroundImage;
+        content.innerHTML = img
+          ? `<img loading="lazy" class="lightbox-img" src="${img.src}" alt="${img.alt}">`
+          : `<div class="lightbox-bg-fill" style="background:${bg};border-radius:4px;"></div>`;
+      }
+
+      items.forEach((item, i) => {
+        item.addEventListener("click", () => {
+          showSlide(i);
+          lightbox.classList.add("open");
+        });
+      });
+
+      document
+        .getElementById("lightboxPrev")
+        .addEventListener("click", () => showSlide(current - 1));
+      document
+        .getElementById("lightboxNext")
+        .addEventListener("click", () => showSlide(current + 1));
+
+      const lbPrev = document.getElementById("lightboxPrev");
+      const lbNext = document.getElementById("lightboxNext");
+
+      function closeLightbox() {
+        lightbox.classList.remove("open");
+        lbPrev.style.display = "";
+        lbNext.style.display = "";
+      }
+
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (!lightbox.classList.contains("open")) return;
+        if (e.key === "Escape") closeLightbox();
+        if (e.key === "ArrowLeft") showSlide(current - 1);
+        if (e.key === "ArrowRight") showSlide(current + 1);
+      });
+
+      document
+        .getElementById("lightboxClose")
+        .addEventListener("click", closeLightbox);
+
+      // Travel card lightbox (no prev/next arrows)
+      document.querySelectorAll(".travel-card").forEach((card) => {
+        card.addEventListener("click", (e) => {
+          e.preventDefault();
+          const img = card.querySelector("img");
+          if (!img) return;
+          content.innerHTML = `<img loading="lazy" class="lightbox-img" src="${img.src}" alt="${img.alt}">`;
+          lbPrev.style.display = "none";
+          lbNext.style.display = "none";
+          lightbox.classList.add("open");
+        });
+      });
+    </script>
+
+    <script>
+      // Drag-to-scroll for book track
+      [
+        document.getElementById("bookTrack"),
+        document.getElementById("articleTrack"),
+      ].forEach((outer) => {
+        let isDown = false,
+          startX,
+          scrollLeft;
+        outer.addEventListener("mousedown", (e) => {
+          isDown = true;
+          startX = e.pageX - outer.offsetLeft;
+          scrollLeft = outer.scrollLeft;
+        });
+        outer.addEventListener("mouseleave", () => (isDown = false));
+        outer.addEventListener("mouseup", () => (isDown = false));
+        outer.addEventListener("mousemove", (e) => {
+          if (!isDown) return;
+          e.preventDefault();
+          outer.scrollLeft =
+            scrollLeft - (e.pageX - outer.offsetLeft - startX) * 1.2;
+        });
+      });
+    </script>
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.style.opacity = "1";
+              e.target.style.transform = "translateY(0)";
+              observer.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.08 },
+      );
+
+      document
+        .querySelectorAll(".story-block, .skill-item, .exp-item")
+        .forEach((el, i) => {
+          el.style.opacity = "0";
+          el.style.transform = "translateY(20px)";
+          el.style.transition = `opacity 0.55s ease ${i * 0.05}s, transform 0.55s ease ${i * 0.05}s`;
+          observer.observe(el);
+        });
+    </script>
+  </body>
+</html>

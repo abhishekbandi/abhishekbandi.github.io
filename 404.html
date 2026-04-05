@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Page not found — Abhishek Bandi" />
+  <link rel="icon" type="image/png" href="images/index/Logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Abhishek Bandi</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .error-wrap {
+      min-height: calc(100vh - var(--nav-height));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 40px;
+      text-align: center;
+    }
+    .error-inner {
+      max-width: 480px;
+    }
+    .error-code {
+      font-family: var(--font-display);
+      font-size: clamp(80px, 15vw, 160px);
+      font-weight: 300;
+      line-height: 1;
+      color: var(--grey-200);
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+    }
+    .error-title {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 300;
+      color: var(--black);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .error-desc {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--grey-600);
+      margin-bottom: 40px;
+    }
+    .error-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .error-link-secondary {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--grey-600);
+      text-decoration: none;
+      border: 1px solid var(--grey-200);
+      padding: 11px 24px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .error-link-secondary:hover {
+      border-color: var(--black);
+      color: var(--black);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">Abhishek<span>.</span>Bandi</a>
+      <ul class="nav-links">
+        <li><a href="work.html">Work</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="resume.html">Resume</a></li>
+      </ul>
+      <button class="nav-hamburger" aria-label="Toggle menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('nav-open')"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <main>
+    <div class="error-wrap">
+      <div class="error-inner">
+        <div class="error-code">404</div>
+        <h1 class="error-title">This page doesn't exist</h1>
+        <p class="error-desc">The page you're looking for may have moved or the link might be broken. Let's get you back on track.</p>
+        <div class="error-actions">
+          <a class="btn" href="index.html">Go Home</a>
+          <a class="error-link-secondary" href="work.html">View Work</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">© 2025 Abhishek Bandi</span>
+    </div>
+  </footer>
+
+</body>
+</html>
