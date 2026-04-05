@@ -429,6 +429,216 @@ body.menu-open { overflow: hidden; }
   .nav-hamburger { z-index: 400; }
 }
 
+/* ── PASSWORD MODAL ── */
+.pw-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: var(--white);
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.pw-overlay.pw-active { display: flex; }
+
+.pw-modal {
+  background: var(--white);
+  width: 100%;
+  max-width: 420px;
+  padding: 48px 40px 40px;
+  position: relative;
+}
+
+.pw-close {
+  position: fixed;
+  top: 24px; right: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--grey-400);
+  padding: 4px;
+  line-height: 1;
+  transition: color 0.2s;
+  z-index: 9001;
+}
+.pw-close:hover { color: var(--black); }
+
+.pw-lock-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--grey-100);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: var(--grey-600);
+}
+
+.pw-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--black);
+  margin-bottom: 6px;
+}
+
+.pw-subtitle {
+  font-size: 13px;
+  color: var(--grey-600);
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.pw-input {
+  width: 100%;
+  border: 1px solid var(--grey-200);
+  border-radius: 0;
+  padding: 13px 16px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--black);
+  background: var(--white);
+  outline: none;
+  transition: border-color 0.2s;
+  margin-bottom: 8px;
+  letter-spacing: 0.2em;
+}
+.pw-input:focus { border-color: var(--black); }
+.pw-input.pw-error { border-color: #b94040; }
+
+.pw-error-msg {
+  font-size: 12px;
+  color: #b94040;
+  margin-bottom: 14px;
+  display: none;
+  letter-spacing: 0;
+}
+.pw-error-msg.visible { display: block; }
+
+.pw-submit {
+  width: 100%;
+  background: var(--black);
+  color: var(--white);
+  border: none;
+  padding: 14px 24px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-bottom: 28px;
+}
+.pw-submit:hover { background: #2a2a28; }
+
+.pw-note {
+  font-size: 12px;
+  color: var(--grey-400);
+  line-height: 1.75;
+  border-top: 1px solid var(--grey-200);
+  padding-top: 20px;
+  text-align: center;
+  font-style: italic;
+}
+.pw-note a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.pw-note a:hover { text-decoration: underline; }
+
+/* Lock badge on card images */
+.card-lock-badge {
+  position: absolute;
+  top: 12px; right: 12px;
+  width: 30px; height: 30px;
+  background: rgba(15, 15, 13, 0.65);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+@media (max-width: 600px) {
+  .pw-modal { padding: 40px 24px 32px; }
+  .pw-title { font-size: 24px; }
+}
+
+/* ── FIGMA BAR GLOBAL ── */
+.cs-figma-icon svg {
+  width: 20px !important;
+  height: 30px !important;
+}
+
+/* Lock icon inline next to figma title */
+.cs-figma-bar-text {
+  display: flex !important;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cs-figma-bar-text strong {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 6px;
+}
+
+.cs-figma-bar-text strong::after {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230f0f0d' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='11' width='18' height='11' rx='2'/%3E%3Cpath d='M7 11V7a5 5 0 0 1 10 0v4'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+}
+
+/* Hero image — match index card 16/9 on mobile */
+@media (max-width: 600px) {
+  .cs-hero-image {
+    height: auto !important;
+    aspect-ratio: 16/9 !important;
+  }
+}
+
+/* Overview section — compact + bold on mobile */
+@media (max-width: 600px) {
+  .cs-overview-cell {
+    padding: 20px !important;
+  }
+  .cs-overview-value {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+  }
+  .cs-overview-label {
+    margin-bottom: 4px !important;
+  }
+}
+
+
+/* Figma bar — mobile stack */
+@media (max-width: 600px) {
+  .cs-figma-bar {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+  .cs-figma-bar-left {
+    align-items: flex-start !important;
+  }
+  .cs-figma-btn {
+    width: auto !important;
+    padding: 10px 16px !important;
+    font-size: 13px !important;
+  }
+}
+
 /* ── LIGHTBOX ── */
 #lb-overlay {
   display: none;

@@ -187,8 +187,8 @@
     }
 
     .cs-role-card:first-child {
-      padding-left: 0;
-      border-left: none;
+      padding-left: 22px;
+      border-left: 1px solid var(--grey-200, #e0e0e0);
     }
 
     .cs-role-card-heading {
@@ -392,7 +392,7 @@
     .cs-figma-icon svg { width: 38px; height: 57px; transition: transform 0.2s ease; }
 
     .cs-figma-bar-text { font-size: 13px; color: var(--grey-600); }
-    .cs-figma-bar-text strong { display: block; font-size: 13px; font-weight: 600; color: var(--black); margin-bottom: 2px; }
+    .cs-figma-bar-text strong { font-size: 13px; font-weight: 600; color: var(--black); margin-bottom: 0; }
 
     .cs-figma-btn {
       font-size: 12px;
@@ -424,6 +424,11 @@
       .cs-hero-image { height: 360px; font-size: 72px; }
       .cs-next-inner { padding: 48px 24px; }
       .cs-image-placeholder { height: 220px; }
+      .cs-section-body { min-width: 0; }
+      .cs-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .cs-table { min-width: 480px; }
+      .cs-table td:first-child { white-space: normal; }
+      .cs-table th, .cs-table td { padding: 10px 12px; font-size: 13px; }
     }
       @media (max-width: 360px) {
         .cs-hero-inner, .cs-content { padding: 0 16px; }
@@ -517,6 +522,7 @@
           </div>
 
           <div class="cs-figma-bars">
+            <!-- FIGMA BARS (commented out)
             <a class="cs-figma-bar" href="https://www.figma.com/design/ANqfYDYLyXQibHBclUIbI6/Case-Study--Restaurant-Theme-Web-?node-id=5-2&t=OJ5lQrdieZGyrV0h-1" target="_blank" rel="noopener">
               <div class="cs-figma-bar-left">
                 <div class="cs-figma-icon">
@@ -553,6 +559,7 @@
               </div>
               <span class="cs-figma-btn">View Design →</span>
             </a>
+            -->
           </div>
         </div>
       </div>

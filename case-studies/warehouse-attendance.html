@@ -61,7 +61,7 @@
 
     .cs-role-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 24px 0 0; }
     .cs-role-card { padding: 0 22px; display: flex; flex-direction: column; gap: 8px; border-left: 1px solid var(--grey-200); }
-    .cs-role-card:first-child { padding-left: 0; border-left: none; }
+    .cs-role-card:first-child { padding-left: 22px; border-left: 1px solid var(--grey-200, #e0e0e0); }
     .cs-role-card-heading { font-size: 13px; font-weight: 700; color: var(--black); letter-spacing: 0.02em; text-transform: uppercase; }
     .cs-role-card-body { font-size: 13px; line-height: 1.65; color: var(--grey-600); }
 
@@ -109,7 +109,7 @@
     .cs-figma-icon { display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .cs-figma-icon svg { width: 38px; height: 57px; transition: transform 0.2s ease; }
     .cs-figma-bar-text { font-size: 13px; color: var(--grey-600); }
-    .cs-figma-bar-text strong { display: block; font-size: 13px; font-weight: 600; color: var(--black); margin-bottom: 2px; }
+    .cs-figma-bar-text strong { font-size: 13px; font-weight: 600; color: var(--black); margin-bottom: 0; }
     .cs-figma-btn { font-size: 12px; font-weight: 500; color: var(--black); border: 1px solid var(--grey-200); border-radius: 6px; padding: 6px 14px; white-space: nowrap; background: var(--white); flex-shrink: 0; }
 
     .cs-results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--grey-200); border: 1px solid var(--grey-200); border-radius: 12px; overflow: hidden; margin-top: 32px; }
@@ -230,6 +230,7 @@
             </div>
           </div>
 
+          <!-- FIGMA BAR (commented out)
           <a class="cs-figma-bar" href="https://www.figma.com/design/kO3QzALu3qlprcHPpkssk7/Case-study--warehouse-attendance-?node-id=0-1&t=knAOnNJ7ZgzfmCu8-1" target="_blank" rel="noopener">
             <div class="cs-figma-bar-left">
               <div class="cs-figma-icon">
@@ -248,6 +249,7 @@
             </div>
             <span class="cs-figma-btn">View Design →</span>
           </a>
+          -->
         </div>
       </div>
 

@@ -78,7 +78,7 @@
     .cs-figma-icon { display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .cs-figma-icon svg { width: 38px; height: 57px; transition: transform 0.2s ease; }
     .cs-figma-bar-text { font-size: 13px; color: var(--grey-600); }
-    .cs-figma-bar-text strong { display: block; font-size: 13px; font-weight: 600; color: var(--black); margin-bottom: 2px; }
+    .cs-figma-bar-text strong { font-size: 13px; font-weight: 600; color: var(--black); margin-bottom: 0; }
     .cs-figma-btn { font-size: 12px; font-weight: 500; color: var(--black); border: 1px solid var(--grey-200); border-radius: 6px; padding: 6px 14px; white-space: nowrap; background: var(--white); flex-shrink: 0; }
     .cs-next { border-top: 1px solid var(--grey-200); }
     .cs-next-inner { max-width: var(--max-w); margin: 0 auto; padding: 64px 40px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
@@ -110,6 +110,44 @@
   </style>
 </head>
 <body id="top">
+
+  <!-- PAGE GATE -->
+  <div class="pw-overlay" id="page-gate">
+    <div class="pw-modal">
+      <div class="pw-lock-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </div>
+      <button class="pw-close" onclick="history.back()" aria-label="Go back"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+      <h2 class="pw-title">Protected Case Study</h2>
+      <p class="pw-subtitle">Enter the password to access this content.</p>
+      <input type="password" class="pw-input" id="gate-input" placeholder="Password" autocomplete="off" />
+      <p class="pw-error-msg" id="gate-error" style="display:none;">Incorrect password. Please try again.</p>
+      <button class="pw-submit" id="gate-btn">Unlock →</button>
+    </div>
+  </div>
+  <script>
+    (function(){
+      var _pd = atob('NDU4NQ==');
+      var gate = document.getElementById('page-gate');
+      if (sessionStorage.getItem('cs_auth_mobile') === '1') { return; }
+      gate.classList.add('pw-active');
+      document.body.style.overflow = 'hidden';
+      function tryUnlock() {
+        var val = document.getElementById('gate-input').value;
+        if (val === _pd) {
+          sessionStorage.setItem('cs_auth_mobile', '1');
+          gate.classList.remove('pw-active');
+          document.body.style.overflow = '';
+        } else {
+          document.getElementById('gate-error').style.display = 'block';
+          document.getElementById('gate-input').value = '';
+          document.getElementById('gate-input').focus();
+        }
+      }
+      document.getElementById('gate-btn').addEventListener('click', tryUnlock);
+      document.getElementById('gate-input').addEventListener('keydown', function(e){ if(e.key==='Enter') tryUnlock(); });
+    })();
+  </script>
 
   <nav>
     <div class="nav-inner">
