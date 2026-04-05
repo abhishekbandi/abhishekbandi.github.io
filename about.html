@@ -31,8 +31,8 @@
       }
 
       .about-hero h1 {
-        font-size: clamp(48px, 6vw, 80px);
-        margin-bottom: 32px;
+        font-size: clamp(32px, 6vw, 80px);
+        margin-bottom: 24px;
       }
 
       .about-hero h1 em {
@@ -41,11 +41,11 @@
       }
 
       .about-hero-lead {
-        font-size: 18px;
+        font-size: clamp(14px, 1.8vw, 18px);
         line-height: 1.75;
         color: var(--grey-600);
         max-width: 520px;
-        margin-bottom: 40px;
+        margin-bottom: 32px;
         font-weight: 300;
       }
 
@@ -210,8 +210,8 @@
       }
 
       .story-block h2 {
-        font-size: 36px;
-        margin-bottom: 20px;
+        font-size: clamp(22px, 3.5vw, 36px);
+        margin-bottom: 16px;
       }
 
       .story-block p {
@@ -718,12 +718,22 @@
       @media (max-width: 960px) {
         .about-hero {
           grid-template-columns: 1fr;
+          padding: 48px 40px 56px;
+          gap: 40px;
         }
         .about-photo-card {
           position: static;
+          width: 100%;
+        }
+        .about-photo-card::before {
+          top: -10px;
+          left: 10px;
+          right: -10px;
+          width: auto;
         }
         .about-photo-frame {
-          aspect-ratio: 4/3;
+          aspect-ratio: 3/4;
+          max-height: none;
         }
         .about-story {
           grid-template-columns: 1fr;
@@ -738,48 +748,125 @@
 
       @media (max-width: 768px) {
         .about-hero {
-          gap: 40px;
-          padding: 48px 32px;
+          gap: 32px;
+          padding: 40px 32px 48px;
         }
         .about-story {
           gap: 32px;
-          padding: 48px 32px;
+          padding: 40px 32px;
+        }
+        .story-block {
+          margin-bottom: 48px;
         }
         .skills-grid {
           grid-template-columns: repeat(2, 1fr);
           gap: 12px;
         }
-        .articles-scroll-track .article-card {
-          flex: 0 0 280px;
+        .skill-name {
+          font-size: 18px;
+        }
+        .exp-role {
+          font-size: 18px;
+        }
+        .article-scroll-outer .article-card {
+          flex: 0 0 240px;
         }
         .book-scroll-outer {
           width: 100%;
           margin-left: 0;
           padding-left: 32px;
         }
+        .exp-item {
+          grid-template-columns: 80px 1fr;
+          gap: 16px;
+        }
+        .travel-cards {
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+        .travel-card {
+          flex: 1 1 calc(50% - 6px);
+          min-width: 180px;
+        }
+        .lightbox-arrow {
+          width: 40px;
+          height: 40px;
+        }
+        .lightbox-prev { left: 12px; }
+        .lightbox-next { right: 12px; }
       }
 
       @media (max-width: 600px) {
-        .about-hero,
+        .about-hero {
+          padding: 36px 24px 40px;
+          gap: 28px;
+        }
         .about-story {
-          padding: 48px 24px;
+          padding: 36px 24px;
+        }
+        .story-block {
+          margin-bottom: 40px;
         }
         .skills-grid {
           grid-template-columns: 1fr;
+          gap: 2px;
         }
+        .skill-name { font-size: 16px; }
+        .exp-role { font-size: 16px; }
         .exp-item {
           grid-template-columns: 1fr;
           gap: 4px;
+          padding: 20px 0;
         }
         .book-scroll-outer {
           padding-left: 24px;
         }
-        .articles-scroll-track .article-card {
-          flex: 0 0 260px;
+        /* Writing — vertical stack, matched to travel card width */
+        .article-scroll-outer {
+          overflow: visible;
+          width: 100%;
+          padding-bottom: 0;
+          cursor: default;
         }
+        .article-scroll-track {
+          flex-direction: column;
+          width: 100%;
+          gap: 12px;
+          padding-right: 0;
+        }
+        .article-scroll-outer .article-card {
+          flex: 1 1 100%;
+          width: 100%;
+        }
+        /* Photography — reset all bento spans to uniform grid */
         .photo-bento {
-          grid-auto-rows: 100px;
+          grid-template-columns: repeat(2, 1fr);
+          grid-auto-rows: 140px;
         }
+        .bento-big,
+        .bento-wide,
+        .bento-tall {
+          grid-column: span 1;
+          grid-row: span 1;
+        }
+        /* Travelling — full stack */
+        .travel-cards {
+          flex-direction: column;
+          gap: 12px;
+        }
+        .travel-card {
+          flex: 1 1 100%;
+        }
+        .interest-sections {
+          gap: 36px;
+        }
+      }
+
+      @media (max-width: 360px) {
+        .lightbox-close { top: 12px; right: 12px; width: 36px; height: 36px; }
+        .lightbox-arrow { width: 36px; height: 36px; }
+        .lightbox-prev { left: 8px; }
+        .lightbox-next { right: 8px; }
       }
     </style>
   </head>
@@ -799,6 +886,7 @@
           onclick="
             this.classList.toggle('open');
             document.querySelector('.nav-links').classList.toggle('nav-open');
+            document.body.classList.toggle('menu-open');
           "
         >
           <span></span><span></span><span></span>

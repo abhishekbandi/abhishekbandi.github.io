@@ -355,13 +355,41 @@
           grid-template-columns: 1fr;
           gap: 48px;
         }
+        .resume-main { order: 1; }
+        .resume-sidebar { order: 2; }
         .resume-exp-item {
           grid-template-columns: 1fr;
           gap: 8px;
         }
+        .resume-exp-date {
+          text-align: left;
+          order: 0;
+        }
         .resume-cta {
           flex-direction: column;
           align-items: flex-start;
+          gap: 24px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .resume-header {
+          padding: 48px 32px 40px;
+          gap: 24px;
+        }
+        .resume-body {
+          padding: 48px 32px 0;
+          gap: 40px;
+        }
+        .resume-cta {
+          padding: 48px 32px;
+        }
+        .skill-row {
+          font-size: 13px;
+        }
+        .award-item {
+          flex-direction: column;
+          gap: 4px;
         }
       }
 
@@ -370,6 +398,9 @@
         .resume-body,
         .resume-cta {
           padding: 48px 24px;
+        }
+        .resume-body {
+          padding-bottom: 0;
         }
       }
     </style>
@@ -390,6 +421,7 @@
           onclick="
             this.classList.toggle('open');
             document.querySelector('.nav-links').classList.toggle('nav-open');
+            document.body.classList.toggle('menu-open');
           "
         >
           <span></span><span></span><span></span>

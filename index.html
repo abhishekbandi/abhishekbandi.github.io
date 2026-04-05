@@ -181,6 +181,11 @@
         flex-wrap: wrap;
       }
 
+      .hero-cta .btn {
+        min-width: 180px;
+        justify-content: center;
+      }
+
       /* ── MARQUEE ── */
       .marquee-wrap {
         border-top: 1px solid var(--grey-200);
@@ -1004,9 +1009,11 @@
         }
         .case-grid {
           grid-template-columns: 1fr;
+          gap: 20px;
         }
         .about-strip {
           grid-template-columns: 1fr;
+          gap: 40px;
         }
         .about-visual {
           height: 280px;
@@ -1023,9 +1030,33 @@
         .articles-header {
           padding: 0 24px;
           margin-bottom: 32px;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
         }
         .articles-footer {
           padding: 0 24px;
+        }
+        .articles-grid {
+          gap: 20px;
+        }
+        .work-strip-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+          margin-bottom: 32px;
+        }
+        .hero {
+          padding: 0 32px;
+        }
+        .hero-gradient {
+          width: 300px;
+          height: 300px;
+          right: -60px;
+          opacity: 0.7;
+        }
+        .demo-card {
+          flex: 0 0 75vw;
         }
       }
 
@@ -1042,8 +1073,9 @@
           padding: 0 24px 80px;
         }
         .hero-gradient {
-          width: 260px;
-          height: 260px;
+          width: 220px;
+          height: 220px;
+          right: -40px;
         }
         .articles-grid {
           grid-template-columns: 1fr;
@@ -1052,6 +1084,10 @@
         .hero-cta {
           flex-direction: column;
           align-items: flex-start;
+        }
+        .stats-row {
+          gap: 28px;
+          flex-wrap: wrap;
         }
       }
     </style>
@@ -1072,6 +1108,7 @@
           onclick="
             this.classList.toggle('open');
             document.querySelector('.nav-links').classList.toggle('nav-open');
+            document.body.classList.toggle('menu-open');
           "
         >
           <span></span><span></span><span></span>
