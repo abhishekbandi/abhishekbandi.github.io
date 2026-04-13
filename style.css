@@ -6,13 +6,17 @@
   --grey-100: #f2f2ef;
   --grey-200: #e4e4df;
   --grey-400: #b0b0a8;
+  --grey-500: #8a8a82;
   --grey-600: #6b6b63;
   --accent: #c8a96e;
+  --accent-light: #e8d9c0;
   --font-display: 'Cormorant Garamond', serif;
   --font-body: 'DM Sans', sans-serif;
   --nav-height: 72px;
   --max-w: 1200px;
   --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --shadow-card: 0 16px 48px rgba(15, 15, 13, 0.09);
+  --radius-card: 8px;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }

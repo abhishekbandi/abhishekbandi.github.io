@@ -91,7 +91,7 @@
         left: -16px;
         width: 100%;
         aspect-ratio: 3/4;
-        background: #e8d9c0;
+        background: var(--accent-light);
         z-index: 0;
       }
 
@@ -164,12 +164,9 @@
 
       /* ── STORY SECTION ── */
       .about-story {
-        max-width: var(--max-w);
+        max-width: 800px;
         margin: 0 auto;
         padding: 80px 40px;
-        display: grid;
-        grid-template-columns: 200px 1fr;
-        gap: 80px;
       }
 
       .story-sidebar {
@@ -333,6 +330,7 @@
         overflow: hidden;
         background: var(--grey-200);
         position: relative;
+        border-radius: var(--radius-card);
       }
 
       .photo-bento-item img {
@@ -392,7 +390,7 @@
         position: fixed;
         inset: 0;
         z-index: 1000;
-        background: rgba(0, 0, 0, 0.92);
+        background: rgba(15, 15, 13, 0.92);
         align-items: center;
         justify-content: center;
       }
@@ -427,7 +425,7 @@
         border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 50%;
         background: rgba(255, 255, 255, 0.08);
-        color: #fff;
+        color: var(--white);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -449,7 +447,7 @@
         border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 50%;
         background: rgba(255, 255, 255, 0.08);
-        color: #fff;
+        color: var(--white);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -481,13 +479,14 @@
         text-decoration: none;
         color: inherit;
         border: 1px solid var(--grey-200);
+        border-radius: var(--radius-card);
         transition:
           box-shadow 0.35s var(--ease),
           transform 0.35s var(--ease);
       }
 
       .travel-card:hover {
-        box-shadow: 0 16px 48px rgba(15, 15, 13, 0.09);
+        box-shadow: var(--shadow-card);
         transform: translateY(-4px);
       }
 
@@ -545,29 +544,21 @@
       }
 
       .book-card {
-        flex: 0 0 45%;
+        flex: 0 0 160px;
         display: flex;
         flex-direction: column;
-        border: 1px solid var(--grey-200);
         overflow: hidden;
         scroll-snap-align: start;
         background: var(--white);
-        transition:
-          box-shadow 0.35s var(--ease),
-          transform 0.35s var(--ease);
-      }
-
-      .book-card:hover {
-        box-shadow: 0 16px 48px rgba(15, 15, 13, 0.09);
-        transform: translateY(-4px);
       }
 
       .book-card-image {
         width: 100%;
-        aspect-ratio: 4/5;
+        aspect-ratio: 2/3;
         background: var(--grey-100);
         overflow: hidden;
         position: relative;
+        border-radius: calc(var(--radius-card) - 2px);
       }
 
       .book-card-image img {
@@ -578,23 +569,29 @@
         transition: transform 0.6s var(--ease);
       }
 
-      .book-card:hover .book-card-image img {
-        transform: scale(1.04);
-      }
 
       .book-card-body {
-        padding: 12px;
+        padding: 8px 0 0;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 0;
         flex: 1;
       }
 
       .book-card-title {
         font-size: 13px;
-        font-weight: 500;
+        font-weight: 600;
         color: var(--black);
-        line-height: 1.4;
+        line-height: 1.2 !important;
+        margin-bottom: 12px !important;
+      }
+
+      .book-card-author {
+        font-size: 8px;
+        font-weight: 400;
+        color: var(--grey-400);
+        line-height: 1.3 !important;
+        margin-bottom: 0 !important;
       }
 
       .book-card-btn {
@@ -651,17 +648,11 @@
         display: flex;
         flex-direction: column;
         border: 1px solid var(--grey-200);
+        border-radius: var(--radius-card);
         overflow: hidden;
         scroll-snap-align: start;
         background: var(--white);
-        transition:
-          box-shadow 0.35s var(--ease),
-          transform 0.35s var(--ease);
-      }
-
-      .article-card:hover {
-        box-shadow: 0 16px 48px rgba(15, 15, 13, 0.09);
-        transform: translateY(-4px);
+        text-decoration: none;
       }
 
       .article-card-image {
@@ -743,15 +734,6 @@
           aspect-ratio: 3/4;
           max-height: none;
         }
-        .about-story {
-          grid-template-columns: 1fr;
-        }
-        .story-sidebar {
-          position: static;
-        }
-        .story-nav {
-          display: none;
-        }
       }
 
       @media (max-width: 768px) {
@@ -783,6 +765,9 @@
           width: 100%;
           margin-left: 0;
           padding-left: 32px;
+        }
+        .book-card {
+          flex: 0 0 150px;
         }
         .exp-item {
           grid-template-columns: 80px 1fr;
@@ -828,6 +813,9 @@
         }
         .book-scroll-outer {
           padding-left: 24px;
+        }
+        .book-card {
+          flex: 0 0 140px;
         }
         /* Writing — vertical stack, matched to travel card width */
         .article-scroll-outer {
@@ -933,16 +921,6 @@
 
       <!-- STORY -->
       <div class="about-story">
-        <div class="story-sidebar">
-          <h3>Contents</h3>
-          <ul class="story-nav">
-            <li><a href="#story">My Story</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#interests">Interests</a></li>
-          </ul>
-        </div>
-
         <div class="story-content">
           <div class="story-block" id="story">
             <div class="section-label">My Story</div>
@@ -1092,48 +1070,45 @@
                 </div>
               </div>
 
-              <!-- Reading — commented out, add back when book links are ready
+              <!-- Reading -->
               <div>
                 <h4 class="interest-section-title">Reading</h4>
                 <div class="book-scroll-outer" id="bookTrack">
                   <div class="book-scroll-track">
 
                     <div class="book-card">
-                      <div class="book-card-image" style="background:linear-gradient(135deg,#dce8e4,#c8d4cc);"></div>
+                      <div class="book-card-image">
+                        <img src="images/about/reading/attidute_is_everthing.jpg" alt="Attitude is Everything" loading="lazy" />
+                      </div>
                       <div class="book-card-body">
-                        <p class="book-card-title">Book Title One</p>
-                        <a class="book-card-btn" href="#" target="_blank" rel="noopener">View on Amazon</a>
+                        <p class="book-card-title">Attitude is Everything</p>
+                        <p class="book-card-author">Jeff Keller</p>
                       </div>
                     </div>
 
                     <div class="book-card">
-                      <div class="book-card-image" style="background:linear-gradient(135deg,#dce4e8,#c8d0da);"></div>
+                      <div class="book-card-image">
+                        <img src="images/about/reading/i_do_what_i_do.webp" alt="I Do What I Do" loading="lazy" />
+                      </div>
                       <div class="book-card-body">
-                        <p class="book-card-title">Book Title Two</p>
-                        <a class="book-card-btn" href="#" target="_blank" rel="noopener">View on Amazon</a>
+                        <p class="book-card-title">I Do What I Do</p>
+                        <p class="book-card-author">Raghuram G. Rajan</p>
                       </div>
                     </div>
 
                     <div class="book-card">
-                      <div class="book-card-image" style="background:linear-gradient(135deg,#e4dce8,#d4c8da);"></div>
-                      <div class="book-card-body">
-                        <p class="book-card-title">Book Title Three</p>
-                        <a class="book-card-btn" href="#" target="_blank" rel="noopener">View on Amazon</a>
+                      <div class="book-card-image">
+                        <img src="images/about/reading/the_power of_subconscious_mind.webp" alt="The Power of the Subconscious Mind" loading="lazy" />
                       </div>
-                    </div>
-
-                    <div class="book-card">
-                      <div class="book-card-image" style="background:linear-gradient(135deg,#e8e4dc,#d8d0c4);"></div>
                       <div class="book-card-body">
-                        <p class="book-card-title">Book Title Four</p>
-                        <a class="book-card-btn" href="#" target="_blank" rel="noopener">View on Amazon</a>
+                        <p class="book-card-title">The Power of the Subconscious Mind</p>
+                        <p class="book-card-author">Joseph Murphy</p>
                       </div>
                     </div>
 
                   </div>
                 </div>
               </div>
-              -->
 
               <!-- Writing -->
               <div>
@@ -1146,17 +1121,11 @@
                       target="_blank"
                       rel="noopener"
                     >
-                      <div
-                        class="article-card-image"
-                        style="
-                          background: linear-gradient(135deg, #e4e8dc, #d0d8c4);
-                        "
-                      >
+                      <div class="article-card-image">
                         <img
                           loading="lazy"
                           src="images/article_1.webp"
                           alt="Time During Covid"
-                          style="width: 100%; height: 100%; object-fit: cover"
                         />
                       </div>
                       <div class="article-card-body">
@@ -1187,17 +1156,11 @@
                       target="_blank"
                       rel="noopener"
                     >
-                      <div
-                        class="article-card-image"
-                        style="
-                          background: linear-gradient(135deg, #dce4e8, #c8d4da);
-                        "
-                      >
+                      <div class="article-card-image">
                         <img
                           loading="lazy"
                           src="images/article_2.webp"
                           alt="Recycled Phone Numbers: A Silent Threat to Digital Privacy"
-                          style="width: 100%; height: 100%; object-fit: cover"
                         />
                       </div>
                       <div class="article-card-body">

@@ -1,153 +1,519 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M61TBLCZH4"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-M61TBLCZH4');
-  </script>
-  <link rel="icon" type="image/png" href="../images/index/Logo.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UPI Payment — Abhishek Bandi</title>
-  <link rel="stylesheet" href="../style.css" />
-  <style>
-    * { box-sizing: border-box; }
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-M61TBLCZH4"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-M61TBLCZH4");
+    </script>
+    <link rel="icon" type="image/png" href="../images/index/Logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UPI Payment — Abhishek Bandi</title>
+    <link rel="stylesheet" href="../style.css" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
 
-    @keyframes slideIn {
-      from { transform: translateY(100vh); opacity: 0; }
-      to   { transform: translateY(0);    opacity: 1; }
-    }
-    @keyframes slideOut {
-      from { transform: translateY(0);    opacity: 1; }
-      to   { transform: translateY(100vh); opacity: 0; }
-    }
+      @keyframes slideIn {
+        from {
+          transform: translateY(100vh);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      @keyframes slideOut {
+        from {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        to {
+          transform: translateY(100vh);
+          opacity: 0;
+        }
+      }
 
-    .ui-page-wrapper {
-      min-height: 100vh;
-      background: var(--white);
-      animation: slideIn 0.45s cubic-bezier(0.32, 0.72, 0, 1) forwards;
-    }
-    .ui-page-wrapper.closing {
-      animation: slideOut 0.4s cubic-bezier(0.32, 0.72, 0, 1) forwards;
-    }
+      .ui-page-wrapper {
+        min-height: 100vh;
+        background: var(--white);
+        animation: slideIn 0.45s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+      }
+      .ui-page-wrapper.closing {
+        animation: slideOut 0.4s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+      }
 
-    .ui-close-btn {
-      position: fixed;
-      top: 28px;
-      right: 32px;
-      z-index: 200;
-      width: 40px; height: 40px;
-      border: 1px solid var(--grey-200);
-      border-radius: 50%;
-      background: var(--white);
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px; color: var(--grey-600);
-      transition: border-color 0.2s, background 0.2s, color 0.2s;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    }
-    .ui-close-btn:hover { border-color: var(--black); background: var(--black); color: var(--white); }
+      .ui-close-btn {
+        position: fixed;
+        top: 28px;
+        right: 32px;
+        z-index: 200;
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--grey-200);
+        border-radius: 50%;
+        background: var(--white);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        color: var(--grey-600);
+        transition:
+          border-color 0.2s,
+          background 0.2s,
+          color 0.2s;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      }
+      .ui-close-btn:hover {
+        border-color: var(--black);
+        background: var(--black);
+        color: var(--white);
+      }
 
-    .ui-page-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 32px 40px;
-      border-bottom: 1px solid var(--grey-200);
-      position: sticky;
-      top: 0;
-      background: var(--white);
-      z-index: 100;
-      padding-right: 96px;
-    }
-    .ui-page-title { font-family: var(--font-display); font-size: clamp(24px, 3vw, 40px); font-weight: 300; color: var(--black); line-height: 1.1; }
-    .ui-page-tag { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grey-600); background: var(--grey-100); border: 1px solid var(--grey-200); padding: 4px 12px; border-radius: 20px; }
-    .ui-page-year { font-size: 11px; color: var(--grey-400); border: 1px solid var(--grey-200); padding: 4px 12px; border-radius: 20px; }
-    .ui-content { max-width: 1080px; margin: 0 auto; padding: 56px 40px 80px; }
-    .ui-section { margin-bottom: 48px; }
-    .ui-section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--grey-400); margin-bottom: 20px; }
-    .ui-image-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-    .ui-img-slot { background: var(--grey-100); border: 2px dashed var(--grey-200); border-radius: 12px; height: 320px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
-    .ui-img-slot span { font-size: 28px; opacity: 0.4; color: var(--grey-400); }
-    .ui-img-slot p { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grey-400); margin: 0; }
-    .cs-figma-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: var(--grey-100); border: 1px solid var(--grey-200); border-radius: 10px; padding: 14px 20px; margin-top: 16px; text-decoration: none; transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease; }
-    .cs-figma-bar:hover { background: var(--grey-200); border-color: var(--grey-400); box-shadow: 0 4px 16px rgba(0,0,0,0.08); transform: translateY(-2px); }
-    .cs-figma-bar:hover .cs-figma-icon svg { transform: scale(1.08); }
-    .cs-figma-bar-left { display: flex; align-items: center; gap: 12px; }
-    .cs-figma-icon { display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .cs-figma-icon svg { width: 38px; height: 57px; transition: transform 0.2s ease; }
-    .cs-figma-bar-text { font-size: 13px; color: var(--grey-600); }
-    .cs-figma-bar-text strong { font-size: 13px; font-weight: 600; color: var(--black); margin-bottom: 0; }
-    .cs-figma-btn { font-size: 12px; font-weight: 500; color: var(--black); border: 1px solid var(--grey-200); border-radius: 6px; padding: 6px 14px; white-space: nowrap; background: var(--white); flex-shrink: 0; }
-    @media (max-width: 900px) { .ui-image-grid { grid-template-columns: 1fr; } }
-    @media (max-width: 600px) {
-      .ui-page-header { padding: 24px; padding-right: 80px; }
-      .ui-close-btn { top: 20px; right: 20px; }
-      .ui-content { padding: 40px 24px 60px; }
-    }
-  </style>
-</head>
-<body>
+      .ui-page-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 32px 40px;
+        border-bottom: 1px solid var(--grey-200);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        z-index: 100;
+        padding-right: 96px;
+      }
+      .ui-page-title {
+        font-family: var(--font-display);
+        font-size: clamp(24px, 3vw, 40px);
+        font-weight: 300;
+        color: var(--black);
+        line-height: 1.1;
+      }
+      .ui-page-tag {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--grey-600);
+        background: var(--grey-100);
+        border: 1px solid var(--grey-200);
+        padding: 4px 12px;
+        border-radius: 20px;
+      }
+      .ui-page-year {
+        font-size: 11px;
+        color: var(--grey-400);
+        border: 1px solid var(--grey-200);
+        padding: 4px 12px;
+        border-radius: 20px;
+      }
+      .ui-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 56px 40px 80px;
+        padding-top: 120px;
+      }
+      .ui-section {
+        margin-bottom: 48px;
+      }
+      .ui-section-label {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--grey-400);
+        margin-bottom: 12px;
+      }
+      .upi-section-desc {
+        font-size: 32px;
+        color: var(--grey-600);
+        line-height: 1.5;
+        margin: 48px 0 48px;
+        max-width: 86%;
+      }
+      .upi-section-desc .highlight {
+        font-weight: 700;
+        color: #1a73e8;
+      }
+      /* ── Figma layout ── */
+      .upi-figma-layout {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
 
-  <button class="ui-close-btn" onclick="closePage()">✕</button>
+      .upi-top-row {
+        display: flex;
+        gap: 12px;
+        align-items: stretch;
+      }
+      .upi-blue-left {
+        flex: 0 0 54%;
+        min-height: 440px;
+        background: #edf4fe;
+        border: 1px solid #d4e4fc;
+        border-radius: 16px;
+        overflow: hidden;
+      }
+      .upi-blue-left img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .upi-right-stack {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
 
-  <div class="ui-page-wrapper" id="pageWrapper">
+      /* Hero text card */
+      .upi-hero-card {
+        background: #edf4fe;
+        border: 1px solid #d4e4fc;
+        border-radius: 16px;
+        overflow: hidden;
+        flex: 0 0 auto;
+        height: 340px;
+      }
+      .upi-hero-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Phone card (small, top-right bottom) */
+      .upi-phone-card-sm {
+        flex: 1;
+        background: #edf4fe;
+        border: 1px solid #d4e4fc;
+        border-radius: 16px;
+        overflow: hidden;
+        min-height: 280px;
+      }
+      .upi-phone-card-sm img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Phone mockup card (large, bottom-left) */
+      .upi-bottom-row {
+        display: flex;
+        gap: 12px;
+        align-items: stretch;
+      }
+      .upi-phone-card-lg {
+        flex: 1;
+        min-height: 420px;
+        background: #edf4fe;
+        border: 1px solid #d4e4fc;
+        border-radius: 16px;
+        overflow: hidden;
+      }
+      .upi-phone-card-lg img,
+      .upi-phone-card-lg video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .upi-blue-right {
+        flex: 0 0 56%;
+        background: #edf4fe;
+        border: 1px solid #d4e4fc;
+        border-radius: 16px;
+        overflow: hidden;
+      }
+      .upi-blue-right img,
+      .upi-blue-right video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .upi-back-home {
+        text-align: center;
+        padding: 64px 0 40px;
+      }
+      .upi-back-link {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--grey-500);
+        text-decoration: none;
+        letter-spacing: 0.02em;
+        transition: color 0.2s;
+      }
+      .upi-back-link:hover { color: var(--black); }
+
+      /* ── Hover border light animation ── */
+      @property --border-angle {
+        syntax: '<angle>';
+        initial-value: 0deg;
+        inherits: false;
+      }
+
+      @keyframes border-spin {
+        to { --border-angle: 360deg; }
+      }
+
+      .upi-blue-left,
+      .upi-hero-card,
+      .upi-phone-card-sm,
+      .upi-phone-card-lg,
+      .upi-blue-right {
+        position: relative;
+      }
+
+      .upi-blue-left::after,
+      .upi-hero-card::after,
+      .upi-phone-card-sm::after,
+      .upi-phone-card-lg::after,
+      .upi-blue-right::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 2px;
+        background: conic-gradient(
+          from var(--border-angle),
+          transparent 72%,
+          rgba(26, 115, 232, 0.1) 80%,
+          rgba(26, 115, 232, 0.6) 86%,
+          #1a73e8 89%,
+          rgba(26, 115, 232, 0.6) 92%,
+          rgba(26, 115, 232, 0.1) 97%,
+          transparent 100%
+        );
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: destination-out;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+        z-index: 10;
+      }
+
+      .upi-blue-left:hover::after,
+      .upi-hero-card:hover::after,
+      .upi-phone-card-sm:hover::after,
+      .upi-phone-card-lg:hover::after,
+      .upi-blue-right:hover::after {
+        opacity: 1;
+        animation: border-spin 2.5s linear infinite;
+      }
+
+      @media (max-width: 700px) {
+        .upi-top-row,
+        .upi-bottom-row {
+          flex-direction: column;
+        }
+        .upi-blue-left,
+        .upi-blue-right {
+          min-height: 260px;
+          flex: unset;
+          width: 100%;
+        }
+        .upi-right-stack {
+          flex: 1;
+        }
+        .upi-hero-card {
+          height: auto;
+          min-height: 220px;
+        }
+        .upi-phone-card-sm {
+          min-height: 240px;
+        }
+        .upi-phone-card-lg {
+          min-height: 280px;
+        }
+        .upi-section-desc {
+          font-size: 20px;
+          margin: 24px 0 32px;
+          max-width: 100%;
+        }
+      }
+      .cs-figma-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        background: var(--grey-100);
+        border: 1px solid var(--grey-200);
+        border-radius: 10px;
+        padding: 14px 20px;
+        margin-top: 16px;
+        text-decoration: none;
+        transition:
+          background 0.2s ease,
+          border-color 0.2s ease,
+          box-shadow 0.2s ease,
+          transform 0.2s ease;
+      }
+      .cs-figma-bar:hover {
+        background: var(--grey-200);
+        border-color: var(--grey-400);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        transform: translateY(-2px);
+      }
+      .cs-figma-bar:hover .cs-figma-icon svg {
+        transform: scale(1.08);
+      }
+      .cs-figma-bar-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .cs-figma-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .cs-figma-icon svg {
+        width: 38px;
+        height: 57px;
+        transition: transform 0.2s ease;
+      }
+      .cs-figma-bar-text {
+        font-size: 13px;
+        color: var(--grey-600);
+      }
+      .cs-figma-bar-text strong {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--black);
+        margin-bottom: 0;
+      }
+      .cs-figma-btn {
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--black);
+        border: 1px solid var(--grey-200);
+        border-radius: 6px;
+        padding: 6px 14px;
+        white-space: nowrap;
+        background: var(--white);
+        flex-shrink: 0;
+      }
+      @media (max-width: 600px) {
+        .ui-page-header {
+          padding: 20px 24px;
+          padding-right: 72px;
+        }
+        .ui-close-btn {
+          top: 16px;
+          right: 16px;
+        }
+        .ui-content {
+          padding: 100px 16px 60px;
+        }
+        .upi-figma-layout {
+          gap: 8px;
+        }
+        .upi-back-home {
+          padding: 40px 0 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <button class="ui-close-btn" onclick="closePage()">✕</button>
+
     <header class="ui-page-header">
       <h1 class="ui-page-title">UPI Payment</h1>
-      <div style="display:flex;align-items:center;gap:10px;">
+      <div style="display: flex; align-items: center; gap: 10px">
         <span class="ui-page-tag">Mobile</span>
         <span class="ui-page-year">2024</span>
       </div>
     </header>
 
-    <div class="ui-content">
-      <div class="ui-section">
-        <p class="ui-section-label">Screens</p>
-        <div class="ui-image-grid">
-          <div class="ui-img-slot"><span>⬚</span><p>Screen 01</p></div>
-          <div class="ui-img-slot"><span>⬚</span><p>Screen 02</p></div>
-          <div class="ui-img-slot"><span>⬚</span><p>Screen 03</p></div>
-          <div class="ui-img-slot"><span>⬚</span><p>Screen 04</p></div>
-        </div>
-      </div>
-      <div class="ui-section">
-        <p class="ui-section-label">Figma File</p>
-        <!-- FIGMA BAR (commented out)
-        <a class="cs-figma-bar" href="#" target="_blank">
-          <div class="cs-figma-bar-left">
-            <div class="cs-figma-icon">
-              <svg viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M19 28.5C19 25.9804 20.0009 23.5641 21.7825 21.7825C23.5641 20.0009 25.9804 19 28.5 19C31.0196 19 33.4359 20.0009 35.2175 21.7825C36.9991 23.5641 38 25.9804 38 28.5C38 31.0196 36.9991 33.4359 35.2175 35.2175C33.4359 36.9991 31.0196 38 28.5 38C25.9804 38 23.5641 36.9991 21.7825 35.2175C20.0009 33.4359 19 31.0196 19 28.5Z" fill="#1ABCFE"/>
-                <path d="M0 47.5C0 44.9804 1.00089 42.5641 2.78249 40.7825C4.56408 39.0009 6.98044 38 9.5 38H19V47.5C19 50.0196 17.9991 52.4359 16.2175 54.2175C14.4359 55.9991 12.0196 57 9.5 57C6.98044 57 4.56408 55.9991 2.78249 54.2175C1.00089 52.4359 0 50.0196 0 47.5Z" fill="#0ACF83"/>
-                <path d="M19 0V19H28.5C31.0196 19 33.4359 17.9991 35.2175 16.2175C36.9991 14.4359 38 12.0196 38 9.5C38 6.98044 36.9991 4.56408 35.2175 2.78249C33.4359 1.00089 31.0196 0 28.5 0H19Z" fill="#FF7262"/>
-                <path d="M0 9.5C0 12.0196 1.00089 14.4359 2.78249 16.2175C4.56408 17.9991 6.98044 19 9.5 19H19V0H9.5C6.98044 0 4.56408 1.00089 2.78249 2.78249C1.00089 4.56408 0 6.98044 0 9.5Z" fill="#F24E1E"/>
-                <path d="M0 28.5C0 31.0196 1.00089 33.4359 2.78249 35.2175C4.56408 36.9991 6.98044 38 9.5 38H19V19H9.5C6.98044 19 4.56408 20.0009 2.78249 21.7825C1.00089 23.5641 0 25.9804 0 28.5Z" fill="#A259FF"/>
-              </svg>
+    <div class="ui-page-wrapper" id="pageWrapper">
+      <div class="ui-content">
+        <div class="ui-section">
+          <p class="upi-section-desc">
+            Designed a <span class="highlight">UPI payment interface</span> focused on clarity, trust, and seamless user flow. A UI exploration translating a familiar payment experience.
+          </p>
+          <div class="upi-figma-layout">
+            <!-- Row 1 -->
+            <div class="upi-top-row">
+              <!-- Left: decorative blue panel -->
+              <div class="upi-blue-left"><img src="../images/ui-designs/upi-payments/upi_image_1.jpg" alt="UPI Payment Screen 01" /></div>
+
+              <!-- Right: stacked cards -->
+              <div class="upi-right-stack">
+                <!-- Hero card -->
+                <div class="upi-hero-card">
+                  <img
+                    src="../images/ui-designs/upi-payments/upi_image_2.jpg"
+                    alt="UPI Payment Screen 02"
+                  />
+                </div>
+
+                <!-- Phone card (small) -->
+                <div class="upi-phone-card-sm">
+                  <img
+                    src="../images/ui-designs/upi-payments/upi_image_3.jpg"
+                    alt="UPI Payment Screen 03"
+                  />
+                </div>
+              </div>
             </div>
-            <div class="cs-figma-bar-text">
-              <strong>View in Figma</strong>
-              UPI Payment — Full File
+
+            <!-- Row 2 -->
+            <div class="upi-bottom-row">
+              <!-- Phone card (large) -->
+              <div class="upi-phone-card-lg">
+                <img src="../images/ui-designs/upi-payments/upi_image_4.jpg" alt="UPI Payment Screen 04" />
+              </div>
+
+              <!-- Right: decorative blue panel -->
+              <div class="upi-blue-right">
+                <video src="../images/ui-designs/upi-payments/ui_design_5.mp4" autoplay loop muted playsinline></video>
+              </div>
             </div>
           </div>
-          <span class="cs-figma-btn">Open Figma →</span>
-        </a>
-        -->
+        </div>
+        <div class="upi-back-home">
+          <a href="../index.html" class="upi-back-link" onclick="closePage(); return false;">← Back to Home</a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <script>
-    function closePage() {
-      var wrapper = document.getElementById('pageWrapper');
-      wrapper.classList.add('closing');
-      setTimeout(function() { history.back(); }, 380);
-    }
-  </script>
+    <script>
+      window.scrollTo(0, 0);
+      if (history.scrollRestoration) {
+        history.scrollRestoration = "manual";
+      }
 
-<script src="../lightbox.js"></script>
-</body>
+      function closePage() {
+        var wrapper = document.getElementById("pageWrapper");
+        wrapper.classList.add("closing");
+        setTimeout(function () {
+          history.back();
+        }, 380);
+      }
+    </script>
+
+    <script src="../lightbox.js"></script>
+  </body>
 </html>

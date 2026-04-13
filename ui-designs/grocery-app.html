@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M61TBLCZH4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M61TBLCZH4');
+  </script>
+  <link rel="icon" type="image/png" href="../images/index/Logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grocery App — Abhishek Bandi</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    * { box-sizing: border-box; }
+
+    @keyframes slideIn {
+      from { transform: translateY(100vh); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+    @keyframes slideOut {
+      from { transform: translateY(0);    opacity: 1; }
+      to   { transform: translateY(100vh); opacity: 0; }
+    }
+
+    .ui-page-wrapper {
+      min-height: 100vh;
+      background: var(--white);
+      animation: slideIn 0.45s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+    }
+    .ui-page-wrapper.closing {
+      animation: slideOut 0.4s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+    }
+
+    .ui-close-btn {
+      position: fixed;
+      top: 28px;
+      right: 32px;
+      z-index: 200;
+      width: 40px; height: 40px;
+      border: 1px solid var(--grey-200);
+      border-radius: 50%;
+      background: var(--white);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; color: var(--grey-600);
+      transition: border-color 0.2s, background 0.2s, color 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .ui-close-btn:hover { border-color: var(--black); background: var(--black); color: var(--white); }
+
+    .ui-page-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 32px 40px;
+      border-bottom: 1px solid var(--grey-200);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--white);
+      z-index: 100;
+      padding-right: 96px;
+    }
+    .ui-page-title { font-family: var(--font-display); font-size: clamp(24px, 3vw, 40px); font-weight: 300; color: var(--black); line-height: 1.1; }
+    .ui-page-tag { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grey-600); background: var(--grey-100); border: 1px solid var(--grey-200); padding: 4px 12px; border-radius: 20px; }
+    .ui-page-year { font-size: 11px; color: var(--grey-400); border: 1px solid var(--grey-200); padding: 4px 12px; border-radius: 20px; }
+    .ui-content { max-width: 1200px; margin: 0 auto; padding: 56px 40px 80px; padding-top: 120px; }
+    .ui-section { margin-bottom: 48px; }
+    .ui-section-desc { font-size: 32px; color: var(--grey-600); line-height: 1.5; margin: 48px 0; max-width: 86%; }
+    .ui-section-desc .highlight { font-weight: 700; color: #21974E; }
+    .ui-back-home { text-align: center; padding: 64px 0 40px; }
+    .ui-back-link { font-size: 14px; font-weight: 500; color: var(--grey-500); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+    .ui-back-link:hover { color: var(--black); }
+
+    /* ── Bento grid ── */
+    .gb-bento {
+      display: flex;
+      gap: 20px;
+      height: 900px;
+    }
+    .gb-col {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      min-width: 0;
+    }
+    .gb-col-1 { flex: 1; }
+    .gb-col-2 { flex: 0 0 27%; }
+    .gb-col-3 { flex: 0 0 33%; }
+
+    .gb-cell {
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--grey-100);
+      min-height: 0;
+      position: relative;
+    }
+    .gb-cell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    @property --border-angle {
+      syntax: '<angle>';
+      initial-value: 0deg;
+      inherits: false;
+    }
+    @keyframes border-spin {
+      to { --border-angle: 360deg; }
+    }
+    .gb-cell::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 2px;
+      background: conic-gradient(
+        from var(--border-angle),
+        transparent 72%,
+        rgba(33, 151, 78, 0.1) 80%,
+        rgba(33, 151, 78, 0.6) 86%,
+        #21974E 89%,
+        rgba(33, 151, 78, 0.6) 92%,
+        rgba(33, 151, 78, 0.1) 97%,
+        transparent 100%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .gb-cell:hover::after {
+      opacity: 1;
+      animation: border-spin 2.5s linear infinite;
+    }
+
+    /* Column 1 proportions: 590 : 378 */
+    .gb-col-1 > .gb-cell:nth-child(1) { flex: 590; }
+    .gb-col-1 > .gb-cell:nth-child(2) { flex: 378; }
+
+    /* Column 2 proportions: 200 : 200 : 536 */
+    .gb-col-2 > .gb-cell:nth-child(1) { flex: 200; }
+    .gb-col-2 > .gb-cell:nth-child(2) { flex: 200; }
+    .gb-col-2 > .gb-cell:nth-child(3) { flex: 536; }
+
+    /* Column 3: large top, side-by-side row, wide bottom — 460 : 264 : 212 */
+    .gb-col-3 > .gb-cell:nth-child(1) { flex: 460; }
+    .gb-col-3 > .gb-row {
+      flex: 264;
+      display: flex;
+      gap: 20px;
+      min-height: 0;
+    }
+    .gb-col-3 > .gb-row .gb-cell { flex: 1; }
+    .gb-col-3 > .gb-cell:nth-child(3) { flex: 212; }
+
+
+    @media (max-width: 900px) {
+      .gb-bento { height: auto; flex-wrap: wrap; }
+      .gb-col-1 { flex: 1 0 45%; min-height: 460px; }
+      .gb-col-2 { flex: 1 0 45%; min-height: 460px; }
+      .gb-col-3 { flex: 1 0 100%; min-height: 520px; }
+      .gb-col-3 > .gb-row { flex: 264; }
+    }
+    @media (max-width: 600px) {
+      .ui-page-header { padding: 24px; padding-right: 80px; }
+      .ui-close-btn { top: 20px; right: 20px; }
+      .ui-content { padding: 24px 20px 60px; padding-top: 100px; }
+      .ui-section-desc { font-size: 20px; margin: 24px 0 32px; max-width: 100%; }
+      .gb-bento { flex-direction: column; gap: 12px; }
+      .gb-col { gap: 12px; flex: none; width: 100%; }
+      .gb-col-1, .gb-col-2 { min-height: 400px; }
+      .gb-col-3 { min-height: 480px; }
+      .gb-col-3 > .gb-row { gap: 12px; min-height: 180px; }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="ui-close-btn" onclick="closePage()">✕</button>
+
+  <header class="ui-page-header">
+    <h1 class="ui-page-title">Grocery App</h1>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="ui-page-tag">Mobile</span>
+      <span class="ui-page-year">2024</span>
+    </div>
+  </header>
+
+  <div class="ui-page-wrapper" id="pageWrapper">
+    <div class="ui-content">
+      <div class="ui-section">
+        <p class="ui-section-desc">
+          Designed a <span class="highlight">grocery shopping app</span> focused on ease of browsing, quick checkout, and a fresh visual experience. A UI exploration for an everyday essentials platform.
+        </p>
+        <div class="gb-bento">
+
+          <!-- Column 1: tall top + medium bottom -->
+          <div class="gb-col gb-col-1">
+            <div class="gb-cell">
+              <img loading="lazy" src="../images/ui-designs/grocery-app/grocery_app_1.jpg" alt="Grocery App Screen 01" />
+            </div>
+            <div class="gb-cell">
+              <img loading="lazy" src="../images/ui-designs/grocery-app/grocery_app_5.jpg" alt="Grocery App Screen 05" />
+            </div>
+          </div>
+
+          <!-- Column 2: two small + one flex -->
+          <div class="gb-col gb-col-2">
+            <div class="gb-cell">
+              <img loading="lazy" src="../images/ui-designs/grocery-app/grocery_app_2.jpg" alt="Grocery App Screen 02" />
+            </div>
+            <div class="gb-cell">
+              <img loading="lazy" src="../images/ui-designs/grocery-app/grocery_app_4.jpg" alt="Grocery App Screen 04" />
+            </div>
+            <div class="gb-cell">
+              <img loading="lazy" src="../images/ui-designs/grocery-app/grocery_app_6.jpg" alt="Grocery App Screen 06" />
+            </div>
+          </div>
+
+          <!-- Column 3: large top + side-by-side row + wide bottom -->
+          <div class="gb-col gb-col-3">
+            <div class="gb-cell">
+              <img loading="lazy" src="../images/ui-designs/grocery-app/grocery_app_3.jpg" alt="Grocery App Screen 03" />
+            </div>
+            <div class="gb-row">
+              <div class="gb-cell">
+                <img loading="lazy" src="../images/ui-designs/grocery-app/grocery_app_7.jpg" alt="Grocery App Screen 07" />
+              </div>
+              <div class="gb-cell">
+                <img loading="lazy" src="../images/ui-designs/grocery-app/grocery_app_8.jpg" alt="Grocery App Screen 08" />
+              </div>
+            </div>
+            <div class="gb-cell">
+              <img loading="lazy" src="../images/ui-designs/grocery-app/grocery_app_9.jpg" alt="Grocery App Screen 09" />
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="ui-back-home">
+        <a href="../index.html" class="ui-back-link" onclick="closePage(); return false;">← Back to Home</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function closePage() {
+      var wrapper = document.getElementById('pageWrapper');
+      wrapper.classList.add('closing');
+      setTimeout(function() { history.back(); }, 380);
+    }
+  </script>
+
+<script src="../lightbox.js"></script>
+</body>
+</html>
