@@ -192,9 +192,9 @@
       }
 
       .cs-section {
-        display: grid;
-        grid-template-columns: 240px 1fr;
-        gap: 64px;
+        display: block;
+        max-width: 760px;
+        margin: 0 auto;
         padding: 80px 0;
         border-bottom: 1px solid var(--grey-200);
       }
@@ -209,7 +209,8 @@
         letter-spacing: 0.12em;
         text-transform: uppercase;
         color: var(--grey-600);
-        padding-top: 6px;
+        display: block;
+        margin-bottom: 32px;
       }
 
       .cs-section-label::before {
@@ -696,13 +697,11 @@
       }
 
       @media (max-width: 900px) {
+        .cs-section { padding: 64px 0; }
         .cs-overview-grid {
           grid-template-columns: repeat(2, 1fr);
         }
-        .cs-section {
-          grid-template-columns: 1fr;
-          gap: 24px;
-        }
+
         .cs-results-grid {
           grid-template-columns: repeat(2, 1fr);
         }
@@ -716,6 +715,7 @@
       }
 
       @media (max-width: 600px) {
+        .cs-section { padding: 48px 0; }
         .cs-hero-inner {
           padding: 0 24px;
         }

@@ -60,10 +60,10 @@
 
     .cs-content { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
 
-    .cs-section { display: grid; grid-template-columns: 240px 1fr; gap: 64px; padding: 80px 0; border-bottom: 1px solid var(--grey-200); }
+    .cs-section { display: block; max-width: 760px; margin: 0 auto; padding: 80px 0; border-bottom: 1px solid var(--grey-200); }
     .cs-section:last-of-type { border-bottom: none; }
 
-    .cs-section-label { font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--grey-600); padding-top: 6px; }
+    .cs-section-label { font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--grey-600); display: block; margin-bottom: 32px; }
     .cs-section-label::before { content: ''; display: block; width: 24px; height: 1px; background: #282626; margin-bottom: 16px; }
     .cs-section-num { font-family: var(--font-display); font-size: 13px; font-weight: 300; color: var(--grey-400); margin-bottom: 6px; }
 
@@ -130,14 +130,16 @@
     .cs-next-arrow:hover { border-color: var(--black); background: var(--black); color: var(--white); }
 
     @media (max-width: 900px) {
+      .cs-section { padding: 64px 0; }
       .cs-overview-grid { grid-template-columns: repeat(2, 1fr); }
-      .cs-section { grid-template-columns: 1fr; gap: 24px; }
+
       .cs-pillars, .cs-next-steps { grid-template-columns: 1fr; }
       .cs-role-grid { grid-template-columns: 1fr; }
       .cs-next-inner { flex-direction: column; align-items: flex-start; }
     }
 
     @media (max-width: 600px) {
+      .cs-section { padding: 48px 0; }
       .cs-hero-inner, .cs-content { padding: 0 24px; }
       .cs-overview-grid { padding: 0 24px; grid-template-columns: 1fr 1fr; }
       .cs-hero-image { height: 480px; font-size: 72px; }
